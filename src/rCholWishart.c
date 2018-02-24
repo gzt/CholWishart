@@ -1,8 +1,14 @@
 /*
+ *  CholWishart: Sample the Cholesky Factor of the Wishart and Other Functions
+ *  Original file rWishart.c altered by GZ Thompson Feb 2018.
+ *
+ *  Copyright notice from the original file:
+ *
  *  R : A Computer Language for Statistical Data Analysis
  *  Copyright (C) 2012-2016  The R Core Team
  *
- *  Original file rWishart.c altered by GZ Thompson Feb 2018.
+ *
+ *
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
