@@ -1,4 +1,5 @@
 
+
 #' Cholesky of Random Wishart Distributed Matrices
 #'
 #' @description Generate n random matrices, distributed according to the Cholesky
@@ -9,7 +10,7 @@
 #' @param df numeric parameter, "degrees of freedom".
 #' @param Sigma positive definite \eqn{(p * p)} "scale" matrix, the matrix parameter of the distribution.
 #'
-#' @return a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a Cholesky decomposition of a realization of the Wishart distribution \eqn{W_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function
+#' @return a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a Cholesky decomposition of a realization of the Wishart distribution \eqn{W_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function.
 #'
 #' @seealso \code{\link{rWishart}}, \code{\link{rInvCholWishart}}
 #' @useDynLib CholWishart
@@ -19,16 +20,16 @@
 #' # How it is parameterized:
 #' set.seed(20180211)
 #' A <- rCholWishart(1,10,3*diag(5))[,,1]
+#' A
+#' set.seed(20180211)
+#' B <- rInvCholWishart(1,10,1/3*diag(5))[,,1]
+#' B
+#' crossprod(A) %*% crossprod(B)
 #'
 #' set.seed(20180211)
-#' B <- rInvCholWishart(1,10,3*diag(5))[,,1]
-#'
-#' A %*% B
-#'
-#' set.seed(20180211)
-#' C <- chol(rWishart(1,10,3*diag(5))[,,1])
-#'
-rCholWishart <- function(n, df, Sigma){
+#' C <- chol(stats::rWishart(1,10,3*diag(5))[,,1])
+#' C
+rCholWishart <- function(n, df, Sigma) {
   if (!is.numeric(Sigma))
     stop("Sigma must be numeric.")
   Sigma <- as.matrix(Sigma)
@@ -36,8 +37,9 @@ rCholWishart <- function(n, df, Sigma){
   if (n < 1 || !(is.numeric(n)))
     stop("N must be 1 or larger.")
   if (!is.matrix(Sigma)  || dims[1] != dims[2])
-    stop("'Sigma' must be a square, real matrix");
-  if (!is.numeric(df) || df < dims[1] || dims[1] <= 0 )
+    stop("'Sigma' must be a square, real matrix")
+
+  if (!is.numeric(df) || df < dims[1] || dims[1] <= 0)
     stop("inconsistent degrees of freedom and dimension")
   .Call("rCholWishart", n, df, Sigma, PACKAGE = "CholWishart")
 }
@@ -63,10 +65,19 @@ rCholWishart <- function(n, df, Sigma){
 #' @export
 #'
 #' @examples
+#' # How it is parameterized:
+#' set.seed(20180211)
+#' A <- rCholWishart(1,10,3*diag(5))[,,1]
+#' A
+#' set.seed(20180211)
+#' B <- rInvCholWishart(1,10,1/3*diag(5))[,,1]
+#' B
+#' crossprod(A) %*% crossprod(B)
 #'
-#' rInvCholWishart(1,10,diag(5))
-#'
-rInvCholWishart <- function(n, df, Sigma){
+#' set.seed(20180211)
+#' C <- chol(stats::rWishart(1,10,3*diag(5))[,,1])
+#' C
+rInvCholWishart <- function(n, df, Sigma) {
   if (!is.numeric(Sigma))
     stop("Sigma must be numeric.")
   Sigma <- as.matrix(Sigma)
@@ -74,8 +85,9 @@ rInvCholWishart <- function(n, df, Sigma){
   if (n < 1 || !(is.numeric(n)))
     stop("N must be 1 or larger.")
   if (!is.matrix(Sigma)  || dims[1] != dims[2])
-    stop("'Sigma' must be a square, real matrix");
-  if (!is.numeric(df) || df < dims[1] || dims[1] <= 0 )
+    stop("'Sigma' must be a square, real matrix")
+
+  if (!is.numeric(df) || df < dims[1] || dims[1] <= 0)
     stop("inconsistent degrees of freedom and dimension")
   .Call("rInvCholWishart", n, df, Sigma, PACKAGE = "CholWishart")
 }
@@ -104,7 +116,7 @@ rInvCholWishart <- function(n, df, Sigma){
 #' B<-rWishart(1,10,.2*diag(5))[,,1]
 #'
 #' A %*% B
-rInvWishart <- function(n, df, Sigma){
+rInvWishart <- function(n, df, Sigma) {
   if (!is.numeric(Sigma))
     stop("Sigma must be numeric.")
   Sigma <- as.matrix(Sigma)
@@ -112,8 +124,9 @@ rInvWishart <- function(n, df, Sigma){
   if (n < 1 || !(is.numeric(n)))
     stop("N must be 1 or larger.")
   if (!is.matrix(Sigma)  || dims[1] != dims[2])
-    stop("'Sigma' must be a square, real matrix");
-  if (!is.numeric(df) || df < dims[1] || dims[1] <= 0 )
+    stop("'Sigma' must be a square, real matrix")
+
+  if (!is.numeric(df) || df < dims[1] || dims[1] <= 0)
     stop("inconsistent degrees of freedom and dimension")
   .Call("rInvWishart", n, df, Sigma, PACKAGE = "CholWishart")
 }
@@ -144,49 +157,57 @@ rInvWishart <- function(n, df, Sigma){
 #' A
 #' dWishart(x = A, df = 10,Sigma = diag(4), log=TRUE)
 #' dInvWishart(x = solve(A), df = 10,Sigma = diag(4), log=TRUE)
-dWishart <- function(x, df, Sigma, log = TRUE){
+dWishart <- function(x, df, Sigma, log = TRUE) {
   if (!is.numeric(Sigma))
     stop("Sigma must be numeric.")
   Sigma <- as.matrix(Sigma)
   dims = dim(Sigma)
   if (!is.numeric(x))
     stop("x must be numeric.")
-  if(dim(x)[1] != dim(x)[2] || dim(x)[1] != dims[1] || dims[1] != dims[2])
+  if (dim(x)[1] != dim(x)[2] ||
+      dim(x)[1] != dims[1] || dims[1] != dims[2])
     stop("Non-conformable dimensions")
-  if(!symm.check(x) || !symm.check(Sigma))
+  if (!isSymmetric(x) || !isSymmetric(Sigma))
     stop("Non-symmetric input.")
   cholX <- chol(x)
   cholS <- chol(Sigma)
-  ldetX <- sum(log(diag(cholX)))*2
-  ldetS <- sum(log(diag(cholS)))*2
-  ldensity <- .5*(df - dims[1] - 1)*ldetX - .5 * sum(diag(chol2inv(cholS) %*% x)) -
-    (df * dims[1]/2 *log(2) ) - .5 * df * ldetS - lmvgamma(df/2, dims[1])
-  if(log) return(ldensity)
-  else return(exp(ldensity))
+  ldetX <- sum(log(diag(cholX))) * 2
+  ldetS <- sum(log(diag(cholS))) * 2
+  ldensity <-
+    .5 * (df - dims[1] - 1) * ldetX - .5 * sum(diag(chol2inv(cholS) %*% x)) -
+    (df * dims[1] / 2 * log(2)) - .5 * df * ldetS - lmvgamma(df / 2, dims[1])
+  if (log)
+    return(ldensity)
+  else
+    return(exp(ldensity))
 }
 
 #' @describeIn dWishart density for the inverse Wishart distribution.
 #' @export
-dInvWishart <- function(x, df, Sigma, log = TRUE){
+dInvWishart <- function(x, df, Sigma, log = TRUE) {
   if (!is.numeric(Sigma))
     stop("Sigma must be numeric.")
   Sigma <- as.matrix(Sigma)
   dims = dim(Sigma)
   if (!is.numeric(x))
     stop("x must be numeric.")
-  if(dim(x)[1] != dim(x)[2] || dim(x)[1] != dims[1] || dims[1] != dims[2])
+  if (dim(x)[1] != dim(x)[2] ||
+      dim(x)[1] != dims[1] || dims[1] != dims[2])
     stop("Non-conformable dimensions")
-  if(!symm.check(x) || !symm.check(Sigma))
+  if (!isSymmetric(x) || !isSymmetric(Sigma))
     stop("Non-symmetric input.")
 
   cholX <- chol(x)
   cholS <- chol(Sigma)
-  ldetX <- sum(log(diag(cholX)))*2
-  ldetS <- sum(log(diag(cholS)))*2
-  ldensity <- -.5*(df + dims[1] + 1)*ldetX + .5 * df * ldetS - .5 * sum(diag(chol2inv(cholX) %*% Sigma)) -
-    (df * dims[1]/2 *log(2) ) - lmvgamma(df/2, dims[1])
-  if(log) return(ldensity)
-  else return(exp(ldensity))
+  ldetX <- sum(log(diag(cholX))) * 2
+  ldetS <- sum(log(diag(cholS))) * 2
+  ldensity <-
+    -.5 * (df + dims[1] + 1) * ldetX + .5 * df * ldetS - .5 * sum(diag(chol2inv(cholX) %*% Sigma)) -
+    (df * dims[1] / 2 * log(2)) - lmvgamma(df / 2, dims[1])
+  if (log)
+    return(ldensity)
+  else
+    return(exp(ldensity))
 
 }
 
@@ -216,9 +237,12 @@ lmvgamma <- function(x, p) {
   # p only makes sense as an integer but not testing that. x *could* be
   # less than zero - same domain as gamma function making sure that object
   # returned is same shape as object passed
-  if (!all(is.numeric(x),is.numeric(p))) stop("Non-numeric input.")
+  if (!all(is.numeric(x), is.numeric(p)))
+    stop("Non-numeric input.")
   dims <- if (is.vector(x))
-    length(x) else dim(as.array(x))
+    length(x)
+  else
+    dim(as.array(x))
   if (p < 1)
     stop("p must be greater than or equal to 1. p = ", p)
   if (any(x <= 0))
@@ -231,7 +255,8 @@ lmvgamma <- function(x, p) {
 
 #' @describeIn lmvgamma Multivariate gamma function.
 #' @export
-mvgamma <- function(x, p) exp(lmvgamma(x, p))
+mvgamma <- function(x, p)
+  exp(lmvgamma(x, p))
 
 #' Multivariate Digamma
 #'
@@ -247,56 +272,21 @@ mvgamma <- function(x, p) exp(lmvgamma(x, p))
 #' @examples
 #' digamma(1:10)
 #' mvdigamma(1:10,1)
-mvdigamma <- function(x,p){
-  if (!all(is.numeric(x),is.numeric(p))) stop("Non-numeric input.")
+mvdigamma <- function(x, p) {
+  if (!all(is.numeric(x), is.numeric(p)))
+    stop("Non-numeric input.")
   dims <- if (is.vector(x))
-    length(x) else dim(as.array(x))
+    length(x)
+  else
+    dim(as.array(x))
   if (p < 1)
     stop("p must be greater than or equal to 1. p = ", p)
   if (any(x <= 0))
     stop("x must be greater than 0. x = ", x)
 
-  .Call("mvdigamma",as.numeric(x),as.integer(p),PACKAGE = "CholWishart")
-
+  result <- .Call("mvdigamma", as.numeric(x), as.integer(p), PACKAGE = "CholWishart")
+  return(array(result, dim = dims))
 }
-
-
-
-
-#' Quick symmetry check
-#'
-#' Quick check whether matrix input is symmetric -
-#' checks sum of absolute differences of transposes
-#' as well as dimensions. Not robust, so only an
-#' internal function to be used with known safe input.
-#'
-#' @param A Numeric real matrix. Does not check if real.
-#' @param tol tolerance - note that if you have a big matrix
-#'    it may need to be specified as it's a sum of entries.
-#'
-#' @return logical TRUE if symmetric FALSE otherwise.
-#' Not as robust as \code{isSymmetric()}.
-#' @keywords internal
-#'
-#' @examples
-#' \dontrun{
-#' A = ARgenerate(5,.9)
-#' symm.check(A)
-#' A[1,2] = 5
-#' symm.check(A)}
-symm.check <- function(A, tol = 10 * (.Machine$double.eps)^.5) {
-  # if (!is.matrix(A)) return(FALSE)
-  # if (!is.numeric(A)) return(FALSE)
-  # commented those out because it is always checked before running symm.check.
-  dims <- dim(A)
-  if (dims[1] != dims[2]) {
-    return(FALSE)
-  }
-  return(sum(abs(A - t(A))) < prod(dims)*tol)
-}
-
-
-
 
 .onUnload <- function(libpath) {
   library.dynam.unload("CholWishart", libpath)

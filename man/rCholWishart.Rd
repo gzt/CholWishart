@@ -14,7 +14,7 @@ rCholWishart(n, df, Sigma)
 \item{Sigma}{positive definite \eqn{(p * p)} "scale" matrix, the matrix parameter of the distribution.}
 }
 \value{
-a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a Cholesky decomposition of a realization of the Wishart distribution \eqn{W_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function
+a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a Cholesky decomposition of a realization of the Wishart distribution \eqn{W_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function.
 }
 \description{
 Generate n random matrices, distributed according to the Cholesky
@@ -25,15 +25,15 @@ Generate n random matrices, distributed according to the Cholesky
 # How it is parameterized:
 set.seed(20180211)
 A <- rCholWishart(1,10,3*diag(5))[,,1]
+A
+set.seed(20180211)
+B <- rInvCholWishart(1,10,1/3*diag(5))[,,1]
+B
+crossprod(A) \%*\% crossprod(B)
 
 set.seed(20180211)
-B <- rInvCholWishart(1,10,3*diag(5))[,,1]
-
-A \%*\% B
-
-set.seed(20180211)
-C <- chol(rWishart(1,10,3*diag(5))[,,1])
-
+C <- chol(stats::rWishart(1,10,3*diag(5))[,,1])
+C
 }
 \seealso{
 \code{\link{rWishart}}, \code{\link{rInvCholWishart}}

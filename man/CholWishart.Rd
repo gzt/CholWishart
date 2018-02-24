@@ -4,7 +4,7 @@
 \name{CholWishart}
 \alias{CholWishart}
 \alias{CholWishart-package}
-\title{CholWishart.}
+\title{Cholesky Factor of a Wishart or Inverse Wishart}
 \description{
-A package for fast computation various functions related to the Wishart distribution, such as sampling from the Cholesky factor of the Wishart, sampling from the inverse Wishart, sampling from the Cholesky factor of the inverse Wishart, computing densities for the Wishart and inverse Wishart, and computing a few auxiliart functions such as the multivariate gamma and digamma functions. Many of these functions are written in C to maximize efficiency.
+A package for fast computation of various functions related to the Wishart distribution, such as sampling from the Cholesky factor of the Wishart, sampling from the inverse Wishart, sampling from the Cholesky factor of the inverse Wishart, computing densities for the Wishart and inverse Wishart, and computing the multivariate gamma and digamma functions. Many of these functions are written in C to maximize speed.
 }
