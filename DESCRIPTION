@@ -5,13 +5,13 @@ Version: 0.1.0
 Authors@R: c(person(c("Geoffrey", "Thompson"),email="gzthompson@gmail.com",
           role = c("aut", "cre")),  
           person("R Core Team", role = "ctb", comment="some code based on R stats functions"))
-Description: A package for fast computation various functions related to the Wishart
+Description: A package for fast computation of various functions related to the Wishart
     distribution, such as sampling from the Cholesky factor of the Wishart,
     sampling from the inverse Wishart, sampling from the Cholesky factor of
     the inverse Wishart, computing densities for the Wishart and inverse
-    Wishart, and computing a few auxiliart functions such as the 
+    Wishart, and computing a few auxiliary functions such as the 
     multivariate gamma and digamma functions. Many of these functions 
-    are writte in C to maximize efficiency.
+    are written in C to maximize efficiency.
 License: GPL-3 
 Encoding: UTF-8
 LazyData: true
