@@ -3,3 +3,4 @@
 .RData
 .Ruserdata
 /revdep/.cache.rds
+inst/doc
