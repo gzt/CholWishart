@@ -3,3 +3,4 @@
 ^\.travis\.yml$
 ^revdep$
 ^LICENSE$
+^cran-comments\.md$

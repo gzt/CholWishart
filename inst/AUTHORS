@@ -1,0 +1,12 @@
+This software is based in part on code from the R stats package which indicated
+it was released under GPL-2 or any later version of the license. This
+package is then released under GPL-3 or any later version the license.
+
+The function std_rWishart_factor() in rCholWishart.c is taken directly
+from stats::rWishart.c and the *Wishart functions are alterations of the
+rWishart() function in stats::rWishart.c. Those are authored by the R
+Core Team.
+
+The changes and original contributions to the functions found in
+rCholWishart.c are authored by Geoffrey Thompson <gzthompson@gmail.com>
+(c) 2018.

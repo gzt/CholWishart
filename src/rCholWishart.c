@@ -6,7 +6,7 @@
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
+ *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
  *
  *  This program is distributed in the hope that it will be useful,
@@ -164,8 +164,8 @@ SEXP
     if (info)
       error("'scal' matrix is not positive-definite");
     /* So here is the deal: first two invert Sigma.
-     * Last gets chol(sigma^-1) to essentially do rCholWishart
-     * And then we invert the rCholWisharts.
+     * Last gets chol(sigma^-1) to essentially do rWishart
+     * And then we invert the rWisharts.
      */
     ansp = REAL(ans);
     GetRNGstate();
@@ -180,7 +180,8 @@ SEXP
       /* Original code from R stats: rWishart.c */
       F77_CALL(dpotri)("U",&(dims[1]), tmp,
                &(dims[1]), &info);
-
+      if (info)
+        error("Inv Wishart matrix is not positive-definite");
 
 
       F77_CALL(dpotrf)("U", &(dims[0]), tmp, &(dims[0]), &info);
@@ -238,8 +239,8 @@ SEXP
     if (info)
       error("'scal' matrix is not positive-definite");
     /* So here is the deal: first two invert Sigma.
-     * Last gets chol(sigma^-1) to essentially do rCholWishart
-     * And then we invert the rCholWisharts.
+     * Last gets chol(sigma^-1) to essentially do rWishart
+     * And then we invert the rWisharts.
      */
     ansp = REAL(ans);
     GetRNGstate();
@@ -256,6 +257,8 @@ SEXP
 
       F77_CALL(dpotri)("U",&(dims[1]), tmp,
                &(dims[1]), &info);
+      if (info)
+        error("Inv Wishart matrix is not positive-definite");
 
       for (int i = 1; i < dims[0]; i++)
         for (int k = 0; k < i; k++)

@@ -1,6 +1,23 @@
+#
+#   CholWishart:
+#   Copyright (C) 2018  GZ Thompson <gzthompson@gmail.com>
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#     You should have received a copy of the GNU General Public License
+#   along with this program; if not, a copy is available at
+#   https://www.R-project.org/Licenses/
+#
 
-
-#' Cholesky of Random Wishart Distributed Matrices
+#' Cholesky Factor of Random Wishart Distributed Matrices
 #'
 #' @description Generate n random matrices, distributed according to the Cholesky
 #'     decomposition of a Wishart distribution with parameters \code{Sigma} and
@@ -258,7 +275,7 @@ lmvgamma <- function(x, p) {
 mvgamma <- function(x, p)
   exp(lmvgamma(x, p))
 
-#' Multivariate Digamma
+#' Multivariate Digamma Function
 #'
 #' @description A special mathematical function related to the gamma function,
 #'     generalized for multivariate distributions.

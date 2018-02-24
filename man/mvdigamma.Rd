@@ -2,7 +2,7 @@
 % Please edit documentation in R/wishart.R
 \name{mvdigamma}
 \alias{mvdigamma}
-\title{Multivariate Digamma}
+\title{Multivariate Digamma Function}
 \usage{
 mvdigamma(x, p)
 }

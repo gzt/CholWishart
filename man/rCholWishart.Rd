@@ -2,7 +2,7 @@
 % Please edit documentation in R/wishart.R
 \name{rCholWishart}
 \alias{rCholWishart}
-\title{Cholesky of Random Wishart Distributed Matrices}
+\title{Cholesky Factor of Random Wishart Distributed Matrices}
 \usage{
 rCholWishart(n, df, Sigma)
 }
