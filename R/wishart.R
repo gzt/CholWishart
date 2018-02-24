@@ -48,11 +48,11 @@
 #' C
 rCholWishart <- function(n, df, Sigma) {
   if (!is.numeric(Sigma))
-    stop("Sigma must be numeric.")
+    stop("'Sigma' must be numeric")
   Sigma <- as.matrix(Sigma)
   dims = dim(Sigma)
   if (n < 1 || !(is.numeric(n)))
-    stop("N must be 1 or larger.")
+    stop("'n' must be 1 or larger.")
   if (!is.matrix(Sigma)  || dims[1] != dims[2])
     stop("'Sigma' must be a square, real matrix")
 
@@ -96,11 +96,11 @@ rCholWishart <- function(n, df, Sigma) {
 #' C
 rInvCholWishart <- function(n, df, Sigma) {
   if (!is.numeric(Sigma))
-    stop("Sigma must be numeric.")
+    stop("'Sigma' must be numeric")
   Sigma <- as.matrix(Sigma)
   dims = dim(Sigma)
   if (n < 1 || !(is.numeric(n)))
-    stop("N must be 1 or larger.")
+    stop("'n' must be 1 or larger.")
   if (!is.matrix(Sigma)  || dims[1] != dims[2])
     stop("'Sigma' must be a square, real matrix")
 
@@ -135,11 +135,11 @@ rInvCholWishart <- function(n, df, Sigma) {
 #' A %*% B
 rInvWishart <- function(n, df, Sigma) {
   if (!is.numeric(Sigma))
-    stop("Sigma must be numeric.")
+    stop("'Sigma' must be numeric")
   Sigma <- as.matrix(Sigma)
   dims = dim(Sigma)
   if (n < 1 || !(is.numeric(n)))
-    stop("N must be 1 or larger.")
+    stop("'n' must be 1 or larger.")
   if (!is.matrix(Sigma)  || dims[1] != dims[2])
     stop("'Sigma' must be a square, real matrix")
 
@@ -176,16 +176,16 @@ rInvWishart <- function(n, df, Sigma) {
 #' dInvWishart(x = solve(A), df = 10,Sigma = diag(4), log=TRUE)
 dWishart <- function(x, df, Sigma, log = TRUE) {
   if (!is.numeric(Sigma))
-    stop("Sigma must be numeric.")
+    stop("'Sigma' must be numeric")
   Sigma <- as.matrix(Sigma)
   dims = dim(Sigma)
   if (!is.numeric(x))
-    stop("x must be numeric.")
+    stop("'x' must be numeric")
   if (dim(x)[1] != dim(x)[2] ||
       dim(x)[1] != dims[1] || dims[1] != dims[2])
-    stop("Non-conformable dimensions")
+    stop("non-conformable dimensions")
   if (!isSymmetric(x) || !isSymmetric(Sigma))
-    stop("Non-symmetric input.")
+    stop("non-symmetric input")
   cholX <- chol(x)
   cholS <- chol(Sigma)
   ldetX <- sum(log(diag(cholX))) * 2
@@ -203,16 +203,16 @@ dWishart <- function(x, df, Sigma, log = TRUE) {
 #' @export
 dInvWishart <- function(x, df, Sigma, log = TRUE) {
   if (!is.numeric(Sigma))
-    stop("Sigma must be numeric.")
+    stop("'Sigma' must be numeric")
   Sigma <- as.matrix(Sigma)
   dims = dim(Sigma)
   if (!is.numeric(x))
     stop("x must be numeric.")
   if (dim(x)[1] != dim(x)[2] ||
       dim(x)[1] != dims[1] || dims[1] != dims[2])
-    stop("Non-conformable dimensions")
+    stop("non-conformable dimensions")
   if (!isSymmetric(x) || !isSymmetric(Sigma))
-    stop("Non-symmetric input.")
+    stop("non-symmetric input")
 
   cholX <- chol(x)
   cholS <- chol(Sigma)
@@ -255,15 +255,15 @@ lmvgamma <- function(x, p) {
   # less than zero - same domain as gamma function making sure that object
   # returned is same shape as object passed
   if (!all(is.numeric(x), is.numeric(p)))
-    stop("Non-numeric input.")
+    stop("non-numeric input")
   dims <- if (is.vector(x))
     length(x)
   else
     dim(as.array(x))
   if (p < 1)
-    stop("p must be greater than or equal to 1. p = ", p)
+    stop("'p' must be greater than or equal to 1. p = ", p)
   if (any(x <= 0))
-    stop("x must be greater than 0. x = ", x)
+    stop("'x' must be greater than 0. x = ", x)
 
   result <- .Call("lmvgamma", as.numeric(x), as.integer(p), PACKAGE = "CholWishart")
 
@@ -285,21 +285,22 @@ mvgamma <- function(x, p)
 #' @param p positive integer, dimension of a square matrix
 #' @return vector of values of multivariate digamma function.
 #' @export
+#' @useDynLib CholWishart
 #'
 #' @examples
 #' digamma(1:10)
 #' mvdigamma(1:10,1)
 mvdigamma <- function(x, p) {
   if (!all(is.numeric(x), is.numeric(p)))
-    stop("Non-numeric input.")
+    stop("non-numeric input")
   dims <- if (is.vector(x))
     length(x)
   else
     dim(as.array(x))
   if (p < 1)
-    stop("p must be greater than or equal to 1. p = ", p)
+    stop("'p' must be greater than or equal to 1. p = ", p)
   if (any(x <= 0))
-    stop("x must be greater than 0. x = ", x)
+    stop("'x' must be greater than 0. x = ", x)
 
   result <- .Call("mvdigamma", as.numeric(x), as.integer(p), PACKAGE = "CholWishart")
   return(array(result, dim = dims))
