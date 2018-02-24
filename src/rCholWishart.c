@@ -38,6 +38,8 @@
 
 
 
+
+
 /**
  * Simulate the Cholesky factor of a standardized Wishart variate with
  * dimension p and nu degrees of freedom.
@@ -53,7 +55,10 @@
 static double
   *std_rWishart_factor(double nu, int p, int upper, double ans[])
   {
-    /* Original code from R stats: rWishart.c - this function unaltered */
+    /* Original code from R stats: rWishart.c - this function unaltered
+     *  R : A Computer Language for Statistical Data Analysis
+     *  Copyright (C) 2012-2016  The R Core Team
+     */
     int pp1 = p + 1;
     if (nu < (double) p || p <= 0)
       error("inconsistent degrees of freedom and dimension");
@@ -71,6 +76,9 @@ static double
     return ans;
   }
 
+/* The following functions are modified (by GZ Thompson, 2018)versions
+ * of the rWishart function:
+ */
 
 /**
  * Simulate a sample of random matrices from a Wishart distribution -
@@ -280,6 +288,8 @@ SEXP
     UNPROTECT(1);
     return ans;
   }
+
+/* The following are by GZ Thompson, (c) 2018 */
 
 
 /**

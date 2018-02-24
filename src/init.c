@@ -3,7 +3,7 @@
 #include <stdlib.h> // for NULL
 #include <R_ext/Rdynload.h>
 
-/* FIXME: 
+/* FIXME:
    Check these declarations against the C/Fortran source code.
 */
 
@@ -15,15 +15,15 @@ extern SEXP rInvCholWishart(SEXP, SEXP, SEXP);
 extern SEXP rInvWishart(SEXP, SEXP, SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
-    {"lmvgamma",        (DL_FUNC) &lmvgamma,        2},
-    {"mvdigamma",       (DL_FUNC) &mvdigamma,       2},
-    {"rCholWishart",    (DL_FUNC) &rCholWishart,    3},
-    {"rInvCholWishart", (DL_FUNC) &rInvCholWishart, 3},
-    {"rInvWishart",     (DL_FUNC) &rInvWishart,     3},
+    {"C_lmvgamma",        (DL_FUNC) &lmvgamma,        2},
+    {"C_mvdigamma",       (DL_FUNC) &mvdigamma,       2},
+    {"C_rCholWishart",    (DL_FUNC) &rCholWishart,    3},
+    {"C_rInvCholWishart", (DL_FUNC) &rInvCholWishart, 3},
+    {"C_rInvWishart",     (DL_FUNC) &rInvWishart,     3},
     {NULL, NULL, 0}
 };
 
-void R_init_matrixdist(DllInfo *dll)
+void R_init_CholWishart(DllInfo *dll)
 {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);

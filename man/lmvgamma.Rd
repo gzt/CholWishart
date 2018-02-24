@@ -15,7 +15,7 @@ mvgamma(x, p)
 \item{p}{positive integer, dimension of a square matrix}
 }
 \value{
-log of multivariate gamma for each entry of x. For non-log variant,
+For \code{lmvgamma} log of multivariate gamma of dimension \code{p} for each entry of \code{x}. For non-log variant,
     use \code{mvgamma}.
 }
 \description{

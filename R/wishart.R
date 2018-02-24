@@ -58,7 +58,7 @@ rCholWishart <- function(n, df, Sigma) {
 
   if (!is.numeric(df) || df < dims[1] || dims[1] <= 0)
     stop("inconsistent degrees of freedom and dimension")
-  .Call("rCholWishart", n, df, Sigma, PACKAGE = "CholWishart")
+  .Call("C_rCholWishart", n, df, Sigma, PACKAGE = "CholWishart")
 }
 
 
@@ -106,7 +106,7 @@ rInvCholWishart <- function(n, df, Sigma) {
 
   if (!is.numeric(df) || df < dims[1] || dims[1] <= 0)
     stop("inconsistent degrees of freedom and dimension")
-  .Call("rInvCholWishart", n, df, Sigma, PACKAGE = "CholWishart")
+  .Call("C_rInvCholWishart", n, df, Sigma, PACKAGE = "CholWishart")
 }
 
 #' Random Inverse Wishart Distributed Matrices
@@ -145,7 +145,7 @@ rInvWishart <- function(n, df, Sigma) {
 
   if (!is.numeric(df) || df < dims[1] || dims[1] <= 0)
     stop("inconsistent degrees of freedom and dimension")
-  .Call("rInvWishart", n, df, Sigma, PACKAGE = "CholWishart")
+  .Call("C_rInvWishart", n, df, Sigma, PACKAGE = "CholWishart")
 }
 
 
@@ -237,7 +237,7 @@ dInvWishart <- function(x, df, Sigma, log = TRUE) {
 #' @param x non-negative numeric vector, matrix, or array
 #' @param p positive integer, dimension of a square matrix
 #'
-#' @return log of multivariate gamma for each entry of x. For non-log variant,
+#' @return For \code{lmvgamma} log of multivariate gamma of dimension \code{p} for each entry of \code{x}. For non-log variant,
 #'     use \code{mvgamma}.
 #'
 #' @seealso \code{\link{gamma}} and \code{\link{lgamma}}
@@ -252,10 +252,13 @@ dInvWishart <- function(x, df, Sigma, log = TRUE) {
 #' gamma(1:12)
 lmvgamma <- function(x, p) {
   # p only makes sense as an integer but not testing that. x *could* be
-  # less than zero - same domain as gamma function making sure that object
-  # returned is same shape as object passed
+  # less than zero - same domain as gamma function
+
   if (!all(is.numeric(x), is.numeric(p)))
     stop("non-numeric input")
+
+  # making sure that object
+  # returned is same shape as object passed
   dims <- if (is.vector(x))
     length(x)
   else
@@ -265,7 +268,7 @@ lmvgamma <- function(x, p) {
   if (any(x <= 0))
     stop("'x' must be greater than 0. x = ", x)
 
-  result <- .Call("lmvgamma", as.numeric(x), as.integer(p), PACKAGE = "CholWishart")
+  result <- .Call("C_lmvgamma", as.numeric(x), as.integer(p), PACKAGE = "CholWishart")
 
   return(array(result, dim = dims))
 }
@@ -302,7 +305,7 @@ mvdigamma <- function(x, p) {
   if (any(x <= 0))
     stop("'x' must be greater than 0. x = ", x)
 
-  result <- .Call("mvdigamma", as.numeric(x), as.integer(p), PACKAGE = "CholWishart")
+  result <- .Call("C_mvdigamma", as.numeric(x), as.integer(p), PACKAGE = "CholWishart")
   return(array(result, dim = dims))
 }
 
