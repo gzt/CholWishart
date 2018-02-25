@@ -19,5 +19,6 @@ BugReports: https://github.com/gzt/CholWishart/issues
 Depends: R (>= 3.3.0)
 Suggests: testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    covr
 VignetteBuilder: knitr
