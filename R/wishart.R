@@ -157,7 +157,7 @@ rInvWishart <- function(n, df, Sigma) {
 #'
 #' If \eqn{X} is distributed as a \eqn{p * p} Wishart random variable with \eqn{n > p} degrees of
 #' freedom and a covariance matrix \eqn{Sigma}, then \eqn{X^{-1} = Y} is distributed as an
-#' inverse Wishart with \eqn{n} degrees of freedom and a covarariance matrix \eqn{Sigma^{-1}}. Note there are different ways of parameterizing the
+#' inverse Wishart with \eqn{n} degrees of freedom and a covariance matrix \eqn{Sigma^{-1}}. Note there are different ways of parameterizing the
 #'    inverse Wishart distribution, check which one you need.
 #'
 #' @param x positive definite \eqn{p * p} observation for density estimation
