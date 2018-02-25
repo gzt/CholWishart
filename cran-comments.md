@@ -20,5 +20,5 @@ This is a new release, so there are no reverse dependencies.
 
 ## Other notes
  
-This takes existing C code and modifies it, more attribution of authorship 
+This takes existing C code and modifies it, attribution of authorship 
 is documented in inst/AUTHORS.
