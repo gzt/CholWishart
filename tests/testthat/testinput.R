@@ -38,31 +38,50 @@ test_that("trying wrong type of input", {
 }
 )
 
+test_that("Bad numeric input:",{
+
+  expect_error(rCholWishart(1, 10, matrix(c(1,1,1,0), nrow = 2)))
+  expect_error(rInvWishart(1, 10, matrix(c(1,1,1,0), nrow = 2)))
+  expect_error(rInvCholWishart(1, 10, matrix(c(1,1,1,0), nrow =
+                                               2)))
+
+  expect_error(dWishart(diag(2), 10, matrix(c(1,1,1,0), nrow = 2)))
+  expect_error(dInvWishart(diag(2), 10, matrix(c(1,1,1,0), nrow = 2)))
+
+  expect_error(dWishart(matrix(c(1,1,1,0), nrow = 2), 10, diag(2)))
+  expect_error(dInvWishart(matrix(c(1,1,1,0), nrow = 2),10,diag(2)))
+
+})
+
 test_that("Out of bounds numeric input: ", {
 
 
   expect_error(rCholWishart(1, 10, matrix(c(3, 1, 1, 1, 1, 3), nrow = 2)))
+  expect_error(rInvWishart(1, 10, matrix(c(3, 1, 1, 1, 1, 3), nrow = 2)))
   expect_error(rInvCholWishart(1, 10, matrix(c(3, 1, 1, 1, 1, 3), nrow =
                                                2)))
 
   expect_error(lmvgamma(-1, 5))
   expect_error(lmvgamma(1, -5))
 
+  expect_error(mvgamma(-1, 5))
+  expect_error(mvgamma(1, -5))
+
   expect_error(rCholWishart(1, 10, -diag(5)))
   expect_error(rInvCholWishart(1, 10, -diag(5)))
-
+  expect_error(rInvWishart(1, 10, -diag(5)))
 
   expect_error(rCholWishart(1, 4, diag(5)))
   expect_error(rInvCholWishart(1, 4, diag(5)))
-
+  expect_error(rInvWishart(1, 4, diag(5)))
 
   expect_error(rCholWishart(-1, 10, diag(5)))
   expect_error(rInvCholWishart(-1, 10, diag(5)))
-
+  expect_error(rInvWishart(-1, 10, diag(5)))
 
 
   expect_error(rCholWishart(1, 10, matrix(c(1, 1, 1, 1), nrow = 2)))
   expect_error(rInvCholWishart(1, 10, matrix(c(1, 1, 1, 1), nrow = 2)))
-
+  expect_error(rInvWishart(1, 10, matrix(c(1, 1, 1, 1), nrow = 2)))
   }
 )
