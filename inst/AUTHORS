@@ -9,4 +9,6 @@ by the R Core Team.
 
 The changes and original contributions to the functions found in
 rCholWishart.c are authored by Geoffrey Thompson <gzthompson@gmail.com>
-(c) 2018. The rest of the package is authored by Geoffrey Thompson as well.
+(c) 2018. Comments within the source code provide more fine-grained attribution
+of authorship. The rest of the package is authored by Geoffrey Thompson as
+well.
