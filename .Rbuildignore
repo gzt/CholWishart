@@ -4,3 +4,4 @@
 ^revdep$
 ^LICENSE$
 ^cran-comments\.md$
+^appveyor\.yml$
