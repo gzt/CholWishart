@@ -78,7 +78,7 @@ rCholWishart <- function(n, df, Sigma) {
 #' @return a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a Cholesky decomposition of a realization of the Wishart distribution \eqn{W_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function
 #'
 #' @seealso \code{\link{rWishart}} and \code{\link{rCholWishart}}
-#' @useDynLib CholWishart
+#' @useDynLib CholWishart, .registration=TRUE
 #' @export
 #'
 #' @examples
