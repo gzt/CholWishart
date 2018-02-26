@@ -13,7 +13,7 @@ test_that("Testing helper functions:", {
   expect_equal((p * (p - 1) / 4 * log(pi) + lgamma(5 - 0) + lgamma(5 - .5)), as.numeric(lmvgamma(5, 2)))
   expect_equal((3 * (3 - 1) / 4 * log(pi) + lgamma(5 - 0) + lgamma(5 - .5) + lgamma(5 - 1)),
                as.numeric(lmvgamma(5, 3)))
-
+  expect_equal(digamma(1:100),mvdigamma(1:100,1))
 })
 
 test_that("Equivalent outputs for different options:", {

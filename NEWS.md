@@ -1,3 +1,7 @@
+# CholWishart 0.9.0.9001
+
+* Add additional tests for `dWishart` and `dInvWishart` functions
+
 # CholWishart 0.9.0
 
 * Feature complete, fully documented, and the math should be correct.
