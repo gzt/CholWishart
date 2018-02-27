@@ -37,9 +37,9 @@ How does `rWishart(n, df, Sigma)` work (supposing `Sigma` is a $p \times p$ matr
 
 ## The Inverse Wishart distribution
 
-If $X \sim \textrm{W}(\nu,\Sigma)$. Then we define the Inverse Wishart as $X^{-1}  = Y \sim \textrm{IW}(\nu , \Sigma^{-1})$. There are other parameterizations of this, mostly coming down to different ways of writing the $\nu$ parameter - be aware of this when using any package drawing from the Inverse Wishart distribution. This comes up directly in Bayesian statistics. We are also interested in the Cholesky decomposition of this, as it is directly relevant to the generation of the matrix variate $t$-distribution. In this package it is done by taking the covariance matrix, inverting it, computing the Cholesky decomposition of the inverted covariance matrix, drawing the Cholesky factor of a Wishart matrix using that, and then inverting based on that (as finding $\Psi^{-1}$ given the Cholesky factorization of $\Psi$ is relatively fast). This can then be converted into the Cholesky factor of the Inverse Wishart if that is what is desired. This would be slow to do in R, but in C it is not so bad. 
+If $X \sim \textrm{W}(\nu,\Sigma)$, then we define the Inverse Wishart as $X^{-1}  = Y \sim \textrm{IW}(\nu , \Sigma^{-1})$. There are other parameterizations of the distribution, mostly coming down to different ways of writing the $\nu$ parameter - be aware of this when using any package drawing from the Inverse Wishart distribution. This comes up directly in Bayesian statistics. We are also interested in the Cholesky decomposition of this, as it is required in the generation of the matrix variate $t$-distribution. In this package it is done by taking the covariance matrix, inverting it, computing the Cholesky decomposition of the inverted covariance matrix, drawing the Cholesky factor of a Wishart matrix using that, and then inverting based on that (as finding $\Psi^{-1}$ given the Cholesky factorization of $\Psi$ is relatively fast). This can then be converted into the Cholesky factor of the Inverse Wishart if that is what is desired. This would be slow to do in R, but in C it is not so bad. There may be a more efficient way.
 
-So here is what happens with the results of the above:
+Here is what happens with the results of the above:
 
 ```{r results}
 A %*% B 
@@ -49,3 +49,28 @@ crossprod(C) %*% B
 ```
 
 There is some roundoff error.
+
+## Density computation
+
+This package also has functions for density computations with the Wishart distribution. Densities are only defined for positive-definite input matrices and $\nu$ parameters larger than the dimension $p$.
+
+The return value is on the `log` scale but it can be specified otherwise.
+
+```{r density}
+dWishart(diag(3), df = 5, 5*diag(3))
+
+dInvWishart(diag(3), df = 5, .2*diag(3))
+```
+
+Note that, in general, these will not agree even if their covariance matrix parameters are inverses of each other. One of the reasons this works is that the determinant of $\mathbf{X}$ is $1$.
+
+## Other functions
+
+The multivariate gamma ($\Gamma_p$) and digamma ($\psi_p$) functions are extensions of the univariate gamma ($\Gamma$) and digamma ($\psi$) functions. They are useful in calculating the densities above. They come up in other distributions as well. The digamma is the first derivative of the gamma function. When the dimension $p = 1$, they coincide with the usual definitions.
+
+The multivariate gamma also comes in a logarithmic form (`lmvgamma`).
+
+```{r lmvgamma}
+lmvgamma(1:4,1) # note how they agree when p = 1
+lgamma(1:4)
+```
