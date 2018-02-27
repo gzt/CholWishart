@@ -30,7 +30,7 @@
 #' @return a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a Cholesky decomposition of a realization of the Wishart distribution \eqn{W_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function.
 #'
 #' @seealso \code{\link{rWishart}}, \code{\link{rInvCholWishart}}
-#' @useDynLib CholWishart
+#' @useDynLib CholWishart, .registration = TRUE
 #' @export
 #'
 #' @examples
@@ -78,7 +78,7 @@ rCholWishart <- function(n, df, Sigma) {
 #' @return a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a Cholesky decomposition of a realization of the Wishart distribution \eqn{W_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function
 #'
 #' @seealso \code{\link{rWishart}} and \code{\link{rCholWishart}}
-#' @useDynLib CholWishart, .registration=TRUE
+#' @useDynLib CholWishart, .registration = TRUE
 #' @export
 #'
 #' @examples
@@ -123,7 +123,7 @@ rInvCholWishart <- function(n, df, Sigma) {
 #' @return a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a realization of the inverse Wishart distribution \eqn{IW_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function. If \eqn{X \sim IW_p(Sigma, df)} then \eqn{X^{-1} \sim W_p(Sigma^{-1}, df)}
 #'
 #' @seealso \code{\link{rWishart}} and \code{\link{rCholWishart}}
-#' @useDynLib CholWishart
+#' @useDynLib CholWishart, .registration = TRUE
 #' @export
 #'
 #' @examples
@@ -242,7 +242,7 @@ dInvWishart <- function(x, df, Sigma, log = TRUE) {
 #'
 #' @seealso \code{\link{gamma}} and \code{\link{lgamma}}
 #'
-#' @useDynLib CholWishart
+#' @useDynLib CholWishart, .registration = TRUE
 #' @export
 #'
 #' @examples
@@ -288,7 +288,7 @@ mvgamma <- function(x, p)
 #' @param p positive integer, dimension of a square matrix
 #' @return vector of values of multivariate digamma function.
 #' @export
-#' @useDynLib CholWishart
+#' @useDynLib CholWishart, .registration = TRUE
 #'
 #' @examples
 #' digamma(1:10)
