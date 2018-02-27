@@ -57,9 +57,11 @@ This package also has functions for density computations with the Wishart distri
 The return value is on the `log` scale but it can be specified otherwise.
 
 ```{r density}
+library('CholWishart')
 dWishart(diag(3), df = 5, 5*diag(3))
 
 dInvWishart(diag(3), df = 5, .2*diag(3))
+
 ```
 
 Note that, in general, these will not agree even if their covariance matrix parameters are inverses of each other. One of the reasons this works is that the determinant of $\mathbf{X}$ is $1$.
