@@ -17,9 +17,13 @@ vector of values of multivariate digamma function.
 \description{
 A special mathematical function related to the gamma function,
     generalized for multivariate distributions.
-    The digamma is the derivative of the gamma.
+    The multivariate digamma function is the derivative of the multivariate gamma function
+    for for p = 1 is the same as the univariate digamma function.
 }
 \examples{
 digamma(1:10)
 mvdigamma(1:10,1)
+}
+\references{
+A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
 }

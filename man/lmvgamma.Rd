@@ -21,6 +21,11 @@ For \code{lmvgamma} log of multivariate gamma of dimension \code{p} for each ent
 \description{
 A special mathematical function related to the gamma function,
     generalized for multivariate gammas.
+    
+   The multivariate gamma function for a dimension p is defined as:
+   
+   \deqn{\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod{j=1}^{p}\Gamma [a+(1-j)/2]}{Gamma_p(a)=\pi^{p(p-1)/4}* Prod_{j=1}^{p}\Gamma[a+(1-j)/2]}
+   For p = 1, this is the same as the usual gamma function.
 }
 \section{Functions}{
 \itemize{
@@ -32,6 +37,9 @@ lgamma(1:12)
 lmvgamma(1:12,1)
 mvgamma(1:12,1)
 gamma(1:12)
+}
+\references{
+A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
 }
 \seealso{
 \code{\link{gamma}} and \code{\link{lgamma}}

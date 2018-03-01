@@ -37,6 +37,12 @@ set.seed(20180211)
 C <- chol(stats::rWishart(1,10,3*diag(5))[,,1])
 C
 }
+\references{
+Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis}, 
+London: Academic Press.
+
+A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
+}
 \seealso{
 \code{\link{rWishart}} and \code{\link{rCholWishart}}
 }
