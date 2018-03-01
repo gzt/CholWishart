@@ -109,3 +109,20 @@ test_that("Out of bounds numeric input: ", {
   expect_error(rInvWishart(1, 10, matrix(c(1, 1, 1, 1), nrow = 2)), "positive")
   }
 )
+
+test_that("Bad shape numeric input: ", {
+  x = matrix(c(1,0,0,0,0,1),nrow = 2)
+  expect_error(dWishart(x, 4, x))
+  expect_error(dWishart(x,4,diag(3)))
+  expect_error(dWishart(x,4, diag(2)))
+  expect_error(dInvWishart(x, 4, x))
+  expect_error(dInvWishart(x,4,diag(3)))
+  expect_error(dInvWishart(x,4, diag(2)))
+  A <- diag(5)
+  A[1,2] <- 1
+  expect_error(rCholWishart(1,6, A), "scal")
+  expect_error(rInvCholWishart(1,6, A), "scal")
+  expect_error(rInvWishart(1,6, A), "scal")
+
+}
+)
