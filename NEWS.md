@@ -1,6 +1,7 @@
 # CholWishart 0.9.0.9001
 
 * Add additional tests for `dWishart` and `dInvWishart` functions
+* Add references and equations to help files
 
 # CholWishart 0.9.0
 
