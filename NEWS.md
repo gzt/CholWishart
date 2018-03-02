@@ -1,3 +1,7 @@
+# CholWishart 0.9.0.9002
+
+* Add more documentation, add more references to documentation, clean LaTeX equations in documentation.
+
 # CholWishart 0.9.0.9001
 
 * Add additional tests for `dWishart` and `dInvWishart` functions
