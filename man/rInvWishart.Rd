@@ -11,10 +11,13 @@ rInvWishart(n, df, Sigma)
 
 \item{df}{numeric parameter, "degrees of freedom".}
 
-\item{Sigma}{positive definite \eqn{(p * p)} "scale" matrix, the matrix parameter of the distribution.}
+\item{Sigma}{positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix parameter of the 
+distribution.}
 }
 \value{
-a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a realization of the inverse Wishart distribution \eqn{IW_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function.
+a numeric array, say \code{R}, of dimension \eqn{p \times p \times n}{p * p * n}, 
+where each \code{R[,,i]} is a realization of the inverse Wishart distribution \eqn{IW_p(Sigma, df)}. 
+Based on a modification of the existing code for the \code{rWishart} function.
 }
 \description{
 Generate n random matrices, distributed according

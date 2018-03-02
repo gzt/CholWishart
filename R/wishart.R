@@ -30,7 +30,7 @@
 #' @param Sigma positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix parameter of the 
 #' distribution.
 #'
-#' @return a numeric array, say R, of dimension \eqn{p \times p \times n}{p * p * n},
+#' @return a numeric array, say \code{R}, of dimension \eqn{p \times p \times n}{p * p * n},
 #'    where each \code{R[,,i]} is a Cholesky decomposition of a sample
 #'    from the Wishart distribution \eqn{W_p(Sigma, df)}. Based on a
 #'    modification of the existing code for the \code{rWishart} function.
@@ -160,9 +160,12 @@ rInvCholWishart <- function(n, df, Sigma) {
 #'      
 #' @param n integer sample size.
 #' @param df numeric parameter, "degrees of freedom".
-#' @param Sigma positive definite \eqn{(p * p)} "scale" matrix, the matrix parameter of the distribution.
+#' @param Sigma positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix parameter of the 
+#' distribution.
 #'
-#' @return a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a realization of the inverse Wishart distribution \eqn{IW_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function.
+#' @return a numeric array, say \code{R}, of dimension \eqn{p \times p \times n}{p * p * n}, 
+#' where each \code{R[,,i]} is a realization of the inverse Wishart distribution \eqn{IW_p(Sigma, df)}. 
+#' Based on a modification of the existing code for the \code{rWishart} function.
 #'
 #' @seealso \code{\link{rWishart}}, \code{\link{rCholWishart}}, and \code{\link{rInvCholWishart}}
 #'
@@ -356,8 +359,8 @@ mvgamma <- function(x, p)
 #'     multivariate gamma function; for \eqn{p = 1} it is the same as the
 #'     univariate digamma function.
 #'
-#'     \deqn{\psi_{p}(a)=\sum _{i=1}^{p}\psi(a+(1-i)/2)}
-#'     where \eqn{\psi} is the univariate digamma function (the
+#'     \deqn{\psi_{p}(a)=\sum _{i=1}^{p}\psi(a+(1-i)/2)}{psi_p(a)=\sum psi(a+(1-i)/2)}
+#'     where \eqn{\psi}{psi} is the univariate digamma function (the
 #'     derivative of the gamma function).
 #' @param x non-negative numeric vector, matrix, or array
 #' @param p positive integer, dimension of a square matrix

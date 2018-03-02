@@ -21,8 +21,8 @@ A special mathematical function related to the gamma function,
     multivariate gamma function; for \eqn{p = 1} it is the same as the
     univariate digamma function.
 
-    \deqn{\psi_{p}(a)=\sum _{i=1}^{p}\psi(a+(1-i)/2)}
-    where \eqn{\psi} is the univariate digamma function (the
+    \deqn{\psi_{p}(a)=\sum _{i=1}^{p}\psi(a+(1-i)/2)}{psi_p(a)=\sum psi(a+(1-i)/2)}
+    where \eqn{\psi}{psi} is the univariate digamma function (the
     derivative of the gamma function).
 }
 \examples{
