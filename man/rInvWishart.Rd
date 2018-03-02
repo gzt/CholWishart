@@ -21,12 +21,15 @@ Generate n random matrices, distributed according
     to the inverse Wishart distribution with parameters \code{Sigma} and
     \code{df}, \eqn{W_p(Sigma, df)}. 
     
-    Note there are different ways
-    of parameterizing this distribution, so check which one you need.
-    Here,  If \eqn{X \sim IW_p(\Sigma, df)} then \eqn{X^{-1} \sim W_p(\Sigma^{-1}, df)}.
-    Dawid (1981) has a different definition: if \eqn{X \sim W_p(\Sigma^{-1}, df)} and 
-    \eqn{df > p - 1}, then \eqn{X^{-1} = Y \sim IW(\Sigma, \delta)}, where 
-    \eqn{\delta = df - p + 1}.
+   Note there are different ways of parameterizing the Inverse
+   Wishart distribution, so check which one you need. 
+    Here,  If \eqn{X \sim IW_p(\Sigma, \nu)}{X ~ IW_p(Sigma, df)} then 
+    \eqn{X^{-1} \sim W_p(\Sigma^{-1}, \nu)}{X^{-1} ~ W_p(Sigma^{-1}, df)}.
+    Dawid (1981) has a different definition: if 
+    \eqn{X \sim W_p(\Sigma^{-1}, \nu)}{X ~ W_p(Sigma^{-1}, df)} and 
+    \eqn{\nu > p - 1}{df > p - 1}, then 
+    \eqn{X^{-1} = Y \sim IW(\Sigma, \delta)}{X^{-1} = Y ~ IW(Sigma, delta)}, where 
+    \eqn{\delta = \nu - p + 1}{delta = df - p + 1}.
 }
 \examples{
 set.seed(20180221)
@@ -38,7 +41,7 @@ A \%*\% B
 }
 \references{
 Dawid, A. (1981). Some Matrix-Variate Distribution Theory: Notational Considerations and a 
-Bayesian Application. \emph{Biometrika}, 68(1), 265-274. \link{http://doi:10.2307/2335827}
+Bayesian Application. \emph{Biometrika}, 68(1), 265-274. \url{http://doi:10.2307/2335827}
 
 Gupta, A. K.  and D. K. Nagar (1999). \emph{Matrix variate distributions}. Chapman and Hall.
 

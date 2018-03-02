@@ -11,10 +11,11 @@ rCholWishart(n, df, Sigma)
 
 \item{df}{numeric parameter, "degrees of freedom".}
 
-\item{Sigma}{positive definite \eqn{(p * p)} "scale" matrix, the matrix parameter of the distribution.}
+\item{Sigma}{positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix parameter of the 
+distribution.}
 }
 \value{
-a numeric array, say R, of dimension \eqn{p * p * n},
+a numeric array, say R, of dimension \eqn{p \times p \times n}{p * p * n},
    where each \code{R[,,i]} is a Cholesky decomposition of a sample
    from the Wishart distribution \eqn{W_p(Sigma, df)}. Based on a
    modification of the existing code for the \code{rWishart} function.
