@@ -17,7 +17,7 @@ vector of values of multivariate digamma function.
 \description{
 A special mathematical function related to the gamma function,
     generalized for multivariate distributions.
-    The multivariate digamma function is the derivative of the
+    The multivariate digamma function is the derivative of the log of the
     multivariate gamma function; for \eqn{p = 1} it is the same as the
     univariate digamma function.
 
@@ -31,4 +31,7 @@ mvdigamma(1:10,1)
 }
 \references{
 A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
+}
+\seealso{
+\code{\link{gamma}}, \code{\link{lgamma}}, \code{\link{digamma}}, and \code{\link{mvgamma}}
 }

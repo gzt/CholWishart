@@ -82,7 +82,11 @@ rCholWishart <- function(n, df, Sigma) {
 #'    to the Cholesky factor of an inverse Wishart distribution with
 #'    parameters \code{Sigma} and \code{df}, \eqn{W_p(Sigma, df)}.
 #'    Note there are different ways of parameterizing the Inverse
-#'    Wishart distribution, so check which one you need.
+#'    Wishart distribution, so check which one you need. 
+#'     Here,  If \eqn{X \sim IW_p(\Sigma, df)} then \eqn{X^{-1} \sim W_p(\Sigma^{-1}, df)}.
+#'     Dawid (1981) has a different definition: if \eqn{X \sim W_p(\Sigma^{-1}, df)} and 
+#'     \eqn{df > p - 1}, then \eqn{X^{-1} = Y \sim IW(\Sigma, \delta)}, where 
+#'     \eqn{\delta = df - p + 1}.
 #'
 #' @param n integer sample size.
 #' @param df numeric parameter, "degrees of freedom".
@@ -91,10 +95,14 @@ rCholWishart <- function(n, df, Sigma) {
 #' @return a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a Cholesky decomposition of a realization of the Wishart distribution \eqn{W_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function
 #'
 #' @seealso \code{\link{rWishart}} and \code{\link{rCholWishart}}
-#' @references Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
+#' @references
+#' Dawid, A. (1981). Some Matrix-Variate Distribution Theory: Notational Considerations and a 
+#' Bayesian Application. \emph{Biometrika}, 68(1), 265-274. \link{http://doi:10.2307/2335827}
+#' 
+#' Gupta, A. K.  and D. K. Nagar (1999). \emph{Matrix variate distributions}. Chapman and Hall.
+#' 
+#' Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
 #' London: Academic Press.
-#'
-#' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
 #' @export
 #'
 #' @examples
@@ -127,21 +135,32 @@ rInvCholWishart <- function(n, df, Sigma) {
 #'
 #' @description Generate n random matrices, distributed according
 #'     to the inverse Wishart distribution with parameters \code{Sigma} and
-#'     \code{df}, \eqn{W_p(Sigma, df)}. Note there are different ways
+#'     \code{df}, \eqn{W_p(Sigma, df)}. 
+#'     
+#'     Note there are different ways
 #'     of parameterizing this distribution, so check which one you need.
-#'
+#'     Here,  If \eqn{X \sim IW_p(\Sigma, df)} then \eqn{X^{-1} \sim W_p(\Sigma^{-1}, df)}.
+#'     Dawid (1981) has a different definition: if \eqn{X \sim W_p(\Sigma^{-1}, df)} and 
+#'     \eqn{df > p - 1}, then \eqn{X^{-1} = Y \sim IW(\Sigma, \delta)}, where 
+#'     \eqn{\delta = df - p + 1}.
+#'      
 #' @param n integer sample size.
 #' @param df numeric parameter, "degrees of freedom".
 #' @param Sigma positive definite \eqn{(p * p)} "scale" matrix, the matrix parameter of the distribution.
 #'
-#' @return a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a realization of the inverse Wishart distribution \eqn{IW_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function. If \eqn{X \sim IW_p(Sigma, df)} then \eqn{X^{-1} \sim W_p(Sigma^{-1}, df)}
+#' @return a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a realization of the inverse Wishart distribution \eqn{IW_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function.
 #'
-#' @seealso \code{\link{rWishart}} and \code{\link{rCholWishart}}
+#' @seealso \code{\link{rWishart}}, \code{\link{rCholWishart}}, and \code{\link{rInvCholWishart}}
 #'
-#' @references Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
+#' @references
+#' Dawid, A. (1981). Some Matrix-Variate Distribution Theory: Notational Considerations and a 
+#' Bayesian Application. \emph{Biometrika}, 68(1), 265-274. \link{http://doi:10.2307/2335827}
+#' 
+#' Gupta, A. K.  and D. K. Nagar (1999). \emph{Matrix variate distributions}. Chapman and Hall.
+#' 
+#' Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
 #' London: Academic Press.
-#'
-#' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
+
 #' @export
 #'
 #' @examples
@@ -305,7 +324,7 @@ mvgamma <- function(x, p)
 #'
 #' @description A special mathematical function related to the gamma function,
 #'     generalized for multivariate distributions.
-#'     The multivariate digamma function is the derivative of the
+#'     The multivariate digamma function is the derivative of the log of the
 #'     multivariate gamma function; for \eqn{p = 1} it is the same as the
 #'     univariate digamma function.
 #'
@@ -315,6 +334,8 @@ mvgamma <- function(x, p)
 #' @param x non-negative numeric vector, matrix, or array
 #' @param p positive integer, dimension of a square matrix
 #' @return vector of values of multivariate digamma function.
+#' 
+#' @seealso \code{\link{gamma}}, \code{\link{lgamma}}, \code{\link{digamma}}, and \code{\link{mvgamma}}
 #' @export
 #' @references
 #' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
