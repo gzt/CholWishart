@@ -15,7 +15,7 @@ test_that("trying wrong type of input", {
   expect_error(rInvCholWishart("A", df = 4, Sigma = diag(5)), "larger")
   expect_error(rInvCholWishart(.4, df = 4, Sigma = diag(5)), "larger")
 
-  expect_error(rInvWishart(1, df = 5, Sigma = "A"), "numeric")
+  expect_error(rInvWishart(1, df = 5, Sigma = "A"), "real")
   expect_error(rInvWishart(1, df = "A", Sigma = diag(5)), "inconsistent")
   expect_error(rInvWishart("A", df = 4, Sigma = diag(5)), "larger")
   expect_error(rInvWishart(.4, df = 4, Sigma = diag(5)), "larger")
@@ -56,7 +56,7 @@ test_that("trying wrong type of input", {
                "square")
   expect_error(rInvCholWishart(1, 10, matrix(c(3, 1, 1, 1, 1, 3), nrow = 2)),
                "square")
-  
+
   expect_error(lmvgamma("A",1))
   expect_error(lmvgamma(1,"A"))
 
@@ -77,8 +77,8 @@ test_that("Bad numeric input:",{
 
   expect_error(dWishart(matrix(c(1,1,1,0), nrow = 2), 10, diag(2)))
   expect_error(dInvWishart(matrix(c(1,1,1,0), nrow = 2),10,diag(2)))
-  
-  
+
+
 
 })
 
@@ -133,3 +133,21 @@ test_that("Bad shape numeric input: ", {
 
 }
 )
+
+test_that("Imaginary matrix:", {
+
+  Z <- sqrt(matrix(-1:2 + 0i, 2)); Z <- t(Conj(Z)) %*% Z
+  # example from R help files
+
+  expect_error(rCholWishart(1, 10, Z))
+  expect_error(rInvCholWishart(1, 10, Z))
+  expect_error(rInvWishart(-1, 10, Z))
+  expect_error(dWishart(diag(2),4, Z))
+  expect_error(dInvWishart(diag(2), 4, Z))
+  expect_error(dWishart(Z,4, diag(2)))
+  expect_error(dInvWishart(Z, 4, diag(2)))
+
+
+
+
+})

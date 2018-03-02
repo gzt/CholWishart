@@ -67,8 +67,7 @@ rCholWishart <- function(n, df, Sigma) {
   dims = dim(Sigma)
   if (n < 1 || !(is.numeric(n)))
     stop("'n' must be 1 or larger.")
-  if (!is.matrix(Sigma)  || dims[1] != dims[2])
-    stop("'Sigma' must be a square, real matrix")
+
 
   if (!is.numeric(df) || df < dims[1] || dims[1] <= 0)
     stop("inconsistent degrees of freedom and dimension")
@@ -118,8 +117,6 @@ rInvCholWishart <- function(n, df, Sigma) {
   dims = dim(Sigma)
   if (n < 1 || !(is.numeric(n)))
     stop("'n' must be 1 or larger.")
-  if (!is.matrix(Sigma)  || dims[1] != dims[2])
-    stop("'Sigma' must be a square, real matrix")
 
   if (!is.numeric(df) || df < dims[1] || dims[1] <= 0)
     stop("inconsistent degrees of freedom and dimension")
@@ -155,14 +152,12 @@ rInvCholWishart <- function(n, df, Sigma) {
 #'
 #' A %*% B
 rInvWishart <- function(n, df, Sigma) {
-  if (!is.numeric(Sigma))
-    stop("'Sigma' must be numeric")
+  #if (!is.numeric(Sigma))
+  #  stop("'Sigma' must be numeric")
   Sigma <- as.matrix(Sigma)
   dims = dim(Sigma)
   if (n < 1 || !(is.numeric(n)))
     stop("'n' must be 1 or larger.")
-  if (!is.matrix(Sigma)  || dims[1] != dims[2])
-    stop("'Sigma' must be a square, real matrix")
 
   if (!is.numeric(df) || df < dims[1] || dims[1] <= 0)
     stop("inconsistent degrees of freedom and dimension")
@@ -202,7 +197,7 @@ rInvWishart <- function(n, df, Sigma) {
 #' dInvWishart(x = solve(A), df = 10,Sigma = diag(4), log=TRUE)
 dWishart <- function(x, df, Sigma, log = TRUE) {
   if (!is.numeric(Sigma))
-    stop("'Sigma' must be numeric")
+   stop("'Sigma' must be numeric")
   Sigma <- as.matrix(Sigma)
   dims = dim(Sigma)
   if (!is.numeric(x))
@@ -282,9 +277,6 @@ dInvWishart <- function(x, df, Sigma, log = TRUE) {
 #' mvgamma(1:12,1)
 #' gamma(1:12)
 lmvgamma <- function(x, p) {
-  # p only makes sense as an integer but not testing that. x *could* be
-  # less than zero - same domain as gamma function
-
   if (!all(is.numeric(x), is.numeric(p)))
     stop("non-numeric input")
 
@@ -294,10 +286,10 @@ lmvgamma <- function(x, p) {
     length(x)
   else
     dim(as.array(x))
-  if (p < 1)
-    stop("'p' must be greater than or equal to 1. p = ", p)
-  if (any(x <= 0))
-    stop("'x' must be greater than 0. x = ", x)
+  # if (p < 1)
+  #   stop("'p' must be greater than or equal to 1. p = ", p)
+  # if (any(x <= 0))
+  #   stop("'x' must be greater than 0. x = ", x)
 
   result <- .Call("C_lmvgamma", as.numeric(x), as.integer(p), PACKAGE = "CholWishart")
 
@@ -336,10 +328,10 @@ mvdigamma <- function(x, p) {
     length(x)
   else
     dim(as.array(x))
-  if (p < 1)
-    stop("'p' must be greater than or equal to 1. p = ", p)
-  if (any(x <= 0))
-    stop("'x' must be greater than 0. x = ", x)
+  # if (p < 1)
+  #   stop("'p' must be greater than or equal to 1. p = ", p)
+  # if (any(x <= 0))
+  #   stop("'x' must be greater than 0. x = ", x)
 
   result <- .Call("C_mvdigamma", as.numeric(x), as.integer(p), PACKAGE = "CholWishart")
   return(array(result, dim = dims))
