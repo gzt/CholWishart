@@ -98,6 +98,10 @@ test_that("Out of bounds numeric input: ", {
   expect_error(mvgamma(-1, 5), "must be greater")
   expect_error(mvgamma(1, -5), "must be greater")
 
+  expect_error(mvdigamma(-1, 5), "must be greater")
+  expect_error(mvdigamma(1, -5), "must be greater")
+
+
   expect_error(rCholWishart(1, 10, -diag(5)), "positive")
   expect_error(rInvCholWishart(1, 10, -diag(5)), "positive")
   expect_error(rInvWishart(1, 10, -diag(5)), "positive")
@@ -146,8 +150,12 @@ test_that("Imaginary matrix:", {
   expect_error(dInvWishart(diag(2), 4, Z))
   expect_error(dWishart(Z,4, diag(2)))
   expect_error(dInvWishart(Z, 4, diag(2)))
-
-
+  expect_error(lmvgamma(Z,1))
+  expect_error(lmvgamma(1:4,Z))
+  expect_error(mvgamma(Z,1))
+  expect_error(mvgamma(1:4,Z))
+  expect_error(mvdigamma(Z,1))
+  expect_error(mvdigamma(1:4,Z))
 
 
 })
