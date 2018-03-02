@@ -46,5 +46,5 @@ test_that("Equivalent outputs for different options:", {
 
   # this really shouldn't work in general, it only works on diag()
   expect_equal(dWishart(diag(5), 10, 5*diag(5)), dInvWishart(diag(5), 10, .2*diag(5)))
-
+  expect_equal(dWishart(diag(5), 10, 5*diag(5), log = FALSE), dInvWishart(diag(5), 10, .2*diag(5), log = FALSE))
 })
