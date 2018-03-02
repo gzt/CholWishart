@@ -2,6 +2,8 @@
 
 * Add additional tests for `dWishart` and `dInvWishart` functions
 * Add references and equations to help files
+* Add additional tests for complex entries (should fail) and other erroneous input
+
 
 # CholWishart 0.9.0
 
