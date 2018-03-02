@@ -31,7 +31,7 @@ B<-rWishart(1,10,.2*diag(5))[,,1]
 A \%*\% B
 }
 \references{
-Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis}, 
+Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
 London: Academic Press.
 
 A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.

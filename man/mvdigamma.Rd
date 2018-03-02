@@ -17,8 +17,13 @@ vector of values of multivariate digamma function.
 \description{
 A special mathematical function related to the gamma function,
     generalized for multivariate distributions.
-    The multivariate digamma function is the derivative of the multivariate gamma function
-    for for p = 1 is the same as the univariate digamma function.
+    The multivariate digamma function is the derivative of the
+    multivariate gamma function; for \eqn{p = 1} it is the same as the
+    univariate digamma function.
+
+    \deqn{\psi_{p}(a)=\sum _{i=1}^{p}\psi(a+(1-i)/2)}
+    where \eqn{\psi} is the univariate digamma function (the
+    derivative of the gamma function).
 }
 \examples{
 digamma(1:10)

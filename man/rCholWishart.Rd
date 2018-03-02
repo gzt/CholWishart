@@ -14,15 +14,17 @@ rCholWishart(n, df, Sigma)
 \item{Sigma}{positive definite \eqn{(p * p)} "scale" matrix, the matrix parameter of the distribution.}
 }
 \value{
-a numeric array, say R, of dimension \eqn{p * p * n}, where each 
-\code{R[,,i]} is a Cholesky decomposition of a sample from the Wishart distribution 
-\eqn{W_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function.
+a numeric array, say R, of dimension \eqn{p * p * n},
+   where each \code{R[,,i]} is a Cholesky decomposition of a sample
+   from the Wishart distribution \eqn{W_p(Sigma, df)}. Based on a
+   modification of the existing code for the \code{rWishart} function.
 }
 \description{
-Generate n random matrices, distributed according to the Cholesky
-    factorization of a Wishart distribution with parameters \code{Sigma} and
-    \code{df}, \eqn{W_p(Sigma, df)} (known as the Bartlett decomposition in the 
-    context of Wishart random matrices).
+Generate n random matrices, distributed according
+    to the Cholesky factorization of a Wishart distribution with
+    parameters \code{Sigma} and \code{df}, \eqn{W_p(Sigma, df)}
+    (known as the Bartlett decomposition
+    in the context of Wishart random matrices).
 }
 \examples{
 # How it is parameterized:
@@ -39,10 +41,10 @@ C <- chol(stats::rWishart(1,10,3*diag(5))[,,1])
 C
 }
 \references{
-Anderson, T. W. (2003). \emph{An Introduction to Multivariate Statistical Analysis} (3rd ed.). 
-Hoboken, N. J.: Wiley Interscience. 
+Anderson, T. W. (2003). \emph{An Introduction to Multivariate Statistical Analysis} (3rd ed.).
+Hoboken, N. J.: Wiley Interscience.
 
-Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis}, 
+Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
 London: Academic Press.
 
 A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.

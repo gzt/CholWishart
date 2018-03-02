@@ -19,28 +19,30 @@
 
 #' Cholesky Factor of Random Wishart Distributed Matrices
 #'
-#' @description Generate n random matrices, distributed according to the Cholesky
-#'     factorization of a Wishart distribution with parameters \code{Sigma} and
-#'     \code{df}, \eqn{W_p(Sigma, df)} (known as the Bartlett decomposition in the 
-#'     context of Wishart random matrices). 
+#' @description Generate n random matrices, distributed according
+#'     to the Cholesky factorization of a Wishart distribution with
+#'     parameters \code{Sigma} and \code{df}, \eqn{W_p(Sigma, df)}
+#'     (known as the Bartlett decomposition
+#'     in the context of Wishart random matrices).
 #'
 #' @param n integer sample size.
 #' @param df numeric parameter, "degrees of freedom".
 #' @param Sigma positive definite \eqn{(p * p)} "scale" matrix, the matrix parameter of the distribution.
 #'
-#' @return a numeric array, say R, of dimension \eqn{p * p * n}, where each 
-#' \code{R[,,i]} is a Cholesky decomposition of a sample from the Wishart distribution 
-#' \eqn{W_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function.
+#' @return a numeric array, say R, of dimension \eqn{p * p * n},
+#'    where each \code{R[,,i]} is a Cholesky decomposition of a sample
+#'    from the Wishart distribution \eqn{W_p(Sigma, df)}. Based on a
+#'    modification of the existing code for the \code{rWishart} function.
 #'
 #' @seealso \code{\link{rWishart}}, \code{\link{rInvCholWishart}}
-#' 
-#' @references 
-#' Anderson, T. W. (2003). \emph{An Introduction to Multivariate Statistical Analysis} (3rd ed.). 
-#' Hoboken, N. J.: Wiley Interscience. 
-#' 
-#' Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis}, 
+#'
+#' @references
+#' Anderson, T. W. (2003). \emph{An Introduction to Multivariate Statistical Analysis} (3rd ed.).
+#' Hoboken, N. J.: Wiley Interscience.
+#'
+#' Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
 #' London: Academic Press.
-#' 
+#'
 #' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
 #' @useDynLib CholWishart, .registration = TRUE
 #' @export
@@ -90,9 +92,9 @@ rCholWishart <- function(n, df, Sigma) {
 #' @return a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a Cholesky decomposition of a realization of the Wishart distribution \eqn{W_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function
 #'
 #' @seealso \code{\link{rWishart}} and \code{\link{rCholWishart}}
-#' @references Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis}, 
+#' @references Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
 #' London: Academic Press.
-#' 
+#'
 #' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
 #' @export
 #'
@@ -138,10 +140,10 @@ rInvCholWishart <- function(n, df, Sigma) {
 #' @return a numeric array, say R, of dimension \eqn{p * p * n}, where each \code{R[,,i]} is a realization of the inverse Wishart distribution \eqn{IW_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function. If \eqn{X \sim IW_p(Sigma, df)} then \eqn{X^{-1} \sim W_p(Sigma^{-1}, df)}
 #'
 #' @seealso \code{\link{rWishart}} and \code{\link{rCholWishart}}
-#' 
-#' @references Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis}, 
+#'
+#' @references Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
 #' London: Academic Press.
-#' 
+#'
 #' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
 #' @export
 #'
@@ -185,10 +187,10 @@ rInvWishart <- function(n, df, Sigma) {
 #' @param log logical, whether to return value on the log scale.
 #'
 #' @return Density or log of density
-#' 
-#' @references Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis}, 
+#'
+#' @references Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
 #' London: Academic Press.
-#' 
+#'
 #' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
 #' @export
 #'
@@ -256,12 +258,13 @@ dInvWishart <- function(x, df, Sigma, log = TRUE) {
 #' Multivariate Gamma Function
 #'
 #' @description A special mathematical function related to the gamma function,
-#'     generalized for multivariate gammas.
-#'     
+#'     generalized for multivariate gammas. \code{lmvgamma} if the log of the
+#'     multivariate gamma, \code{mvgamma}.
+#'
 #'    The multivariate gamma function for a dimension p is defined as:
-#'    
+#'
 #'    \deqn{\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod{j=1}^{p}\Gamma [a+(1-j)/2]}{Gamma_p(a)=\pi^{p(p-1)/4}* Prod_{j=1}^{p}\Gamma[a+(1-j)/2]}
-#'    For p = 1, this is the same as the usual gamma function.
+#'    For \eqn{p = 1}, this is the same as the usual gamma function.
 #' @param x non-negative numeric vector, matrix, or array
 #' @param p positive integer, dimension of a square matrix
 #'
@@ -269,7 +272,7 @@ dInvWishart <- function(x, df, Sigma, log = TRUE) {
 #'     use \code{mvgamma}.
 #'
 #' @seealso \code{\link{gamma}} and \code{\link{lgamma}}
-#' @references 
+#' @references
 #' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
 #' @export
 #'
@@ -310,14 +313,18 @@ mvgamma <- function(x, p)
 #'
 #' @description A special mathematical function related to the gamma function,
 #'     generalized for multivariate distributions.
-#'     The multivariate digamma function is the derivative of the multivariate gamma function
-#'     for for p = 1 is the same as the univariate digamma function. 
+#'     The multivariate digamma function is the derivative of the
+#'     multivariate gamma function; for \eqn{p = 1} it is the same as the
+#'     univariate digamma function.
 #'
+#'     \deqn{\psi_{p}(a)=\sum _{i=1}^{p}\psi(a+(1-i)/2)}
+#'     where \eqn{\psi} is the univariate digamma function (the
+#'     derivative of the gamma function).
 #' @param x non-negative numeric vector, matrix, or array
 #' @param p positive integer, dimension of a square matrix
 #' @return vector of values of multivariate digamma function.
 #' @export
-#' @references 
+#' @references
 #' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
 #' @examples
 #' digamma(1:10)

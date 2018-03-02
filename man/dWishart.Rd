@@ -45,7 +45,7 @@ dWishart(x = A, df = 10,Sigma = diag(4), log=TRUE)
 dInvWishart(x = solve(A), df = 10,Sigma = diag(4), log=TRUE)
 }
 \references{
-Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis}, 
+Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
 London: Academic Press.
 
 A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
