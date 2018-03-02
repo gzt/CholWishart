@@ -23,7 +23,7 @@ A special mathematical function related to the gamma function,
 
     \deqn{\psi_{p}(a)=\sum _{i=1}^{p}\psi(a+(1-i)/2)}{psi_p(a)=\sum psi(a+(1-i)/2)}
     where \eqn{\psi}{psi} is the univariate digamma function (the
-    derivative of the gamma function).
+    derivative of the log-gamma function).
 }
 \examples{
 digamma(1:10)
