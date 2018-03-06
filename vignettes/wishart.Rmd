@@ -33,11 +33,18 @@ D <- rInvCholWishart(1,10,.2*diag(4))[,,1]
 
 ## How the Wishart distribution works
 
-How does `rWishart(n, df, Sigma)` work (supposing `Sigma` is a $p \times p$ matrix)? First, it generates a sample from the Cholesky decomposition of a Wishart distribution with $\Sigma = \mathbf{I}_p$. How this is done: on the $i^{th}$ element of the main diagonal, draw from $\sqrt{\chi_{p-i+1}^2}$. On the upper triangle of the matrix, draw from $N(0,1)$ in each square. Then, this can be multiplied by the Cholesky decomposition of the provided `Sigma` to obtain the Cholesky factor of the desired sample from the Wishart random variable. The `rWishart` function multiplies it out. Therefore, if the Cholesky decomposition is desired, one only needs to stop there.
+Suppose $X_i \sim MVN(0, \Sigma)$ are independent $p$-variate normal 
+random variables, $i = 1, 2, \ldots n$ with $n > p-1$. 
+Then $S = \sum X_i^T X_i$, called the "scatter matrix", is almost surely 
+positive definite if $\Sigma$ is positive definite. 
+The random variable $S$ is said to be distributed as a Wishart random variable:
+$S \sim W_p(n, \Sigma)$. 
+
+How does `rWishart(n, df, Sigma)` work (supposing `Sigma` is a $p \times p$ matrix)? First, it generates a sample from the Cholesky decomposition of a Wishart distribution with $\Sigma = \mathbf{I}_p$. How this is done: on the $i^{th}$ element of the main diagonal, draw from $\sqrt{\chi_{p-i+1}^2}$. On the upper triangle of the matrix, sample from an independent $N(0,1)$ for each entry in the matrix. Then, this can be multiplied by the Cholesky decomposition of the provided `Sigma` to obtain the Cholesky factor of the desired sample from the Wishart random variable (this construction is due to Bartlett and is also known as the Bartlett Decomposition). The `rWishart` function multiplies this out. Therefore, if the Cholesky decomposition is desired, one only needs to stop there.
 
 ## The Inverse Wishart distribution
 
-If $X \sim \textrm{W}(\nu,\Sigma)$, then we define the Inverse Wishart as $X^{-1}  = Y \sim \textrm{IW}(\nu , \Sigma^{-1})$. There are other parameterizations of the distribution, mostly coming down to different ways of writing the $\nu$ parameter - be aware of this when using any package drawing from the Inverse Wishart distribution. This comes up directly in Bayesian statistics. We are also interested in the Cholesky decomposition of this, as it is required in the generation of the matrix variate $t$-distribution. In this package it is done by taking the covariance matrix, inverting it, computing the Cholesky decomposition of the inverted covariance matrix, drawing the Cholesky factor of a Wishart matrix using that, and then inverting based on that (as finding $\Psi^{-1}$ given the Cholesky factorization of $\Psi$ is relatively fast). This can then be converted into the Cholesky factor of the Inverse Wishart if that is what is desired. This would be slow to do in R, but in C it is not so bad. There may be a more efficient way.
+If $X \sim \textrm{W}_p(\nu,\Sigma)$, then we define the Inverse Wishart as $X^{-1}  = Y \sim \textrm{IW}_p(\nu , \Sigma^{-1})$. There are other parameterizations of the distribution, mostly coming down to different ways of writing the $\nu$ parameter - be aware of this when using any package drawing from the Inverse Wishart distribution. This comes up directly in Bayesian statistics. We are also interested in the Cholesky decomposition of this, as it is required in the generation of the matrix variate $t$-distribution. In this package it is done by taking the covariance matrix, inverting it, computing the Cholesky decomposition of the inverted covariance matrix, drawing the Cholesky factor of a Wishart matrix using that, and then inverting based on that (as finding $\Psi^{-1}$ given the Cholesky factorization of $\Psi$ is relatively fast). This can then be converted into the Cholesky factor of the Inverse Wishart if that is what is desired. This would be slow to do in R, but in C it is not so bad. There may be a more efficient way.
 
 Here is what happens with the results of the above:
 
