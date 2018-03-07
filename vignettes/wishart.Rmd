@@ -3,6 +3,7 @@ title: "Some Distributions Related to the Wishart"
 author: "Geoffrey  Thompson"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+bibliography: wishart.bib
 vignette: >
   %\VignetteIndexEntry{Some Distributions Related to the Wishart}
   %\VignetteEngine{knitr::rmarkdown}
@@ -15,7 +16,7 @@ knitr::opts_chunk$set(
   comment = "##"
 )
 ```
-The `stats` implementation of `rWishart` is in C and is very fast. It is often the case that we do not want a sample from the Wishart distribution, but rather from the inverse of it or from the Cholesky decomposition of a sample from the Wishart distribution. Or even from the inverse of the Cholesky decomposition of a draw from the Wishart distribution. Funnily enough (if you have a weird sense of humor), when you inspect the [source code](https://github.com/SurajGupta/r-source/blob/master/src/library/stats/src/rWishart.c) for the `rWishart` distribution, it generates the Cholesky decomposition and then multiplies it out. Meanwhile, drawing from the `rWishart` and then inverting or doing a Cholesky decomposition or whatever in R is just slow -- comparatively.
+The `stats` implementation of `rWishart` is in C and is very fast. It is often the case that we do not want a sample from the Wishart distribution, but rather from the inverse of it or from the Cholesky decomposition of a sample from the Wishart distribution. Or even from the inverse of the Cholesky decomposition of a draw from the Wishart distribution. Funnily enough (if you have a weird sense of humor), when you inspect the [source code](https://github.com/SurajGupta/r-source/blob/master/src/library/stats/src/rWishart.c) for the `rWishart` distribution (@rstatsteam), it generates the Cholesky decomposition and then multiplies it out. Meanwhile, drawing from the `rWishart` and then inverting or doing a Cholesky decomposition or whatever in R is just slow -- comparatively.
 
 This suggests some obvious efficiencies: perhaps, if we would rather have the Cholesky decomposition of the Wishart random matrix, we could tell the function to stop right there.
 
@@ -38,13 +39,13 @@ random variables, $i = 1, 2, \ldots n$ with $n > p-1$.
 Then $S = \sum X_i^T X_i$, called the "scatter matrix", is almost surely 
 positive definite if $\Sigma$ is positive definite. 
 The random variable $S$ is said to be distributed as a Wishart random variable:
-$S \sim W_p(n, \Sigma)$. 
+$S \sim W_p(n, \Sigma)$, see @gupta1999matrix. 
 
 How does `rWishart(n, df, Sigma)` work (supposing `Sigma` is a $p \times p$ matrix)? First, it generates a sample from the Cholesky decomposition of a Wishart distribution with $\Sigma = \mathbf{I}_p$. How this is done: on the $i^{th}$ element of the main diagonal, draw from $\sqrt{\chi_{p-i+1}^2}$. On the upper triangle of the matrix, sample from an independent $N(0,1)$ for each entry in the matrix. Then, this can be multiplied by the Cholesky decomposition of the provided `Sigma` to obtain the Cholesky factor of the desired sample from the Wishart random variable (this construction is due to Bartlett and is also known as the Bartlett Decomposition). The `rWishart` function multiplies this out. Therefore, if the Cholesky decomposition is desired, one only needs to stop there.
 
 ## The Inverse Wishart distribution
 
-If $X \sim \textrm{W}_p(\nu,\Sigma)$, then we define the Inverse Wishart as $X^{-1}  = Y \sim \textrm{IW}_p(\nu , \Sigma^{-1})$. There are other parameterizations of the distribution, mostly coming down to different ways of writing the $\nu$ parameter - be aware of this when using any package drawing from the Inverse Wishart distribution. This comes up directly in Bayesian statistics. We are also interested in the Cholesky decomposition of this, as it is required in the generation of the matrix variate $t$-distribution. In this package it is done by taking the covariance matrix, inverting it, computing the Cholesky decomposition of the inverted covariance matrix, drawing the Cholesky factor of a Wishart matrix using that, and then inverting based on that (as finding $\Psi^{-1}$ given the Cholesky factorization of $\Psi$ is relatively fast). This can then be converted into the Cholesky factor of the Inverse Wishart if that is what is desired. This would be slow to do in R, but in C it is not so bad. 
+If $X \sim \textrm{W}_p(\nu,\Sigma)$, then we define the Inverse Wishart as $X^{-1}  = Y \sim \textrm{IW}_p(\nu , \Sigma^{-1})$. There are other parameterizations of the distribution, mostly coming down to different ways of writing the $\nu$ parameter - be aware of this when using any package drawing from the Inverse Wishart distribution (see @dawid for an alternative; this presentation follows @gupta1999matrix). This comes up directly in Bayesian statistics. We are also interested in the Cholesky decomposition of this, as it is required in the generation of the matrix variate $t$-distribution. In this package it is done by taking the covariance matrix, inverting it, computing the Cholesky decomposition of the inverted covariance matrix, drawing the Cholesky factor of a Wishart matrix using that, and then inverting based on that (as finding $\Psi^{-1}$ given the Cholesky factorization of $\Psi$ is relatively fast). This can then be converted into the Cholesky factor of the Inverse Wishart if that is what is desired. This would be slow to do in R, but in C it is not so bad. 
 
 Here is what happens with the results of the above:
 
@@ -75,7 +76,7 @@ Note that, in general, these will not agree even if their covariance matrix para
 
 ## Other functions
 
-The multivariate gamma ($\Gamma_p$) and digamma ($\psi_p$) functions are extensions of the univariate gamma ($\Gamma$) and digamma ($\psi$) functions. They are useful in calculating the densities above. They come up in other distributions as well. The digamma is the first derivative of the gamma function. When the dimension $p = 1$, they coincide with the usual definitions.
+The multivariate gamma ($\Gamma_p$) and digamma ($\psi_p$) functions are extensions of the univariate gamma ($\Gamma$) and digamma ($\psi$) functions (@mardia1982multivariate). They are useful in calculating the densities above. They come up in other distributions as well. The digamma is the first derivative of the gamma function. When the dimension $p = 1$, they coincide with the usual definitions of the digamma and gamma functions.
 
 The multivariate gamma also comes in a logarithmic form (`lmvgamma`).
 
@@ -83,3 +84,5 @@ The multivariate gamma also comes in a logarithmic form (`lmvgamma`).
 lmvgamma(1:4,1) # note how they agree when p = 1
 lgamma(1:4)
 ```
+
+# References
