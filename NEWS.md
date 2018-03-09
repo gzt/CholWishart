@@ -1,3 +1,7 @@
+# CholWishart 0.9.1
+
+* Finalize edits to documentation including additional references.
+
 # CholWishart 0.9.0.9002
 
 * Add more documentation, add more references to documentation, clean LaTeX equations in documentation.
