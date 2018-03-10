@@ -11,7 +11,7 @@ rCholWishart(n, df, Sigma)
 
 \item{df}{numeric parameter, "degrees of freedom".}
 
-\item{Sigma}{positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix parameter of the 
+\item{Sigma}{positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix parameter of the
 distribution.}
 }
 \value{

@@ -32,8 +32,8 @@ mvdigamma(1:10,1)
 \references{
 A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
 
-Multivariate gamma function. 
-In \emph{Wikipedia, The Free Encyclopedia},from 
+Multivariate gamma function.
+In \emph{Wikipedia, The Free Encyclopedia},from
 \url{https://en.wikipedia.org/w/index.php?title=Multivariate_gamma_function&oldid=808084916}
 }
 \seealso{

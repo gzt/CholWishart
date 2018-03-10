@@ -5,12 +5,12 @@ context("Testing input integrity")
 test_that("trying wrong type of input", {
 
 
-  expect_error(rCholWishart(1, df = 5, Sigma = "A"), "numeric")
+  expect_error(rCholWishart(1, df = 5, Sigma = "A"), "real")
   expect_error(rCholWishart(1, df = "A", Sigma = diag(5)), "inconsistent")
   expect_error(rCholWishart("A", df = 5, Sigma = diag(5)), "larger")
   expect_error(rCholWishart(.4, df = 5, Sigma = diag(5)), "larger")
 
-  expect_error(rInvCholWishart(1, df = 5, Sigma = "A"), "numeric")
+  expect_error(rInvCholWishart(1, df = 5, Sigma = "A"), "real")
   expect_error(rInvCholWishart(1, df = "A", Sigma = diag(5)), "inconsistent")
   expect_error(rInvCholWishart("A", df = 4, Sigma = diag(5)), "larger")
   expect_error(rInvCholWishart(.4, df = 4, Sigma = diag(5)), "larger")

@@ -27,7 +27,7 @@
 #'
 #' @param n integer sample size.
 #' @param df numeric parameter, "degrees of freedom".
-#' @param Sigma positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix parameter of the 
+#' @param Sigma positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix parameter of the
 #' distribution.
 #'
 #' @return a numeric array, say \code{R}, of dimension \eqn{p \times p \times n}{p * p * n},
@@ -62,13 +62,10 @@
 #' C <- chol(stats::rWishart(1,10,3*diag(5))[,,1])
 #' C
 rCholWishart <- function(n, df, Sigma) {
-  if (!is.numeric(Sigma))
-    stop("'Sigma' must be numeric")
   Sigma <- as.matrix(Sigma)
   dims = dim(Sigma)
   if (n < 1 || !(is.numeric(n)))
     stop("'n' must be 1 or larger.")
-
 
   if (!is.numeric(df) || df < dims[1] || dims[1] <= 0)
     stop("inconsistent degrees of freedom and dimension")
@@ -82,36 +79,36 @@ rCholWishart <- function(n, df, Sigma) {
 #' @description Generate n random matrices, distributed according
 #'    to the Cholesky factor of an inverse Wishart distribution with
 #'    parameters \code{Sigma} and \code{df}, \eqn{W_p(Sigma, df)}.
-#'    
+#'
 #'    Note there are different ways of parameterizing the Inverse
-#'    Wishart distribution, so check which one you need. 
-#'     Here,  If \eqn{X \sim IW_p(\Sigma, \nu)}{X ~ IW_p(Sigma, df)} then 
+#'    Wishart distribution, so check which one you need.
+#'     Here,  If \eqn{X \sim IW_p(\Sigma, \nu)}{X ~ IW_p(Sigma, df)} then
 #'     \eqn{X^{-1} \sim W_p(\Sigma^{-1}, \nu)}{X^{-1} ~ W_p(Sigma^{-1}, df)}.
-#'     Dawid (1981) has a different definition: if 
-#'     \eqn{X \sim W_p(\Sigma^{-1}, \nu)}{X ~ W_p(Sigma^{-1}, df)} and 
-#'     \eqn{\nu > p - 1}{df > p - 1}, then 
-#'     \eqn{X^{-1} = Y \sim IW(\Sigma, \delta)}{X^{-1} = Y ~ IW(Sigma, delta)}, where 
+#'     Dawid (1981) has a different definition: if
+#'     \eqn{X \sim W_p(\Sigma^{-1}, \nu)}{X ~ W_p(Sigma^{-1}, df)} and
+#'     \eqn{\nu > p - 1}{df > p - 1}, then
+#'     \eqn{X^{-1} = Y \sim IW(\Sigma, \delta)}{X^{-1} = Y ~ IW(Sigma, delta)}, where
 #'     \eqn{\delta = \nu - p + 1}{delta = df - p + 1}.
 #'
 #' @param n integer sample size.
 #' @param df numeric parameter, "degrees of freedom".
-#' @param Sigma positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix parameter of 
+#' @param Sigma positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix parameter of
 #' the distribution.
 #'
-#' @return a numeric array, say \code{R}, of dimension \eqn{p \times p \times n}{p * p * n}, 
-#' where each \code{R[,,i]} is a Cholesky decomposition of a realization of the Wishart distribution 
+#' @return a numeric array, say \code{R}, of dimension \eqn{p \times p \times n}{p * p * n},
+#' where each \code{R[,,i]} is a Cholesky decomposition of a realization of the Wishart distribution
 #' \eqn{W_p(Sigma, df)}. Based on a modification of the existing code for the \code{rWishart} function
 #'
 #' @seealso \code{\link{rWishart}} and \code{\link{rCholWishart}}
 #' @references
 #' Anderson, T. W. (2003). \emph{An Introduction to Multivariate Statistical Analysis} (3rd ed.).
 #' Hoboken, N. J.: Wiley Interscience.
-#' 
-#' Dawid, A. (1981). Some Matrix-Variate Distribution Theory: Notational Considerations and a 
+#'
+#' Dawid, A. (1981). Some Matrix-Variate Distribution Theory: Notational Considerations and a
 #' Bayesian Application. \emph{Biometrika}, 68(1), 265-274. \url{http://doi:10.2307/2335827}
-#' 
+#'
 #' Gupta, A. K.  and D. K. Nagar (1999). \emph{Matrix variate distributions}. Chapman and Hall.
-#' 
+#'
 #' Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
 #' London: Academic Press.
 #' @export
@@ -130,8 +127,6 @@ rCholWishart <- function(n, df, Sigma) {
 #' C <- chol(stats::rWishart(1,10,3*diag(5))[,,1])
 #' C
 rInvCholWishart <- function(n, df, Sigma) {
-  if (!is.numeric(Sigma))
-    stop("'Sigma' must be numeric")
   Sigma <- as.matrix(Sigma)
   dims = dim(Sigma)
   if (n < 1 || !(is.numeric(n)))
@@ -146,35 +141,35 @@ rInvCholWishart <- function(n, df, Sigma) {
 #'
 #' @description Generate n random matrices, distributed according
 #'     to the inverse Wishart distribution with parameters \code{Sigma} and
-#'     \code{df}, \eqn{W_p(Sigma, df)}. 
-#'     
+#'     \code{df}, \eqn{W_p(Sigma, df)}.
+#'
 #'    Note there are different ways of parameterizing the Inverse
-#'    Wishart distribution, so check which one you need. 
-#'     Here,  If \eqn{X \sim IW_p(\Sigma, \nu)}{X ~ IW_p(Sigma, df)} then 
+#'    Wishart distribution, so check which one you need.
+#'     Here,  If \eqn{X \sim IW_p(\Sigma, \nu)}{X ~ IW_p(Sigma, df)} then
 #'     \eqn{X^{-1} \sim W_p(\Sigma^{-1}, \nu)}{X^{-1} ~ W_p(Sigma^{-1}, df)}.
-#'     Dawid (1981) has a different definition: if 
-#'     \eqn{X \sim W_p(\Sigma^{-1}, \nu)}{X ~ W_p(Sigma^{-1}, df)} and 
-#'     \eqn{\nu > p - 1}{df > p - 1}, then 
-#'     \eqn{X^{-1} = Y \sim IW(\Sigma, \delta)}{X^{-1} = Y ~ IW(Sigma, delta)}, where 
+#'     Dawid (1981) has a different definition: if
+#'     \eqn{X \sim W_p(\Sigma^{-1}, \nu)}{X ~ W_p(Sigma^{-1}, df)} and
+#'     \eqn{\nu > p - 1}{df > p - 1}, then
+#'     \eqn{X^{-1} = Y \sim IW(\Sigma, \delta)}{X^{-1} = Y ~ IW(Sigma, delta)}, where
 #'     \eqn{\delta = \nu - p + 1}{delta = df - p + 1}.
-#'      
+#'
 #' @param n integer sample size.
 #' @param df numeric parameter, "degrees of freedom".
-#' @param Sigma positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix parameter of the 
+#' @param Sigma positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix parameter of the
 #' distribution.
 #'
-#' @return a numeric array, say \code{R}, of dimension \eqn{p \times p \times n}{p * p * n}, 
-#' where each \code{R[,,i]} is a realization of the inverse Wishart distribution \eqn{IW_p(Sigma, df)}. 
+#' @return a numeric array, say \code{R}, of dimension \eqn{p \times p \times n}{p * p * n},
+#' where each \code{R[,,i]} is a realization of the inverse Wishart distribution \eqn{IW_p(Sigma, df)}.
 #' Based on a modification of the existing code for the \code{rWishart} function.
 #'
 #' @seealso \code{\link{rWishart}}, \code{\link{rCholWishart}}, and \code{\link{rInvCholWishart}}
 #'
 #' @references
-#' Dawid, A. (1981). Some Matrix-Variate Distribution Theory: Notational Considerations and a 
+#' Dawid, A. (1981). Some Matrix-Variate Distribution Theory: Notational Considerations and a
 #' Bayesian Application. \emph{Biometrika}, 68(1), 265-274. \url{http://doi:10.2307/2335827}
-#' 
+#'
 #' Gupta, A. K.  and D. K. Nagar (1999). \emph{Matrix variate distributions}. Chapman and Hall.
-#' 
+#'
 #' Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
 #' London: Academic Press.
 
@@ -188,8 +183,6 @@ rInvCholWishart <- function(n, df, Sigma) {
 #'
 #' A %*% B
 rInvWishart <- function(n, df, Sigma) {
-  #if (!is.numeric(Sigma))
-  #  stop("'Sigma' must be numeric")
   Sigma <- as.matrix(Sigma)
   dims = dim(Sigma)
   if (n < 1 || !(is.numeric(n)))
@@ -208,13 +201,13 @@ rInvWishart <- function(n, df, Sigma) {
 #' from the inverse Wishart distribution (\code{dInvWishart}).
 #'
 #'    Note there are different ways of parameterizing the Inverse
-#'    Wishart distribution, so check which one you need. 
-#'     Here,  If \eqn{X \sim IW_p(\Sigma, \nu)}{X ~ IW_p(Sigma, df)} then 
+#'    Wishart distribution, so check which one you need.
+#'     Here,  If \eqn{X \sim IW_p(\Sigma, \nu)}{X ~ IW_p(Sigma, df)} then
 #'     \eqn{X^{-1} \sim W_p(\Sigma^{-1}, \nu)}{X^{-1} ~ W_p(Sigma^{-1}, df)}.
-#'     Dawid (1981) has a different definition: if 
-#'     \eqn{X \sim W_p(\Sigma^{-1}, \nu)}{X ~ W_p(Sigma^{-1}, df)} and 
-#'     \eqn{\nu > p - 1}{df > p - 1}, then 
-#'     \eqn{X^{-1} = Y \sim IW(\Sigma, \delta)}{X^{-1} = Y ~ IW(Sigma, delta)}, where 
+#'     Dawid (1981) has a different definition: if
+#'     \eqn{X \sim W_p(\Sigma^{-1}, \nu)}{X ~ W_p(Sigma^{-1}, df)} and
+#'     \eqn{\nu > p - 1}{df > p - 1}, then
+#'     \eqn{X^{-1} = Y \sim IW(\Sigma, \delta)}{X^{-1} = Y ~ IW(Sigma, delta)}, where
 #'     \eqn{\delta = \nu - p + 1}{delta = df - p + 1}.
 #'
 #' @param x positive definite \eqn{p \times p}{p * p} observation for density estimation
@@ -225,11 +218,11 @@ rInvWishart <- function(n, df, Sigma) {
 #' @return Density or log of density
 #'
 #' @references
-#' Dawid, A. (1981). Some Matrix-Variate Distribution Theory: Notational Considerations and a 
+#' Dawid, A. (1981). Some Matrix-Variate Distribution Theory: Notational Considerations and a
 #' Bayesian Application. \emph{Biometrika}, 68(1), 265-274. \url{http://doi:10.2307/2335827}
-#' 
+#'
 #' Gupta, A. K.  and D. K. Nagar (1999). \emph{Matrix variate distributions}. Chapman and Hall.
-#' 
+#'
 #' Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
 #' London: Academic Press.
 #' @export
@@ -314,11 +307,11 @@ dInvWishart <- function(x, df, Sigma, log = TRUE) {
 #' @seealso \code{\link{gamma}} and \code{\link{lgamma}}
 #' @references
 #' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
-#' 
-#' Multivariate gamma function. 
-#' In \emph{Wikipedia, The Free Encyclopedia},from 
+#'
+#' Multivariate gamma function.
+#' In \emph{Wikipedia, The Free Encyclopedia},from
 #' \url{https://en.wikipedia.org/w/index.php?title=Multivariate_gamma_function&oldid=808084916}
-#' 
+#'
 #' @export
 #'
 #' @examples
@@ -336,10 +329,6 @@ lmvgamma <- function(x, p) {
     length(x)
   else
     dim(as.array(x))
-  # if (p < 1)
-  #   stop("'p' must be greater than or equal to 1. p = ", p)
-  # if (any(x <= 0))
-  #   stop("'x' must be greater than 0. x = ", x)
 
   result <- .Call("C_lmvgamma", as.numeric(x), as.integer(p), PACKAGE = "CholWishart")
 
@@ -365,16 +354,16 @@ mvgamma <- function(x, p)
 #' @param x non-negative numeric vector, matrix, or array
 #' @param p positive integer, dimension of a square matrix
 #' @return vector of values of multivariate digamma function.
-#' 
+#'
 #' @seealso \code{\link{gamma}}, \code{\link{lgamma}}, \code{\link{digamma}}, and \code{\link{mvgamma}}
 #' @export
 #' @references
 #' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
-#' 
-#' Multivariate gamma function. 
-#' In \emph{Wikipedia, The Free Encyclopedia},from 
+#'
+#' Multivariate gamma function.
+#' In \emph{Wikipedia, The Free Encyclopedia},from
 #' \url{https://en.wikipedia.org/w/index.php?title=Multivariate_gamma_function&oldid=808084916}
-#' 
+#'
 #' @examples
 #' digamma(1:10)
 #' mvdigamma(1:10,1)
@@ -385,10 +374,6 @@ mvdigamma <- function(x, p) {
     length(x)
   else
     dim(as.array(x))
-  # if (p < 1)
-  #   stop("'p' must be greater than or equal to 1. p = ", p)
-  # if (any(x <= 0))
-  #   stop("'x' must be greater than 0. x = ", x)
 
   result <- .Call("C_mvdigamma", as.numeric(x), as.integer(p), PACKAGE = "CholWishart")
   return(array(result, dim = dims))
