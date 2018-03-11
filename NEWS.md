@@ -1,3 +1,7 @@
+# CholWishart 0.9.1.9000
+
+* Adding possibility of array input to density functions. 
+
 # CholWishart 0.9.1
 
 * Finalize edits to documentation including additional references.
