@@ -53,5 +53,5 @@ test_that("Equivalent outputs for different options:", {
   C <- dInvWishart(A, df = 4, Sigma = diag(3))
   expect_equal(B[1], B[2])
   expect_equal(C[1], C[2])
-  expect_equal(B[1], -7.255196, tolerance = 1e-5)
+  expect_equal(B[1], -7.255196, tolerance = 1e-6)
 })
