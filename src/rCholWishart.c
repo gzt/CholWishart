@@ -380,8 +380,6 @@ SEXP mvdigamma(SEXP x, SEXP p){
   px = REAL(x);
   pout = REAL(ans);
   for(i = 0 ; i < n ; i++){
-    if (px[i] <= 0)
-      error("x must be greater than 0.");
     pout[i] = c_mvdigamma(px[i],asInteger(p));
   }
   UNPROTECT(1);
