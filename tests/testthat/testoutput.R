@@ -47,4 +47,11 @@ test_that("Equivalent outputs for different options:", {
   # this really shouldn't work in general, it only works on diag()
   expect_equal(dWishart(diag(5), 10, 5*diag(5)), dInvWishart(diag(5), 10, .2*diag(5)))
   expect_equal(dWishart(diag(5), 10, 5*diag(5), log = FALSE), dInvWishart(diag(5), 10, .2*diag(5), log = FALSE))
+
+  A <- array(c(diag(3), diag(3)), dim = c(3,3,2))
+  B <- dWishart(A, df = 4, Sigma = diag(3))
+  C <- dInvWishart(A, df = 4, Sigma = diag(3))
+  expect_equal(B[1], B[2])
+  expect_equal(C[1], C[2])
+
 })

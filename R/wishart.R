@@ -210,7 +210,7 @@ rInvWishart <- function(n, df, Sigma) {
 #'     \eqn{X^{-1} = Y \sim IW(\Sigma, \delta)}{X^{-1} = Y ~ IW(Sigma, delta)}, where
 #'     \eqn{\delta = \nu - p + 1}{delta = df - p + 1}.
 #'
-#' @param x positive definite \eqn{p \times p}{p * p} observation for density estimation
+#' @param x positive definite \eqn{p \times p}{p * p} observations for density estimation - either one matrix or a 3-D array.
 #' @param df numeric parameter, "degrees of freedom".
 #' @param Sigma positive definite \eqn{p \times p}{p * p} "scale" matrix, the matrix parameter of the distribution.
 #' @param log logical, whether to return value on the log scale.
@@ -243,15 +243,22 @@ dWishart <- function(x, df, Sigma, log = TRUE) {
   if (dim(x)[1] != dim(x)[2] ||
       dim(x)[1] != dims[1] || dims[1] != dims[2])
     stop("non-conformable dimensions")
-  if (!isSymmetric(x) || !isSymmetric(Sigma))
+  if (!isSymmetric(Sigma))
     stop("non-symmetric input")
-  cholX <- chol(x)
+  if (length(dim(x)) < 3) x <- array(x, dim = c(dim(x),1))
+  dimx = dim(x)
+  ldensity = rep(0, dimx[3])
+  for (i in seq(dimx[3])) {
+    if ( !isSymmetric(x[,,i]))
+      stop("non-symmetric input")
+  cholX <- chol(x[,,i])
   cholS <- chol(Sigma)
   ldetX <- sum(log(diag(cholX))) * 2
   ldetS <- sum(log(diag(cholS))) * 2
-  ldensity <-
-    .5 * (df - dims[1] - 1) * ldetX - .5 * sum(diag(chol2inv(cholS) %*% x)) -
+  ldensity[i] <-
+    .5 * (df - dims[1] - 1) * ldetX - .5 * sum(diag(chol2inv(cholS) %*% x[,,i])) -
     (df * dims[1] / 2 * log(2)) - .5 * df * ldetS - lmvgamma(df / 2, dims[1])
+  }
   if (log)
     return(ldensity)
   else
@@ -270,16 +277,22 @@ dInvWishart <- function(x, df, Sigma, log = TRUE) {
   if (dim(x)[1] != dim(x)[2] ||
       dim(x)[1] != dims[1] || dims[1] != dims[2])
     stop("non-conformable dimensions")
-  if (!isSymmetric(x) || !isSymmetric(Sigma))
+  if ( !isSymmetric(Sigma))
     stop("non-symmetric input")
-
-  cholX <- chol(x)
+  if (length(dim(x)) < 3) x <- array(x, dim = c(dim(x),1))
+  dimx = dim(x)
+  ldensity = rep(0, dimx[3])
+  for (i in seq(dimx[3])) {
+    if ( !isSymmetric(x[,,i]))
+      stop("non-symmetric input")
+  cholX <- chol(x[,,i])
   cholS <- chol(Sigma)
   ldetX <- sum(log(diag(cholX))) * 2
   ldetS <- sum(log(diag(cholS))) * 2
-  ldensity <-
+  ldensity[i] <-
     -.5 * (df + dims[1] + 1) * ldetX + .5 * df * ldetS - .5 * sum(diag(chol2inv(cholX) %*% Sigma)) -
     (df * dims[1] / 2 * log(2)) - lmvgamma(df / 2, dims[1])
+  }
   if (log)
     return(ldensity)
   else

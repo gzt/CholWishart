@@ -10,7 +10,7 @@ dWishart(x, df, Sigma, log = TRUE)
 dInvWishart(x, df, Sigma, log = TRUE)
 }
 \arguments{
-\item{x}{positive definite \eqn{p \times p}{p * p} observation for density estimation}
+\item{x}{positive definite \eqn{p \times p}{p * p} observations for density estimation - either one matrix or a 3-D array.}
 
 \item{df}{numeric parameter, "degrees of freedom".}
 
