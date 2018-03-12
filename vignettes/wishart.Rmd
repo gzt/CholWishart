@@ -74,6 +74,15 @@ dInvWishart(diag(3), df = 5, .2*diag(3))
 
 Note that, in general, these will not agree even if their covariance matrix parameters are inverses of each other. One of the reasons this works is that the determinant of $\mathbf{X}$ is $1$.
 
+The density functions can take 3-D array input indexed on the third dimension and will output a vector of densities.
+
+```{r threedensities}
+set.seed(20180311)
+A <- rWishart(n = 3, df = 3, Sigma = diag(3))
+dWishart(A, df = 3, Sigma = diag(3))
+
+```
+
 ## Other functions
 
 The multivariate gamma ($\Gamma_p$) and digamma ($\psi_p$) functions are extensions of the univariate gamma ($\Gamma$) and digamma ($\psi$) functions (@mardia1982multivariate). They are useful in calculating the densities above. They come up in other distributions as well. The digamma is the first derivative of the gamma function. When the dimension $p = 1$, they coincide with the usual definitions of the digamma and gamma functions.
