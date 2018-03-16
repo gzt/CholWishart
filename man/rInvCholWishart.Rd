@@ -53,7 +53,7 @@ Anderson, T. W. (2003). \emph{An Introduction to Multivariate Statistical Analys
 Hoboken, N. J.: Wiley Interscience.
 
 Dawid, A. (1981). Some Matrix-Variate Distribution Theory: Notational Considerations and a
-Bayesian Application. \emph{Biometrika}, 68(1), 265-274. \url{http://doi:10.2307/2335827}
+Bayesian Application. \emph{Biometrika}, 68(1), 265-274. \doi{10.2307/2335827}
 
 Gupta, A. K.  and D. K. Nagar (1999). \emph{Matrix variate distributions}. Chapman and Hall.
 

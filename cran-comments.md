@@ -1,7 +1,7 @@
 ## Test environments
 * local Fedora 27 install, R 3.4.3
-* ubuntu 14.05 (on travis-ci), R 3.4.3
-* OS X Sierra 10.12.6 (on travis-ci), R 3.4.3
+* ubuntu 14.05 (on travis-ci), R 3.4.4
+* OS X Sierra 10.12.6 (on travis-ci), R 3.4.4
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -16,9 +16,9 @@ Possibly mis-spelled words in DESCRIPTION:
 
 ## Reverse dependencies
 
-This is a new release, so there are no reverse dependencies.
+There are no reverse dependencies.
 
 ## Other notes
  
-This takes existing C code and modifies it, attribution of authorship 
-is documented in inst/AUTHORS.
+This is a minor set of changes from the previous version that does not 
+make any incompatible changes to usage from previous versions.
