@@ -1,4 +1,4 @@
-# CholWishart 0.9.1.9000
+# CholWishart 0.9.2
 
 * Adding possibility of array input to density functions. 
 
