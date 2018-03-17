@@ -12,13 +12,12 @@ Possibly mis-spelled words in DESCRIPTION:
   
 * "digamma" is not mis-spelled.
 
-* This is a new release. I have read and agree with CRAN policies.
 
 ## Reverse dependencies
 
 There are no reverse dependencies.
 
 ## Other notes
- 
+
 This is a minor set of changes from the previous version that does not 
-make any incompatible changes to usage from previous versions.
+make any incompatible changes in usage from previous versions.
