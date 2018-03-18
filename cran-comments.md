@@ -6,7 +6,10 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+1 NOTE: Possibly mis-spelled words in DESCRIPTION:
+  digamma (12:46)
+  
+* digamma is not mispelled
 
 ## Reverse dependencies
 
