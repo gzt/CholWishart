@@ -6,12 +6,7 @@
 
 ## R CMD check results
 
-1 NOTE on the DESCRIPTION from win-builder:
-Possibly mis-spelled words in DESCRIPTION:
-  digamma (12:28)
-  
-* "digamma" is not mis-spelled.
-
+0 errors | 0 warnings | 0 notes
 
 ## Reverse dependencies
 
