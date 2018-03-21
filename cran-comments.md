@@ -18,4 +18,5 @@ There are no reverse dependencies.
 ## Other notes
 
 This is a minor set of changes from the previous version that does not 
-make any incompatible changes in usage from previous versions.
+make any incompatible changes in usage from previous versions. As before,
+information about authorship is included in inst/AUTHORS.
