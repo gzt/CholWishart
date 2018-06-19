@@ -1,3 +1,8 @@
+# CholWishart 0.9.3
+
+* Expand README
+* Minor change to density function loops to improve speed
+
 # CholWishart 0.9.2
 
 * Adding possibility of array input to density functions. 
