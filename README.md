@@ -3,11 +3,15 @@
 
 ------------------------------------------------------------------------
 
-[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/CholWishart)](https://cran.r-project.org/package=CholWishart) [![packageversion](https://img.shields.io/badge/Package%20version-0.9.2-orange.svg?style=flat-square)](commits/master)
+[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.3.2-6666ff.svg)](https://cran.r-project.org/) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/CholWishart)](https://cran.r-project.org/package=CholWishart) [![packageversion](https://img.shields.io/badge/Package%20version-0.9.2-orange.svg?style=flat-square)](commits/master)
 
 ------------------------------------------------------------------------
 
+<<<<<<< HEAD
 [![Last-changedate](https://img.shields.io/badge/last%20change-2018--06--19-yellowgreen.svg)](/commits/master)
+=======
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--03--21-yellowgreen.svg)](/commits/master)
+>>>>>>> 841fa31603e45557d06100abf0b517ff9c1a2447
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 CholWishart
