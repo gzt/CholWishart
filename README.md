@@ -3,7 +3,7 @@
 
 ------------------------------------------------------------------------
 
-[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.3.2-6666ff.svg)](https://cran.r-project.org/) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/CholWishart)](https://cran.r-project.org/package=CholWishart) [![packageversion](https://img.shields.io/badge/Package%20version-0.9.2-orange.svg?style=flat-square)](commits/master)
+[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.3.2-6666ff.svg)](https://cran.r-project.org/) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/CholWishart)](https://cran.r-project.org/package=CholWishart) [![packageversion](https://img.shields.io/badge/Package%20version-0.9.3-orange.svg?style=flat-square)](commits/master)
 
 ------------------------------------------------------------------------
 
