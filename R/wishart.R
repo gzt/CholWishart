@@ -248,13 +248,13 @@ dWishart <- function(x, df, Sigma, log = TRUE) {
   if (length(dim(x)) < 3) x <- array(x, dim = c(dim(x),1))
   dimx = dim(x)
   ldensity = rep(0, dimx[3])
+  cholS <- chol(Sigma)
+  ldetS <- sum(log(diag(cholS))) * 2
   for (i in seq(dimx[3])) {
     if ( !isSymmetric(x[,,i]))
       stop("non-symmetric input")
   cholX <- chol(x[,,i])
-  cholS <- chol(Sigma)
   ldetX <- sum(log(diag(cholX))) * 2
-  ldetS <- sum(log(diag(cholS))) * 2
   ldensity[i] <-
     .5 * (df - dims[1] - 1) * ldetX - .5 * sum(diag(chol2inv(cholS) %*% x[,,i])) -
     (df * dims[1] / 2 * log(2)) - .5 * df * ldetS - lmvgamma(df / 2, dims[1])
@@ -282,13 +282,13 @@ dInvWishart <- function(x, df, Sigma, log = TRUE) {
   if (length(dim(x)) < 3) x <- array(x, dim = c(dim(x),1))
   dimx = dim(x)
   ldensity = rep(0, dimx[3])
+  cholS <- chol(Sigma)
+  ldetS <- sum(log(diag(cholS))) * 2
   for (i in seq(dimx[3])) {
     if ( !isSymmetric(x[,,i]))
       stop("non-symmetric input")
   cholX <- chol(x[,,i])
-  cholS <- chol(Sigma)
   ldetX <- sum(log(diag(cholX))) * 2
-  ldetS <- sum(log(diag(cholS))) * 2
   ldensity[i] <-
     -.5 * (df + dims[1] + 1) * ldetX + .5 * df * ldetS - .5 * sum(diag(chol2inv(cholX) %*% Sigma)) -
     (df * dims[1] / 2 * log(2)) - lmvgamma(df / 2, dims[1])
