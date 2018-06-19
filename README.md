@@ -7,11 +7,7 @@
 
 ------------------------------------------------------------------------
 
-<<<<<<< HEAD
 [![Last-changedate](https://img.shields.io/badge/last%20change-2018--06--19-yellowgreen.svg)](/commits/master)
-=======
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--03--21-yellowgreen.svg)](/commits/master)
->>>>>>> 841fa31603e45557d06100abf0b517ff9c1a2447
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 CholWishart
