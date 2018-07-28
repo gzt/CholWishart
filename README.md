@@ -7,7 +7,7 @@
 
 ------------------------------------------------------------------------
 
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--06--19-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--28-yellowgreen.svg)](/commits/master)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 CholWishart
@@ -47,10 +47,12 @@ The package also offers density functions for the Wishart and inverse Wishart di
     dInvWishart(x = diag(4), df = 5, Sigma = diag(4), log = TRUE)
     dWishart(x = diag(4), df = 5, Sigma = diag(4), log = TRUE)
 
-In addition to this, the package offers the multivariate gamma function and multivariate digamma function, the multivariate counterparts of the gamma and digamma (log of derivative of gamma) functions..
+In addition to this, the package offers the multivariate gamma function and multivariate digamma function, the multivariate counterparts of the gamma and digamma (derivative of the log of the gamma) functions.
 
     mvgamma(x = 5, p = 3)
     mvdigamma(x = 5, p = 3)
+
+I suspect the most useful functions for most people will be the `mvdigamma` and `rInvWishart` functions.
 
 Installation
 ============
