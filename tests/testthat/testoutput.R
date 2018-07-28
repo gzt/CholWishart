@@ -1,6 +1,3 @@
-# https://academic.oup.com/biomet/article-abstract/87/1/99/221352?redirectedFrom=PDF
-# https://faculty.mccombs.utexas.edu/carlos.carvalho/CarvalhoMassamWest2007.pdf
-
 
 context("Checking outputs match")
 

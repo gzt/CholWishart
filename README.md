@@ -1,14 +1,4 @@
 
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![Build Status](https://travis-ci.org/gzt/CholWishart.svg?branch=devel)](https://travis-ci.org/gzt/CholWishart) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/gzt/CholWishart?branch=devel&svg=true)](https://ci.appveyor.com/project/gzt/CholWishart) [![codecov](https://codecov.io/gh/gzt/CholWishart/branch/devel/graph/badge.svg)](https://codecov.io/gh/gzt/CholWishart) [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-
-------------------------------------------------------------------------
-
-[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.3.2-6666ff.svg)](https://cran.r-project.org/) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/CholWishart)](https://cran.r-project.org/package=CholWishart) [![packageversion](https://img.shields.io/badge/Package%20version-0.9.3-orange.svg?style=flat-square)](commits/master)
-
-------------------------------------------------------------------------
-
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--28-yellowgreen.svg)](/commits/master)
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 CholWishart
 ===========

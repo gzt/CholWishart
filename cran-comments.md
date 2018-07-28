@@ -1,7 +1,7 @@
 ## Test environments
-* local Fedora 27 install, R 3.4.3
-* ubuntu 14.05 (on travis-ci), R 3.4.4
-* OS X Sierra 10.12.6 (on travis-ci), R 3.4.4
+* local Fedora 28 install, R 3.5.0
+* ubuntu 14.04.5 LTS (on travis-ci), R 3.5.0
+* OS X Sierra 10.12.6 (on travis-ci), R 3.5.0
 * win-builder (devel and release)
 
 ## R CMD check results
