@@ -6,6 +6,7 @@ output: github_document
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/gzt/CholWishart?branch=devel&svg=true)](https://ci.appveyor.com/project/gzt/CholWishart)
 [![codecov](https://codecov.io/gh/gzt/CholWishart/branch/devel/graph/badge.svg)](https://codecov.io/gh/gzt/CholWishart)
  [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+   [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
  
 ---
  

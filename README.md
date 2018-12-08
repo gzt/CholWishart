@@ -8,6 +8,7 @@ Status](https://travis-ci.org/gzt/CholWishart.svg?branch=devel)](https://travis-
 Status](https://ci.appveyor.com/api/projects/status/github/gzt/CholWishart?branch=devel&svg=true)](https://ci.appveyor.com/project/gzt/CholWishart)
 [![codecov](https://codecov.io/gh/gzt/CholWishart/branch/devel/graph/badge.svg)](https://codecov.io/gh/gzt/CholWishart)
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 
 -----
 
@@ -18,7 +19,7 @@ version](https://img.shields.io/badge/R%3E%3D-3.3.2-6666ff.svg)](https://cran.r-
 
 -----
 
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--31-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--12--08-yellowgreen.svg)](/commits/master)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
