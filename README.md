@@ -94,3 +94,9 @@ Install the latest development version at:
 
     # install.packages('devtools')
     devtools::install_github("gzt/CholWishart")
+
+# Contributing
+
+Please note that the ‘CholWishart’ project is released with a
+[Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By
+contributing to this project, you agree to abide by its terms.
