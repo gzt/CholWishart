@@ -194,6 +194,68 @@ rInvWishart <- function(n, df, Sigma) {
 }
 
 
+#' Random Pseudo Wishart Distributed Matrices
+#'
+#' @description Generate n random matrices, distributed according
+#'     to the pseudo Wishart distribution with parameters \code{Sigma} and
+#'     \code{df}, \eqn{W_p(Sigma, df)}. Let X_i, i = 1, 2, ..., df be \code{df} observations of
+#'     a multivariate normal distribution with mean 0 and covariance \code{Sigma}.
+#'     Then \eqn{\sum XX'} is distributed as a pseudo Wishart \eqn{W_p(Sigma, df)}.
+#'     Sometimes this is called a singular Wishart distribution, however, that
+#'     can be confused with the case where \code{Sigma} istelf is singular.
+#'
+#' @param n integer sample size.
+#' @param df integer parameter, "degrees of freedom", should be less than the
+#'    dimension of \code{p}
+#' @param Sigma positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix
+#'    parameter of the distribution.
+#'
+#' @return a numeric array, say \code{R}, of dimension \eqn{p \times p \times n}{p * p * n},
+#'     where each \code{R[,,i]} is a realization of the pseudo Wishart distribution
+#'     \eqn{W_p(Sigma, df)}.
+#'
+#' @seealso \code{\link{rWishart}}, \code{\link{rCholWishart}}, \code{\link{rInvWishart}}
+#'     and \code{\link{rInvCholWishart}}
+#'
+#' @references
+#' Diaz-Garcia, Jose A, Ramon Gutierrez Jaimez, and Kanti V Mardia. 1997.
+#' “Wishart and Pseudo-Wishart Distributions and Some Applications to Shape Theory.”
+#' Journal of Multivariate Analysis 63 (1): 73–87. \doi{10.1006/jmva.1997.1689}.
+#'
+#' Uhlig, Harald. On Singular Wishart and Singular Multivariate Beta Distributions.
+#' Ann. Statist. 22 (1994), no. 1, 395--405. \doi{10.1214/aos/1176325375}.
+#'
+#' @export
+#'
+#' @examples
+#' set.seed(20181227)
+#' A<-rPseudoWishart(1,4,5.0*diag(5))[,,1]
+#' # A should be singular
+#' eigen(A)$values
+#'
+rPseudoWishart <- function(n, df, Sigma) {
+  tol = 1e-06
+  p <- ncol(Sigma)
+  if (!all(dim(Sigma) == c(p, p)))
+    stop("Sigma must be square.")
+  if (df > p - 1) {
+    warning("df > dimension of Sigma - 1, using rWishart.")
+    return(rWishart(n, df, Sigma))
+  }
+  if (!(df == round(df))) stop("df needs to be a whole number.")
+  if (df < 1) stop("df needs to be greater than 1.")
+  eS <- eigen(Sigma, symmetric = TRUE)
+  ev <- eS$values
+  if (!all(ev >= -tol * abs(ev[1L])))
+    stop("'Sigma' is not positive definite")
+  sqrtmatrix <- eS$vectors %*% diag(sqrt(pmax(ev, 0)), p)
+  X <- array(rnorm(p*df*n), dim = c(df, p, n))
+  Xresult <- array(0, dim = c(p, p, n))
+  for(i in 1:n) Xresult[,,i] = tcrossprod(tcrossprod(sqrtmatrix, X[,,i]))
+  return(Xresult)
+}
+
+
 #' Density for Random Wishart Distributed Matrices
 #'
 #' Compute the density of an observation of a random Wishart distributed matrix (\code{dWishart})

@@ -1,3 +1,9 @@
+# CholWishart 0.9.4
+
+* Add pseudo-Wishart (Wishart distribution based on fewer observations than the 
+dimension of the covariance matrix).
+* Add contributor guidelines and code of conduct.
+
 # CholWishart 0.9.3
 
 * Minor update to internal functions
