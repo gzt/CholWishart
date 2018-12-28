@@ -251,7 +251,7 @@ rPseudoWishart <- function(n, df, Sigma) {
   sqrtmatrix <- eS$vectors %*% diag(sqrt(pmax(ev, 0)), p)
   X <- array(stats::rnorm(p*df*n), dim = c(df, p, n))
   Xresult <- array(0, dim = c(p, p, n))
-  for(i in 1:n) Xresult[,,i] = tcrossprod(tcrossprod(sqrtmatrix, X[,,i]))
+  for (i in 1:n) Xresult[,,i] = tcrossprod(tcrossprod(sqrtmatrix, X[,,i]))
   return(Xresult)
 }
 
