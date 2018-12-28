@@ -179,7 +179,7 @@ rInvCholWishart <- function(n, df, Sigma) {
 #' set.seed(20180221)
 #' A<-rInvWishart(1,10,5*diag(5))[,,1]
 #' set.seed(20180221)
-#' B<-rWishart(1,10,.2*diag(5))[,,1]
+#' B<-stats::rWishart(1,10,.2*diag(5))[,,1]
 #'
 #' A %*% B
 rInvWishart <- function(n, df, Sigma) {
@@ -240,7 +240,7 @@ rPseudoWishart <- function(n, df, Sigma) {
     stop("Sigma must be square.")
   if (df > p - 1) {
     warning("df > dimension of Sigma - 1, using rWishart.")
-    return(rWishart(n, df, Sigma))
+    return(stats::rWishart(n, df, Sigma))
   }
   if (!(df == round(df))) stop("df needs to be a whole number.")
   if (df < 1) stop("df needs to be greater than 1.")
@@ -249,7 +249,7 @@ rPseudoWishart <- function(n, df, Sigma) {
   if (!all(ev >= -tol * abs(ev[1L])))
     stop("'Sigma' is not positive definite")
   sqrtmatrix <- eS$vectors %*% diag(sqrt(pmax(ev, 0)), p)
-  X <- array(rnorm(p*df*n), dim = c(df, p, n))
+  X <- array(stats::rnorm(p*df*n), dim = c(df, p, n))
   Xresult <- array(0, dim = c(p, p, n))
   for(i in 1:n) Xresult[,,i] = tcrossprod(tcrossprod(sqrtmatrix, X[,,i]))
   return(Xresult)
