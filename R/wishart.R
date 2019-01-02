@@ -199,16 +199,17 @@ rInvWishart <- function(n, df, Sigma) {
 #' @description Generate n random matrices, distributed according
 #'     to the pseudo Wishart distribution with parameters \code{Sigma} and
 #'     \code{df}, \eqn{W_p(Sigma, df)}, with sample size \code{df} less than
-#'     the dimension \code{p}. 
+#'     the dimension \code{p}.
 #'
 #'     Let \eqn{X_i}, \eqn{i = 1, 2, ..., df} be \code{df}
 #'     observations of a multivariate normal distribution with mean 0 and
 #'     covariance \code{Sigma}. Then \eqn{\sum X_i X_i'} is distributed as a pseudo
 #'     Wishart \eqn{W_p(Sigma, df)}. Sometimes this is called a singular Wishart
 #'     distribution, however, that can be confused with the case where \code{Sigma}
-#'     itself is singular. This will generate samples for positive semi-definite
-#'     \code{Sigma}, however, a function dedicated to generating singular normal 
-#'     random distributions or singular pseudo Wishart distributions should be used.
+#'     itself is singular. This can generate samples for positive semi-definite
+#'     \code{Sigma}, however, a function dedicated to generating singular normal
+#'     random distributions or singular pseudo Wishart distributions should be used
+#'     if that is desired.
 #'
 #' @param n integer sample size.
 #' @param df integer parameter, "degrees of freedom", should be less than the
@@ -221,8 +222,8 @@ rInvWishart <- function(n, df, Sigma) {
 #'     where each \code{R[,,i]} is a realization of the pseudo Wishart distribution
 #'     \eqn{W_p(Sigma, df)}.
 #'
-#' @seealso \code{\link{rWishart}}, \code{\link{rCholWishart}}, \code{\link{rInvWishart}}
-#'     and \code{\link{rInvCholWishart}}
+#' @seealso \code{\link{rWishart}}, \code{\link{rInvWishart}},
+#'     and \code{\link{rGenInvWishart}}
 #'
 #' @references
 #' Diaz-Garcia, Jose A, Ramon Gutierrez Jaimez, and Kanti V Mardia. 1997.
@@ -262,7 +263,8 @@ rPseudoWishart <- function(n, df, Sigma) {
   X <- array(stats::rnorm(p*df*n), dim = c(df, p, n))
   Xresult <- array(0, dim = c(p, p, n))
   for (i in 1:n) Xresult[,,i] = tcrossprod(tcrossprod(sqrtmatrix, X[,,i]))
-  return(Xresult)
+
+  (Xresult)
 }
 
 
@@ -271,19 +273,20 @@ rPseudoWishart <- function(n, df, Sigma) {
 #' @description Generate n random matrices, distributed according
 #'     to the generalized inverse Wishart distribution with parameters \code{Sigma} and
 #'     \code{df}, \eqn{W_p(Sigma, df)}, with sample size \code{df} less than
-#'     the dimension \code{p}. 
+#'     the dimension \code{p}.
 #'
 #'     Let \eqn{X_i}, \eqn{i = 1, 2, ..., df} be \code{df}
 #'     observations of a multivariate normal distribution with mean 0 and
 #'     covariance \code{Sigma}. Then \eqn{\sum X_i X_i'} is distributed as a pseudo
 #'     Wishart \eqn{W_p(Sigma, df)}. Sometimes this is called a singular Wishart
 #'     distribution, however, that can be confused with the case where \code{Sigma}
-#'     itself is singular. Then the generalized inverse Wishart distribution is 
+#'     itself is singular. Then the generalized inverse Wishart distribution is
 #'     the natural extension of the inverse Wishart using the Moore-Penrose pseudo-inverse.
-#'     This will generate samples for positive semi-definite
-#'     \code{Sigma}, however, a function dedicated to generating singular normal 
-#'     random distributions or singular pseudo Wishart distributions should be used.
-#'     
+#'     This can generate samples for positive semi-definite
+#'     \code{Sigma}, however, a function dedicated to generating singular normal
+#'     random distributions or singular pseudo Wishart distributions should be used
+#'     if that is desired.
+#'
 #'     Note there are different ways of parameterizing the Inverse
 #'     Wishart distribution, so check which one you need.
 #'     Here,  If \eqn{X \sim IW_p(\Sigma, \nu)}{X ~ IW_p(Sigma, df)} then
@@ -297,28 +300,28 @@ rPseudoWishart <- function(n, df, Sigma) {
 #' @param n integer sample size.
 #' @param df integer parameter, "degrees of freedom", should be less than the
 #'    dimension of \code{p}
-#' @param Sigma positive semi-definite \eqn{p \times p}{(p * p)} "scale" matrix, 
+#' @param Sigma positive semi-definite \eqn{p \times p}{(p * p)} "scale" matrix,
 #'    the matrix parameter of the distribution.
 #'
 #' @return a numeric array, say \code{R}, of dimension \eqn{p \times p \times n}{p * p * n},
 #'     where each \code{R[,,i]} is a realization of the pseudo Wishart distribution
 #'     \eqn{W_p(Sigma, df)}.
 #'
-#' @seealso \code{\link{rWishart}}, \code{\link{rCholWishart}}, \code{\link{rInvWishart}},
-#'      \code{\link{rPseudoWishart}}, and \code{\link{rInvCholWishart}}
+#' @seealso \code{\link{rWishart}}, \code{\link{rInvWishart}},
+#'     and \code{\link{rPseudoWishart}}
 #'
 #' @references
 #' Diaz-Garcia, Jose A, Ramon Gutierrez Jaimez, and Kanti V Mardia. 1997.
 #' “Wishart and Pseudo-Wishart Distributions and Some Applications to Shape Theory.”
 #' Journal of Multivariate Analysis 63 (1): 73–87. \doi{10.1006/jmva.1997.1689}.
-#' 
-#' Bodnar, T.,  Mazur, S., Podgórski, K. "Singular inverse Wishart distribution and 
-#' its application to portfolio theory", Journal of Multivariate Analysis, Volume 143, 
-#' 2016, Pages 314-326, ISSN 0047-259X, 
+#'
+#' Bodnar, T.,  Mazur, S., Podgórski, K. "Singular inverse Wishart distribution and
+#' its application to portfolio theory", Journal of Multivariate Analysis, Volume 143,
+#' 2016, Pages 314-326, ISSN 0047-259X,
 #' \doi{10.1016/j.jmva.2015.09.021}.
-#' 
-#' Bodnar, T.,  Okhrin, Y., "Properties of the singular, inverse 
-#' and generalized inverse partitioned Wishart distributions", Journal of 
+#'
+#' Bodnar, T.,  Okhrin, Y., "Properties of the singular, inverse
+#' and generalized inverse partitioned Wishart distributions", Journal of
 #' Multivariate Analysis, Volume 99, Issue 10, 2008,  Pages 2389-2405,
 #' ISSN 0047-259X, \doi{10.1016/j.jmva.2008.02.024}.
 #'
@@ -361,8 +364,8 @@ rGenInvWishart <- function(n, df, Sigma) {
     pos <- (svdX$d > tol)
     Xresult[,,i] <- svdX$v[,pos,drop=FALSE] %*% ((1/svdX$d[pos]) * t(svdX$u[,pos,drop=FALSE]))
   }
-  
-  return(Xresult)
+
+  (Xresult)
 }
 
 
