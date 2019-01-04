@@ -20,7 +20,7 @@ The `stats` implementation of `rWishart` is in `C` and is very fast. It is often
 
 This suggests some obvious efficiencies: perhaps, if we would rather have the Cholesky decomposition of the Wishart random matrix, we could tell the function to stop right there.
 
-```{r chol, cache = TRUE}
+```{r chol}
 library('CholWishart')
 set.seed(20180220)
 A <- stats::rWishart(1,10,5*diag(4))[,,1]
@@ -75,6 +75,8 @@ B
 qr(B)$rank
 ```
 
+Note that the rank of both of these matrices is less than the dimension.
+
 
 ## Density computation
 
@@ -95,7 +97,7 @@ Note that, in general, these will not agree even if their covariance matrix para
 
 The density functions can take 3-D array input indexed on the third dimension and will output a vector of densities.
 
-```{r threedensities}
+```{r threedensities, dependson="chol"}
 set.seed(20180311)
 A <- rWishart(n = 3, df = 3, Sigma = diag(3))
 dWishart(A, df = 3, Sigma = diag(3))
@@ -108,7 +110,7 @@ The multivariate gamma ($\Gamma_p$) and digamma ($\psi_p$) functions are extensi
 
 The multivariate gamma also comes in a logarithmic form (`lmvgamma`).
 
-```{r lmvgamma}
+```{r lmvgamma, dependson = "chol"}
 lmvgamma(1:4,1) # note how they agree when p = 1
 lgamma(1:4)
 ```
