@@ -1,5 +1,7 @@
 # CholWishart 0.9.4
 
+* Add new functions to the vignette
+* Add generalized inverse Wishart (pseudo inverse of the pseudo Wishart)
 * Add pseudo-Wishart (Wishart distribution based on fewer observations than the 
 dimension of the covariance matrix).
 * Add contributor guidelines and code of conduct.
