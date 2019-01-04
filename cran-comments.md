@@ -1,6 +1,6 @@
 ## Test environments
 * local Fedora 29 install, R 3.5.1
-* ubuntu 14.04.5 LTS (on travis-ci), R 3.5.1 
+* ubuntu 14.04.5 LTS (on travis-ci), R 3.5.1, 3.5.2, devel
 * OS X Sierra 10.13.3 (on travis-ci), R 3.5.2 
 * win-builder (devel and release)
 
@@ -23,6 +23,5 @@ There are no reverse dependencies.
 
 ## Other notes
 
-This is a minor set of changes from the previous version that does not 
-make any incompatible changes in usage from previous versions. As before,
-information about authorship is included in inst/AUTHORS.
+This is an addition of two functions in R that does not make any changes in usage of functions
+from previous versions. As before, information about authorship is included in inst/AUTHORS.
