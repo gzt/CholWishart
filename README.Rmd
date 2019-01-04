@@ -59,7 +59,15 @@ rInvCholWishart(n = 1,df = 5,Sigma = diag(4)))
 rCholWishart(n = 1,df = 5,Sigma = diag(4)))
 ```
 
-The package also offers density functions for the Wishart and inverse Wishart distributions:
+* The pseudo Wishart and its pseudo-inverse, the generalized inverse Wishart (`df` less than 
+the dimension of `Sigma` minus 1):
+
+```
+rPseudoWishart(n = 1,df = 3,Sigma = diag(5)))
+rGenInvWishart(n = 1,df = 3,Sigma = diag(5)))
+```
+
+* The package also offers density functions for the Wishart and inverse Wishart distributions:
 
 ```
 dInvWishart(x = diag(4), df = 5, Sigma = diag(4), log = TRUE)

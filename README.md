@@ -20,7 +20,7 @@ version](https://img.shields.io/badge/R%3E%3D-3.3.2-6666ff.svg)](https://cran.r-
 
 -----
 
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--12--28-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--01--04-yellowgreen.svg)](/commits/master)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -71,8 +71,18 @@ The package offers the following distributions:
 
     rCholWishart(n = 1,df = 5,Sigma = diag(4)))
 
-The package also offers density functions for the Wishart and inverse
-Wishart distributions:
+  - The pseudo Wishart and its pseudo-inverse, the generalized inverse
+    Wishart (`df` less than the dimension of `Sigma` minus 1):
+
+<!-- end list -->
+
+    rPseudoWishart(n = 1,df = 3,Sigma = diag(5)))
+    rGenInvWishart(n = 1,df = 3,Sigma = diag(5)))
+
+  - The package also offers density functions for the Wishart and
+    inverse Wishart distributions:
+
+<!-- end list -->
 
     dInvWishart(x = diag(4), df = 5, Sigma = diag(4), log = TRUE)
     dWishart(x = diag(4), df = 5, Sigma = diag(4), log = TRUE)
