@@ -15,3 +15,4 @@ matrix:
   - r: release
     after_success: Rscript -e 'covr::codecov()'
   - r: oldrel
+  - r: 3.3

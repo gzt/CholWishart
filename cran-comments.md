@@ -1,12 +1,9 @@
 ## Test environments
-* local Fedora 28 install, R 3.5.1
-* ubuntu 14.04.5 LTS (on travis-ci), R 3.5.1
-* OS X Sierra 10.13.3 (on travis-ci), R 3.5.0
+* local Fedora 29 install, R 3.5.1
+* ubuntu 14.04.5 LTS (on travis-ci), R 3.5.1 
+* OS X Sierra 10.13.3 (on travis-ci), R 3.5.2 
 * win-builder (devel and release)
-* R-hub.io Windows Server 2008 R2 SP1, R-devel, 32/64 bit
-           Fedora Linux, R-devel
-           Ubuntu Linux 16.04 LTS, R-release
-           Debian Linux, R-devel
+
 
 ## R CMD check results
 
