@@ -52,3 +52,11 @@ test_that("Equivalent outputs for different options:", {
   expect_equal(C[1], C[2])
   expect_equal(B[1], -7.255196, tolerance = 1e-6)
 })
+
+test_that("Ranks are correct:", {
+  rango = 5
+  expect_equal(qr(rGenInvWishart(1, rango, diag(rango + 2))[,,1])$rank, rango)
+  expect_equal(qr(rPseudoWishart(1, rango, diag(rango + 2))[,,1])$rank, rango)
+  expect_equal(qr(rInvWishart(1, rango + 2, .5*diag(rango))[, , 1])$rank, rango)
+
+  })

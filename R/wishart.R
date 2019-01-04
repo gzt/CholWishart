@@ -198,18 +198,18 @@ rInvWishart <- function(n, df, Sigma) {
 #'
 #' @description Generate n random matrices, distributed according
 #'     to the pseudo Wishart distribution with parameters \code{Sigma} and
-#'     \code{df}, \eqn{W_p(Sigma, df)}, with sample size \code{df} less than
-#'     the dimension \code{p}.
+#'     \code{df}, \eqn{W_p(\Sigma, df)}{W_p(Sigma, df)}, with sample size
+#'     \code{df} less than the dimension \code{p}.
 #'
 #'     Let \eqn{X_i}, \eqn{i = 1, 2, ..., df} be \code{df}
 #'     observations of a multivariate normal distribution with mean 0 and
 #'     covariance \code{Sigma}. Then \eqn{\sum X_i X_i'} is distributed as a pseudo
-#'     Wishart \eqn{W_p(Sigma, df)}. Sometimes this is called a singular Wishart
-#'     distribution, however, that can be confused with the case where \code{Sigma}
-#'     itself is singular. This can generate samples for positive semi-definite
-#'     \code{Sigma}, however, a function dedicated to generating singular normal
-#'     random distributions or singular pseudo Wishart distributions should be used
-#'     if that is desired.
+#'     Wishart \eqn{W_p(\Sigma, df)}{W_p(Sigma, df)}. Sometimes this is called a
+#'     singular Wishart distribution, however, that can be confused with the case
+#'     where \eqn{\Sigma}{Sigma} itself is singular. This can generate samples for
+#'     positive semi-definite \eqn{\Sigma}{Sigma}, however, a function dedicated to
+#'     generating singular normal random distributions or singular pseudo Wishart
+#'     distributions should be used if that is desired.
 #'
 #' @param n integer sample size.
 #' @param df integer parameter, "degrees of freedom", should be less than the
@@ -271,21 +271,21 @@ rPseudoWishart <- function(n, df, Sigma) {
 #' Random Generalized Inverse Wishart Distributed Matrices
 #'
 #' @description Generate n random matrices, distributed according
-#'     to the generalized inverse Wishart distribution with parameters \code{Sigma} and
-#'     \code{df}, \eqn{W_p(Sigma, df)}, with sample size \code{df} less than
-#'     the dimension \code{p}.
+#'     to the generalized inverse Wishart distribution with parameters
+#'     \code{Sigma} and \code{df}, \eqn{W_p(\Sigma, df)}{W_p(Sigma, df)},
+#'     with sample size \code{df} less than the dimension \code{p}.
 #'
 #'     Let \eqn{X_i}, \eqn{i = 1, 2, ..., df} be \code{df}
 #'     observations of a multivariate normal distribution with mean 0 and
 #'     covariance \code{Sigma}. Then \eqn{\sum X_i X_i'} is distributed as a pseudo
-#'     Wishart \eqn{W_p(Sigma, df)}. Sometimes this is called a singular Wishart
-#'     distribution, however, that can be confused with the case where \code{Sigma}
-#'     itself is singular. Then the generalized inverse Wishart distribution is
-#'     the natural extension of the inverse Wishart using the Moore-Penrose pseudo-inverse.
-#'     This can generate samples for positive semi-definite
-#'     \code{Sigma}, however, a function dedicated to generating singular normal
-#'     random distributions or singular pseudo Wishart distributions should be used
-#'     if that is desired.
+#'     Wishart \eqn{W_p(\Sigma, df)}{W_p(Sigma, df)}. Sometimes this is called a
+#'     singular Wishart distribution, however, that can be confused with the case
+#'     where \eqn{\Sigma}{Sigma} itself is singular. Then the generalized inverse
+#'     Wishart distribution is the natural extension of the inverse Wishart using
+#'     the Moore-Penrose pseudo-inverse. This can generate samples for positive
+#'     semi-definite \eqn{\Sigma}{Sigma} however, a function dedicated to generating
+#'     singular normal random distributions or singular pseudo Wishart distributions
+#'     should be used if that is desired.
 #'
 #'     Note there are different ways of parameterizing the Inverse
 #'     Wishart distribution, so check which one you need.
