@@ -8,7 +8,8 @@ Authors@R: c(person(c("Geoffrey", "Thompson"),email="gzthompson@gmail.com",
 Description: Sampling from the Cholesky factorization of a Wishart random 
     variable, sampling from the inverse Wishart distribution, sampling from 
     the Cholesky factorization of an inverse Wishart random variable, sampling
-    from the pseudo Wishart distribution, computing densities for the Wishart 
+    from the pseudo Wishart distribution, sampling from the generalized
+    inverse Wishart distribution, computing densities for the Wishart 
     and inverse Wishart distributions, and computing the multivariate gamma 
     and digamma functions.
 License: GPL (>=3)
