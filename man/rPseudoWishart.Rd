@@ -12,8 +12,9 @@ rPseudoWishart(n, df, Sigma)
 \item{df}{integer parameter, "degrees of freedom", should be less than the
 dimension of \code{p}}
 
-\item{Sigma}{positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix
-parameter of the distribution.}
+\item{Sigma}{positive semi-definite \eqn{p \times p}{(p * p)} "scale" matrix, the
+matrix
+   parameter of the distribution.}
 }
 \value{
 a numeric array, say \code{R}, of dimension \eqn{p \times p \times n}{p * p * n},
@@ -23,11 +24,18 @@ a numeric array, say \code{R}, of dimension \eqn{p \times p \times n}{p * p * n}
 \description{
 Generate n random matrices, distributed according
     to the pseudo Wishart distribution with parameters \code{Sigma} and
-    \code{df}, \eqn{W_p(Sigma, df)}. Let X_i, i = 1, 2, ..., df be \code{df} observations of
-    a multivariate normal distribution with mean 0 and covariance \code{Sigma}.
-    Then \eqn{\sum XX'} is distributed as a pseudo Wishart \eqn{W_p(Sigma, df)}.
-    Sometimes this is called a singular Wishart distribution, however, that
-    can be confused with the case where \code{Sigma} istelf is singular.
+    \code{df}, \eqn{W_p(\Sigma, df)}{W_p(Sigma, df)}, with sample size
+    \code{df} less than the dimension \code{p}.
+
+    Let \eqn{X_i}, \eqn{i = 1, 2, ..., df} be \code{df}
+    observations of a multivariate normal distribution with mean 0 and
+    covariance \code{Sigma}. Then \eqn{\sum X_i X_i'} is distributed as a pseudo
+    Wishart \eqn{W_p(\Sigma, df)}{W_p(Sigma, df)}. Sometimes this is called a
+    singular Wishart distribution, however, that can be confused with the case
+    where \eqn{\Sigma}{Sigma} itself is singular. This can generate samples for
+    positive semi-definite \eqn{\Sigma}{Sigma}, however, a function dedicated to
+    generating singular normal random distributions or singular pseudo Wishart
+    distributions should be used if that is desired.
 }
 \examples{
 set.seed(20181227)
@@ -45,6 +53,6 @@ Uhlig, Harald. On Singular Wishart and Singular Multivariate Beta Distributions.
 Ann. Statist. 22 (1994), no. 1, 395--405. \doi{10.1214/aos/1176325375}.
 }
 \seealso{
-\code{\link{rWishart}}, \code{\link{rCholWishart}}, \code{\link{rInvWishart}}
-    and \code{\link{rInvCholWishart}}
+\code{\link{rWishart}}, \code{\link{rInvWishart}},
+    and \code{\link{rGenInvWishart}}
 }

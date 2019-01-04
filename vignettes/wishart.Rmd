@@ -16,11 +16,11 @@ knitr::opts_chunk$set(
   comment = "##"
 )
 ```
-The `stats` implementation of `rWishart` is in C and is very fast. It is often the case that we do not want a sample from the Wishart distribution, but rather from the inverse of it or from the Cholesky decomposition of a sample from the Wishart distribution. Or even from the inverse of the Cholesky decomposition of a draw from the Wishart distribution. Funnily enough (if you have a weird sense of humor), when you inspect the [source code](https://github.com/SurajGupta/r-source/blob/master/src/library/stats/src/rWishart.c) for the `rWishart` distribution (@rstatsteam), it generates the Cholesky decomposition and then multiplies it out. Meanwhile, drawing from the `rWishart` and then inverting or doing a Cholesky decomposition or whatever in R is just slow -- comparatively.
+The `stats` implementation of `rWishart` is in `C` and is very fast. It is often the case that we do not want a sample from the Wishart distribution, but rather from the inverse of it or from the Cholesky decomposition of a sample from the Wishart distribution. Or even from the inverse of the Cholesky decomposition of a draw from the Wishart distribution. Funnily enough (if you have a weird sense of humor), when you inspect the [source code](https://github.com/SurajGupta/r-source/blob/master/src/library/stats/src/rWishart.c) for the `rWishart` distribution (@rstatsteam), it generates the Cholesky decomposition and then multiplies it out. Meanwhile, drawing from the `rWishart` and then inverting or doing a Cholesky decomposition or whatever in R is just slow -- comparatively.
 
 This suggests some obvious efficiencies: perhaps, if we would rather have the Cholesky decomposition of the Wishart random matrix, we could tell the function to stop right there.
 
-```{r chol, cache = TRUE}
+```{r chol}
 library('CholWishart')
 set.seed(20180220)
 A <- stats::rWishart(1,10,5*diag(4))[,,1]
@@ -39,7 +39,8 @@ random variables, $i = 1, 2, \ldots n$ with $n > p-1$.
 Then $S = \sum X_i^T X_i$, called the "scatter matrix", is almost surely 
 positive definite if $\Sigma$ is positive definite. 
 The random variable $S$ is said to be distributed as a Wishart random variable:
-$S \sim W_p(n, \Sigma)$, see @gupta1999matrix. 
+$S \sim W_p(n, \Sigma)$, see @gupta1999matrix. This can be extended to the non-integer case
+as well.
 
 How does `rWishart(n, df, Sigma)` work (supposing `Sigma` is a $p \times p$ matrix)? First, it generates a sample from the Cholesky decomposition of a Wishart distribution with $\Sigma = \mathbf{I}_p$. How this is done: on the $i^{th}$ element of the main diagonal, draw from $\sqrt{\chi_{p-i+1}^2}$. On the upper triangle of the matrix, sample from an independent $N(0,1)$ for each entry in the matrix. Then, this can be multiplied by the Cholesky decomposition of the provided `Sigma` to obtain the Cholesky factor of the desired sample from the Wishart random variable (this construction is due to Bartlett and is also known as the Bartlett Decomposition) (see @Anderson84a). The `rWishart` function multiplies this out. Therefore, if the Cholesky decomposition is desired, one only needs to stop there.
 
@@ -49,7 +50,7 @@ If $X \sim \textrm{W}_p(\nu,\Sigma)$, then we define the Inverse Wishart as $X^{
 
 Here is what happens with the results of the above:
 
-```{r results}
+```{r results, dependson = "chol"}
 A %*% B 
 crossprod(C) %*% crossprod(D) # note: we do not expect C = D^-1, we expect this! 
 crossprod(D) %*% A
@@ -58,14 +59,34 @@ crossprod(C) %*% B
 
 There is some roundoff error.
 
+## The Pseudo-Wishart and Generalized Inverse Wishart
+
+Suppose, instead of the above definition of the Wishart, we have $n \leq p-1$. 
+Then the scatter matrix defined above will not be positive definite. This is called
+the pseudo Wishart distribution. If we then take the Moore-Penrose pseudo-inverse
+of this, we have the generalized inverse Wishart distribution. 
+
+```{r pseudo, dependson = "chol"}
+A <- rPseudoWishart(n = 1, df = 3, Sigma = diag(5))[, , 1]
+A
+qr(A)$rank
+B <- rGenInvWishart(n = 1, df = 3, Sigma = diag(5))[, , 1]
+B
+qr(B)$rank
+```
+
+Note that the rank of both of these matrices is less than the dimension.
+
+
 ## Density computation
 
-This package also has functions for density computations with the Wishart distribution. Densities are only defined for positive-definite input matrices and $\nu$ parameters larger than the dimension $p$.
+This package also has functions for density computations with the Wishart distribution. 
+Densities are only defined for positive-definite input matrices and $\nu$ parameters 
+larger than the dimension $p$.
 
 The return value is on the `log` scale but it can be specified otherwise.
 
-```{r density}
-library('CholWishart')
+```{r density, dependson="chol"}
 dWishart(diag(3), df = 5, 5*diag(3))
 
 dInvWishart(diag(3), df = 5, .2*diag(3))
@@ -76,7 +97,7 @@ Note that, in general, these will not agree even if their covariance matrix para
 
 The density functions can take 3-D array input indexed on the third dimension and will output a vector of densities.
 
-```{r threedensities}
+```{r threedensities, dependson="chol"}
 set.seed(20180311)
 A <- rWishart(n = 3, df = 3, Sigma = diag(3))
 dWishart(A, df = 3, Sigma = diag(3))
@@ -89,7 +110,7 @@ The multivariate gamma ($\Gamma_p$) and digamma ($\psi_p$) functions are extensi
 
 The multivariate gamma also comes in a logarithmic form (`lmvgamma`).
 
-```{r lmvgamma}
+```{r lmvgamma, dependson = "chol"}
 lmvgamma(1:4,1) # note how they agree when p = 1
 lgamma(1:4)
 ```
