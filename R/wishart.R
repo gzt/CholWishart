@@ -358,11 +358,11 @@ rGenInvWishart <- function(n, df, Sigma) {
   X <- array(stats::rnorm(p*df*n), dim = c(df, p, n))
   Xresult <- array(0, dim = c(p, p, n))
   for (i in 1:n) Xresult[,,i] = tcrossprod(tcrossprod(sqrtmatrix, X[,,i]))
-  for (i in 1:n){
+  for (i in 1:n) {
     tmpX = Xresult[,,i]
     svdX <- svd(tmpX)
     pos <- (svdX$d > tol)
-    Xresult[,,i] <- svdX$v[,pos,drop=FALSE] %*% ((1/svdX$d[pos]) * t(svdX$u[,pos,drop=FALSE]))
+    Xresult[,,i] <- svdX$v[,pos,drop = FALSE] %*% ((1/svdX$d[pos]) * t(svdX$u[,pos,drop = FALSE]))
   }
 
   (Xresult)
