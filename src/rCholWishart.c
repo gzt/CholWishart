@@ -386,3 +386,69 @@ SEXP mvdigamma(SEXP x, SEXP p){
   return ans;
 }
 
+
+
+
+static double
+  *std_rNorm(int nu, int p, double ans[])
+  {
+  memset(ans, 0, p * nu * sizeof(double));
+    for (int j = 0; j < p * nu; j++) {
+        ans[j] = norm_rand();
+      }
+    return ans;
+  }
+
+/**
+* Simulate a sample of random matrices from a Pseudo Wishart distribution
+*
+* @param ns Number of samples to generate
+* @param nuP Degrees of freedom
+* @param scal Positive-definite scale matrix
+*
+* @return
+*/
+SEXP
+  rPseudoWishart(SEXP ns, SEXP nuP, SEXP scal)
+  {
+    SEXP ans;
+    int *dims = INTEGER(getAttrib(scal, R_DimSymbol)), info,
+      n = asInteger(ns), psqr, pn, nu = asInteger(nuP);
+    double *scCp, *ansp, *tmp, one = 1, zero = 0;
+
+
+    if (!isMatrix(scal) || !isReal(scal) || dims[0] != dims[1])
+      error("'scal' must be a square, real matrix");
+    if (n <= 0) n = 1;
+    // allocate early to avoid memory leaks in Callocs below.
+    PROTECT(ans = alloc3DArray(REALSXP, dims[0], dims[0], n));
+    psqr = dims[0] * dims[0];
+    pn = dims[0] * nu;
+    tmp = Calloc(pn, double);
+    scCp = Calloc(psqr, double);
+
+    Memcpy(scCp, REAL(scal), psqr);
+    memset(tmp, 0, pn * sizeof(double));
+    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info);
+    if (info)
+      error("'scal' matrix is not positive-definite");
+    ansp = REAL(ans);
+    GetRNGstate();
+
+
+
+    for (int j = 0; j < n; j++) {
+      double *ansj = ansp + j * psqr;
+      std_rNorm(nu, dims[0], tmp);
+      F77_CALL(dtrmm)("R", "U", "N", "N", &nu, dims,
+               &one, scCp, dims, tmp, &nu);
+      F77_CALL(dgemm)("T", "N", dims, dims, &nu, &one, tmp, &nu, tmp, &nu,
+               &zero, ansj, dims);
+
+    }
+
+    PutRNGstate();
+    Free(scCp); Free(tmp);
+    UNPROTECT(1);
+    return ans;
+  }
