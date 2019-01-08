@@ -13,6 +13,7 @@ extern SEXP mvdigamma(SEXP, SEXP);
 extern SEXP rCholWishart(SEXP, SEXP, SEXP);
 extern SEXP rInvCholWishart(SEXP, SEXP, SEXP);
 extern SEXP rInvWishart(SEXP, SEXP, SEXP);
+extern SEXP rPseudoWishart(SEXP, SEXP, SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
     {"C_lmvgamma",        (DL_FUNC) &lmvgamma,        2},
@@ -20,6 +21,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"C_rCholWishart",    (DL_FUNC) &rCholWishart,    3},
     {"C_rInvCholWishart", (DL_FUNC) &rInvCholWishart, 3},
     {"C_rInvWishart",     (DL_FUNC) &rInvWishart,     3},
+    {"C_rPseudoWishart",  (DL_FUNC) &rPseudoWishart,  3},
     {NULL, NULL, 0}
 };
 

@@ -12,9 +12,8 @@ rPseudoWishart(n, df, Sigma)
 \item{df}{integer parameter, "degrees of freedom", should be less than the
 dimension of \code{p}}
 
-\item{Sigma}{positive semi-definite \eqn{p \times p}{(p * p)} "scale" matrix, the
-matrix
-   parameter of the distribution.}
+\item{Sigma}{positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the
+matrix parameter of the distribution.}
 }
 \value{
 a numeric array, say \code{R}, of dimension \eqn{p \times p \times n}{p * p * n},
@@ -32,10 +31,8 @@ Generate n random matrices, distributed according
     covariance \code{Sigma}. Then \eqn{\sum X_i X_i'} is distributed as a pseudo
     Wishart \eqn{W_p(\Sigma, df)}{W_p(Sigma, df)}. Sometimes this is called a
     singular Wishart distribution, however, that can be confused with the case
-    where \eqn{\Sigma}{Sigma} itself is singular. This can generate samples for
-    positive semi-definite \eqn{\Sigma}{Sigma}, however, a function dedicated to
-    generating singular normal random distributions or singular pseudo Wishart
-    distributions should be used if that is desired.
+    where \eqn{\Sigma}{Sigma} itself is singular. If cases with a singular
+    \eqn{\Sigma}{Sigma} are desired, this function cannot provide them.
 }
 \examples{
 set.seed(20181227)
