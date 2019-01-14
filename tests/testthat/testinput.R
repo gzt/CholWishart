@@ -169,4 +169,6 @@ test_that("df incompatible:",{
   expect_error(rPseudoWishart(1, 2.5, A))
   expect_warning(rGenInvWishart(1, 6, A))
   expect_error(rGenInvWishart(1, 2.5, A))
+  expect_error(rPseudoWishart(1, 0, A))
+  expect_error(rGenInvWishart(1, 0, A))
 })
