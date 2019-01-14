@@ -157,3 +157,16 @@ test_that("Imaginary matrix:", {
 
 
 })
+
+test_that("df incompatible:",{
+  set.seed(20190114)
+  A <- rWishart(1, 10, diag(5))[,,1]
+  
+  expect_error(rCholWishart(1, 2, A))
+  expect_error(rInvWishart(1, 2, A))
+  expect_error(rInvCholWishart(1, 2, A))
+  expect_warning(rPseudoWishart(1, 6, A))
+  expect_error(rPseudoWishart(1, 2.5, A))
+  expect_warning(rGenInvWishart(1, 6, A))
+  expect_error(rGenInvWishart(1, 2.5, A))
+})
