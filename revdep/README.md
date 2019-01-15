@@ -10,13 +10,19 @@
 |collate  |en_US.UTF-8                  |
 |ctype    |en_US.UTF-8                  |
 |tz       |America/Chicago              |
-|date     |2018-12-23                   |
+|date     |2019-01-15                   |
 
 # Dependencies
 
 |package     |old   |new   |Δ  |
 |:-----------|:-----|:-----|:--|
-|CholWishart |0.9.3 |0.9.3 |NA |
+|CholWishart |0.9.4 |1.0.0 |*  |
 
 # Revdeps
+
+## All (1)
+
+|package                      |version |error |warning |note |
+|:----------------------------|:-------|:-----|:-------|:----|
+|[bgsmtr](problems.md#bgsmtr) |0.5     |1     |        |     |
 

@@ -51,6 +51,13 @@ test_that("Equivalent outputs for different options:", {
   expect_equal(B[1], B[2])
   expect_equal(C[1], C[2])
   expect_equal(B[1], -7.255196, tolerance = 1e-6)
+  
+  set.seed(20180221)
+  A <- rGenInvWishart(1,4,5*diag(5))[,,1]
+  set.seed(20180221)
+  B <- rPseudoWishart(1,4,5*diag(5))[,,1]
+  expect_equal(A %*% B %*% A, A)
+  expect_equal(B %*% A %*% B, B)
 })
 
 test_that("Ranks are correct:", {
