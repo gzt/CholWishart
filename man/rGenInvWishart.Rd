@@ -50,9 +50,20 @@ Generate n random matrices, distributed according
 }
 \examples{
 set.seed(20181228)
-A<-rGenInvWishart(1,4,5.0*diag(5))[,,1]
+A<-rGenInvWishart(1, 4, 5.0*diag(5))[,,1]
+A
 # A should be singular
 eigen(A)$values
+set.seed(20181228)
+B <- rPseudoWishart(1, 4, 5.0*diag(5))[,,1]
+
+# A should be a Moore-Penrose pseudo-inverse of B
+B
+# this should be equal to B
+B \%*\% A \%*\% B
+# this should be equal to A
+A \%*\% B \%*\% A
+
 
 }
 \references{

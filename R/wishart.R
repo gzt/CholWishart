@@ -340,8 +340,6 @@ rPseudoWishart <- function(n, df, Sigma) {
   Sigma <- as.matrix(Sigma)
   dims = dim(Sigma)
   p <- ncol(Sigma)
-  if (!all(dim(Sigma) == c(p, p)))
-    stop("Sigma must be square.")
   if (df > p - 1) {
     warning("df > dimension of Sigma - 1, using rWishart.")
     return(stats::rWishart(n, df, Sigma))

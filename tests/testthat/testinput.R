@@ -71,6 +71,7 @@ test_that("Bad numeric input:",{
   expect_error(rInvWishart(1, 10, matrix(c(1,1,1,0), nrow = 2)))
   expect_error(rInvCholWishart(1, 10, matrix(c(1,1,1,0), nrow =
                                                2)))
+  expect_error(rPseudoWishart(1, 1, matrix(c(1,1,1,0), nrow = 2)))
 
   expect_error(dWishart(diag(2), 10, matrix(c(1,1,1,0), nrow = 2)))
   expect_error(dInvWishart(diag(2), 10, matrix(c(1,1,1,0), nrow = 2)))
@@ -145,6 +146,7 @@ test_that("Imaginary matrix:", {
   expect_error(rCholWishart(1, 10, Z))
   expect_error(rInvCholWishart(1, 10, Z))
   expect_error(rInvWishart(-1, 10, Z))
+  expect_error(rPseudoWishart(1, 1, Z))
   expect_error(dWishart(diag(2),4, Z))
   expect_error(dInvWishart(diag(2), 4, Z))
   expect_error(dWishart(Z,4, diag(2)))
