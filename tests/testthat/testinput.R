@@ -86,6 +86,7 @@ test_that("Out of bounds numeric input: ", {
 
 
   expect_error(rCholWishart(1, 10, matrix(c(3, 1, 1, 1, 1, 3), nrow = 2)))
+  expect_error(rPseudoWishart(1, 2, matrix(c(3, 1, 1, 1, 1, 3), nrow = 2)))
   expect_error(rInvWishart(1, 10, matrix(c(3, 1, 1, 1, 1, 3), nrow = 2)))
   expect_error(rInvCholWishart(1, 10, matrix(c(3, 1, 1, 1, 1, 3), nrow =
                                                2)))
