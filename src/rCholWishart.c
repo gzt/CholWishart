@@ -388,10 +388,19 @@ SEXP mvdigamma(SEXP x, SEXP p){
 
 
 
-
+/**
+ * Simulate a sample of normal distribution of size n x p
+ *
+ * @param nu Number of samples to generate
+ * @param nuP Degrees of freedom
+ * @param ans array for results
+ *
+ * @return ans
+ */
 static double
   *std_rNorm(int nu, int p, double ans[])
   {
+    /* added 1/2019 */
   memset(ans, 0, p * nu * sizeof(double));
     for (int j = 0; j < p * nu; j++) {
         ans[j] = norm_rand();
@@ -415,7 +424,7 @@ SEXP
     int *dims = INTEGER(getAttrib(scal, R_DimSymbol)), info,
       n = asInteger(ns), psqr, pn, nu = asInteger(nuP);
     double *scCp, *ansp, *tmp, one = 1, zero = 0;
-
+    /* added 1/2019 */
 
     if (!isMatrix(scal) || !isReal(scal) || dims[0] != dims[1])
       error("'scal' must be a square, real matrix");
