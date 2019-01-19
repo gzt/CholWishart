@@ -1,5 +1,6 @@
 # CholWishart 1.0.0
 
+* Tweak the documentation
 * Port pseudo-Wishart to C, gen inv based on pseudo-Wishart
 
 # CholWishart 0.9.4
