@@ -19,9 +19,9 @@ it as the DOI reference than to hard-code some other URL.
 
 ## Reverse dependencies
 
-There are no reverse dependencies.
+This does not affect the 1 reverse dependency.
 
 ## Other notes
 
-This is an addition of two functions in R that does not make any changes in usage of functions
+This is a modification of two functions in R that does not make any changes in usage of functions
 from previous versions. As before, information about authorship is included in inst/AUTHORS.
