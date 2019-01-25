@@ -1,6 +1,6 @@
 ## Test environments
 * local Fedora 29 install, R 3.5.1
-* ubuntu 14.04.5 LTS (on travis-ci), R 3.5.1, 3.5.2, devel
+* ubuntu 14.04.5 LTS (on travis-ci), R 3.4.4, 3.5.2, devel
 * OS X Sierra 10.13.3 (on travis-ci), R 3.5.2 
 * win-builder (devel and release)
 
@@ -19,9 +19,8 @@ it as the DOI reference than to hard-code some other URL.
 
 ## Reverse dependencies
 
-There are no reverse dependencies.
+Functions used in reverse dependencies did not change.
 
 ## Other notes
 
-This is an addition of two functions in R that does not make any changes in usage of functions
-from previous versions. As before, information about authorship is included in inst/AUTHORS.
+This is a minor update of functions and documentation which does not alter the interface (and the version numbering is intended to indicate that the interface is stable now). As before, information about authorship is included in inst/AUTHORS.

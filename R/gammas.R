@@ -27,7 +27,7 @@
 #'
 #'    The multivariate gamma function for a dimension p is defined as:
 #'
-#'    \deqn{\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod{j=1}^{p}\Gamma [a+(1-j)/2]}{Gamma_p(a)=\pi^{p(p-1)/4}* Prod_{j=1}^{p}\Gamma[a+(1-j)/2]}
+#'    \deqn{\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod_{j=1}^{p}\Gamma [a+(1-j)/2]}{Gamma_p(a)=\pi^{p(p-1)/4}* Prod_{j=1}^{p}\Gamma[a+(1-j)/2]}
 #'    For \eqn{p = 1}, this is the same as the usual gamma function.
 #' @param x non-negative numeric vector, matrix, or array
 #' @param p positive integer, dimension of a square matrix
