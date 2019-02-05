@@ -67,7 +67,7 @@ rCholWishart <- function(n, df, Sigma) {
   if (n < 1 || !(is.numeric(n)))
     stop("'n' must be 1 or larger.")
 
-  if (!is.numeric(df) || df < dims[1] || dims[1] <= 0)
+  if (!is.numeric(df) || df < dims[1])
     stop("inconsistent degrees of freedom and dimension")
   .Call("C_rCholWishart", n, df, Sigma, PACKAGE = "CholWishart")
 }
@@ -132,7 +132,7 @@ rInvCholWishart <- function(n, df, Sigma) {
   if (n < 1 || !(is.numeric(n)))
     stop("'n' must be 1 or larger.")
 
-  if (!is.numeric(df) || df < dims[1] || dims[1] <= 0)
+  if (!is.numeric(df) || df < dims[1])
     stop("inconsistent degrees of freedom and dimension")
   .Call("C_rInvCholWishart", n, df, Sigma, PACKAGE = "CholWishart")
 }
@@ -188,7 +188,7 @@ rInvWishart <- function(n, df, Sigma) {
   if (n < 1 || !(is.numeric(n)))
     stop("'n' must be 1 or larger.")
 
-  if (!is.numeric(df) || df < dims[1] || dims[1] <= 0)
+  if (!is.numeric(df) || df < dims[1])
     stop("inconsistent degrees of freedom and dimension")
   .Call("C_rInvWishart", n, df, Sigma, PACKAGE = "CholWishart")
 }
