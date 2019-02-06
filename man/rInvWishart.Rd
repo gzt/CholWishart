@@ -36,9 +36,9 @@ Generate n random matrices, distributed according
 }
 \examples{
 set.seed(20180221)
-A<-rInvWishart(1,10,5*diag(5))[,,1]
+A<-rInvWishart(1L, 10, 5*diag(5L))[,,1]
 set.seed(20180221)
-B<-stats::rWishart(1,10,.2*diag(5))[,,1]
+B<-stats::rWishart(1L, 10, .2*diag(5L))[,,1]
 
 A \%*\% B
 }

@@ -27,7 +27,7 @@ A special mathematical function related to the gamma function,
 }
 \examples{
 digamma(1:10)
-mvdigamma(1:10,1)
+mvdigamma(1:10,1L)
 }
 \references{
 A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.

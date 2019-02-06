@@ -47,8 +47,8 @@
 #'
 #' @examples
 #' lgamma(1:12)
-#' lmvgamma(1:12,1)
-#' mvgamma(1:12,1)
+#' lmvgamma(1:12,1L)
+#' mvgamma(1:12,1L)
 #' gamma(1:12)
 lmvgamma <- function(x, p) {
   if (!all(is.numeric(x), is.numeric(p)))
@@ -97,7 +97,7 @@ mvgamma <- function(x, p)
 #'
 #' @examples
 #' digamma(1:10)
-#' mvdigamma(1:10,1)
+#' mvdigamma(1:10,1L)
 mvdigamma <- function(x, p) {
   if (!all(is.numeric(x), is.numeric(p)))
     stop("non-numeric input")

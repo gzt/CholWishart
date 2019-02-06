@@ -46,8 +46,8 @@ Note there are different ways of parameterizing the Inverse
 set.seed(20180222)
 A <- rWishart(1,10,diag(4))[,,1]
 A
-dWishart(x = A, df = 10,Sigma = diag(4), log=TRUE)
-dInvWishart(x = solve(A), df = 10,Sigma = diag(4), log=TRUE)
+dWishart(x = A, df = 10,Sigma = diag(4L), log=TRUE)
+dInvWishart(x = solve(A), df = 10,Sigma = diag(4L), log=TRUE)
 }
 \references{
 Dawid, A. (1981). Some Matrix-Variate Distribution Theory: Notational Considerations and a

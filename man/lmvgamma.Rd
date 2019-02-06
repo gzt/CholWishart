@@ -35,8 +35,8 @@ A special mathematical function related to the gamma function,
 
 \examples{
 lgamma(1:12)
-lmvgamma(1:12,1)
-mvgamma(1:12,1)
+lmvgamma(1:12,1L)
+mvgamma(1:12,1L)
 gamma(1:12)
 }
 \references{
