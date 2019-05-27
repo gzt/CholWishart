@@ -1,9 +1,9 @@
 Package: CholWishart
 Type: Package
 Title: Cholesky Decomposition of the Wishart Distribution
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: c(person(c("Geoffrey", "Thompson"),email="gzthompson@gmail.com",
-          role = c("aut", "cre")),  
+role = c("aut", "cre"), orcid = '0000-0003-2436-8822'),  
           person("R Core Team", role = "ctb"))
 Description: Sampling from the Cholesky factorization of a Wishart random 
     variable, sampling from the inverse Wishart distribution, sampling from 
