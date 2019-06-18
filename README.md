@@ -1,4 +1,3 @@
-
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
@@ -11,20 +10,20 @@ Status](https://ci.appveyor.com/api/projects/status/github/gzt/CholWishart?branc
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![](https://cranlogs.r-pkg.org/badges/CholWishart)](https://cran.r-project.org/package=CholWishart)
 
------
+------------------------------------------------------------------------
 
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.2-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/CholWishart)](https://cran.r-project.org/package=CholWishart)
 [![packageversion](https://img.shields.io/badge/Package%20version-1.0.1%20-orange.svg?style=flat-square)](commits/master)
 
------
+------------------------------------------------------------------------
 
 [![Last-changedate](https://img.shields.io/badge/last%20change-2019--06--17-yellowgreen.svg)](/commits/master)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# CholWishart
+CholWishart
+===========
 
 The most common use for this package is likely fast sampling from the
 inverse Wishart or use of the multivariate gamma or digamma functions.
@@ -49,40 +48,41 @@ some of those distributions and related functions. As the name suggests,
 the initial purpose was sampling from the Cholesky factorization of a
 Wishart distribution.
 
-# Usage
+Usage
+=====
 
 The package offers the following distributions:
 
-  - The inverse Wishart:
+-   The inverse Wishart:
 
-<!-- end list -->
+<!-- -->
 
     rInvWishart(n = 1,df = 5,Sigma = diag(4)))
 
-  - The Cholesky decomposition of the inverse Wishart:
+-   The Cholesky decomposition of the inverse Wishart:
 
-<!-- end list -->
+<!-- -->
 
     rInvCholWishart(n = 1,df = 5,Sigma = diag(4)))
 
-  - The Cholesky decomposition of the Wishart
+-   The Cholesky decomposition of the Wishart
 
-<!-- end list -->
+<!-- -->
 
     rCholWishart(n = 1,df = 5,Sigma = diag(4)))
 
-  - The pseudo Wishart and its pseudo-inverse, the generalized inverse
+-   The pseudo Wishart and its pseudo-inverse, the generalized inverse
     Wishart (`df` less than the dimension of `Sigma` minus 1):
 
-<!-- end list -->
+<!-- -->
 
     rPseudoWishart(n = 1,df = 3,Sigma = diag(5)))
     rGenInvWishart(n = 1,df = 3,Sigma = diag(5)))
 
-  - The package also offers density functions for the Wishart and
+-   The package also offers density functions for the Wishart and
     inverse Wishart distributions:
 
-<!-- end list -->
+<!-- -->
 
     dInvWishart(x = diag(4), df = 5, Sigma = diag(4), log = TRUE)
     dWishart(x = diag(4), df = 5, Sigma = diag(4), log = TRUE)
@@ -97,7 +97,8 @@ gamma and digamma (derivative of the log of the gamma) functions.
 I suspect the most useful functions for most people will be the
 `mvgamma` and `rInvWishart` functions.
 
-# Installation
+Installation
+============
 
 Now available on CRAN, install it at:
 
@@ -108,7 +109,8 @@ Install the latest development version at:
     # install.packages('devtools')
     devtools::install_github("gzt/CholWishart")
 
-# Contributing
+Contributing
+============
 
 Please note that the ‘CholWishart’ project is released with a
 [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By
