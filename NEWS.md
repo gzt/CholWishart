@@ -1,3 +1,7 @@
+# CholWishart 1.0.1
+
+* Update documentation to use `pkgdown`.
+
 # CholWishart 1.0.0
 
 * Tweak the documentation
