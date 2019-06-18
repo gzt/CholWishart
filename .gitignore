@@ -5,3 +5,7 @@
 /revdep/.cache.rds
 inst/doc
 CholWishart.Rproj
+*~
+*.Rproj
+*.so
+*.o
