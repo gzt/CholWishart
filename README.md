@@ -19,7 +19,7 @@ version](https://img.shields.io/badge/R%3E%3D-3.3.2-6666ff.svg)](https://cran.r-
 
 ------------------------------------------------------------------------
 
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--06--17-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--06--18-yellowgreen.svg)](/commits/master)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 CholWishart
@@ -113,5 +113,6 @@ Contributing
 ============
 
 Please note that the ‘CholWishart’ project is released with a
-[Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By
+[Contributor Code of
+Conduct](https://gzt.github.io/CholWishart/CODE_OF_CONDUCT.html). By
 contributing to this project, you agree to abide by its terms.
