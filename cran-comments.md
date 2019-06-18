@@ -1,3 +1,7 @@
+## Resubmission
+
+Previous submission had bad URIs in the README - this has been corrected.
+
 ## Test environments
 * local Fedora 30 install, R 3.6.0
 * Ubuntu Linux 16.04 LTS R-release, Debian Linux, R-devel, Fedora Linux, 
@@ -9,20 +13,10 @@
 
 ## R CMD check results
 
-On my own machine I got this NOTE but it doesn't show up elsewhere,
-so it's probably just my local configuration
-
-checking compilation flags used ... NOTE
-  Compilation used the following non-portable flag(s):
-    ‘-Werror=format-security’ ‘-Wp,-D_FORTIFY_SOURCE=2’
-    ‘-Wp,-D_GLIBCXX_ASSERTIONS’
-
-
 ## Reverse dependencies
 
 Functions used in reverse dependencies did not change.
 
 ## Other notes
 
-This is a minor update to the documentation and the associated web site of the 
-package.
+This is an update to fix the previous submission using full URLs in the README.
