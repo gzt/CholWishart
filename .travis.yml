@@ -23,7 +23,7 @@ matrix:
     os: osx
   - r: 3.3
     os: osx
-before_deploy: Rscript -e 'remotes::install_cran("pkgdown")'
+before_deploy: Rscript -e 'remotes::install_cran("pkgdown"); covr::codecov();'
 git:
    depth: 9999999
 deploy:
@@ -31,4 +31,4 @@ deploy:
   script: Rscript -e 'pkgdown::deploy_site_github()'
   skip_cleanup: true
   on:
-    condition: "$TRAVIS_R_VERSION_STRING = release"
+    condition: "$TRAVIS_R_VERSION_STRING = devel"
