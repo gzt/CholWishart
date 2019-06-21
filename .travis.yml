@@ -3,6 +3,7 @@
 language: R
 r_packages:
   - covr
+  - pkgdown
 warnings_are_errors: true
 sudo: false
 cache: packages
@@ -16,3 +17,10 @@ matrix:
     after_success: Rscript -e 'covr::codecov()'
   - r: oldrel
   - r: 3.3
+before_deploy: Rscript -e 'remotes::install_cran("pkgdown")'
+git:
+   depth: 9999999
+deploy:
+  provider: script
+  script: Rscript -e 'pkgdown::deploy_site_github()'
+  skip_cleanup: true
