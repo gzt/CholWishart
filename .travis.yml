@@ -13,7 +13,6 @@ os:
 r:
  - devel
  - release
-   after_success: Rscript -e 'covr::codecov()'
  - oldrel
  - 3.3
 matrix:
