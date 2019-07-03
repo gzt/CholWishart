@@ -20,7 +20,7 @@ version](https://img.shields.io/badge/R%3E%3D-3.3.2-6666ff.svg)](https://cran.r-
 
 -----
 
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--06--18-yellowgreen.svg)](https://github.com/gzt/CholWishart/))
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--06--18-yellowgreen.svg)](https://github.com/gzt/CholWishart/)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
