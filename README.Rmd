@@ -17,7 +17,7 @@ output: github_document
  
 ---
  
-[![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](https://github.com/gzt/CholWishart/))
+[![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](https://github.com/gzt/CholWishart/)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 # CholWishart
