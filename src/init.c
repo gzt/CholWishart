@@ -30,8 +30,7 @@ void R_init_CholWishart(DllInfo *dll)
 {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
-    
-    R_RegisterCCallable("CholWishart", "lmvgamma", (DL_FUNC) &lmvgamma);
+        R_RegisterCCallable("CholWishart", "lmvgamma", (DL_FUNC) &lmvgamma);
     R_RegisterCCallable("CholWishart", "mvdigamma", (DL_FUNC) &mvdigamma);
     R_RegisterCCallable("CholWishart", "rInvCholWishart", (DL_FUNC) &rInvCholWishart);
     R_RegisterCCallable("CholWishart", "rInvWishart", (DL_FUNC) &rInvWishart);

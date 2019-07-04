@@ -59,5 +59,4 @@ static R_INLINE SEXP mvdigamma(SEXP x, SEXP p){
   return fne(x, p);
 }
 
-
 #endif // R_CHOLWISHART_H
