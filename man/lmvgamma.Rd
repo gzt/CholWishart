@@ -20,7 +20,7 @@ For \code{lmvgamma} log of multivariate gamma of dimension \code{p} for each ent
 }
 \description{
 A special mathematical function related to the gamma function,
-    generalized for multivariate gammas. \code{lmvgamma} if the log of the
+    generalized for multivariate gammas. \code{lmvgamma} is the log of the
     multivariate gamma, \code{mvgamma}.
 
    The multivariate gamma function for a dimension p is defined as:
@@ -35,8 +35,8 @@ A special mathematical function related to the gamma function,
 
 \examples{
 lgamma(1:12)
-lmvgamma(1:12,1)
-mvgamma(1:12,1)
+lmvgamma(1:12,1L)
+mvgamma(1:12,1L)
 gamma(1:12)
 }
 \references{

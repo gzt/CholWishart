@@ -36,7 +36,7 @@ Generate n random matrices, distributed according
 }
 \examples{
 set.seed(20181227)
-A<-rPseudoWishart(1,4,5.0*diag(5))[,,1]
+A<-rPseudoWishart(1L, 4L, 5.0*diag(5L))[,,1]
 # A should be singular
 eigen(A)$values
 
