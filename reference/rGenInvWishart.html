@@ -86,7 +86,7 @@ Note there are different ways of parameterizing the Inverse
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">CholWishart</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -226,7 +226,7 @@ Ann. Statist. 22 (1994), no. 1, 395--405. doi: <a href='https://doi.org/10.1214/
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Random'>set.seed</a></span>(<span class='fl'>20181228</span>)
-<span class='no'>A</span><span class='kw'>&lt;-</span><span class='fu'>rGenInvWishart</span>(<span class='fl'>1</span>, <span class='fl'>4</span>, <span class='fl'>5.0</span>*<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/diag'>diag</a></span>(<span class='fl'>5</span>))[,,<span class='fl'>1</span>]
+<span class='no'>A</span><span class='kw'>&lt;-</span><span class='fu'>rGenInvWishart</span>(<span class='fl'>1L</span>, <span class='fl'>4L</span>, <span class='fl'>5.0</span>*<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/diag'>diag</a></span>(<span class='fl'>5L</span>))[,,<span class='fl'>1</span>]
 <span class='no'>A</span></div><div class='output co'>#&gt;             [,1]         [,2]         [,3]         [,4]         [,5]
 #&gt; [1,]  0.03316896 -0.084864096  0.003831550  0.031486573  0.060802330
 #&gt; [2,] -0.08486410  0.265497148  0.003410527 -0.059750288 -0.159210057
@@ -234,7 +234,7 @@ Ann. Statist. 22 (1994), no. 1, 395--405. doi: <a href='https://doi.org/10.1214/
 #&gt; [4,]  0.03148657 -0.059750288 -0.002461811  0.045360861  0.054727822
 #&gt; [5,]  0.06080233 -0.159210057  0.005335016  0.054727822  0.139802644</div><div class='input'><span class='co'># A should be singular</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/eigen'>eigen</a></span>(<span class='no'>A</span>)$<span class='no'>values</span></div><div class='output co'>#&gt; [1]  4.227578e-01  4.247200e-02  2.813051e-02  1.620710e-02 -4.758659e-17</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Random'>set.seed</a></span>(<span class='fl'>20181228</span>)
-<span class='no'>B</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='rPseudoWishart.html'>rPseudoWishart</a></span>(<span class='fl'>1</span>, <span class='fl'>4</span>, <span class='fl'>5.0</span>*<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/diag'>diag</a></span>(<span class='fl'>5</span>))[,,<span class='fl'>1</span>]
+<span class='no'>B</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='rPseudoWishart.html'>rPseudoWishart</a></span>(<span class='fl'>1L</span>, <span class='fl'>4L</span>, <span class='fl'>5.0</span>*<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/diag'>diag</a></span>(<span class='fl'>5L</span>))[,,<span class='fl'>1</span>]
 
 <span class='co'># A should be a Moore-Penrose pseudo-inverse of B</span>
 <span class='no'>B</span></div><div class='output co'>#&gt;            [,1]      [,2]      [,3]       [,4]       [,5]

@@ -33,7 +33,7 @@
 <meta property="og:title" content="Multivariate Gamma Function — lmvgamma" />
 
 <meta property="og:description" content="A special mathematical function related to the gamma function,
-    generalized for multivariate gammas. lmvgamma if the log of the
+    generalized for multivariate gammas. lmvgamma is the log of the
     multivariate gamma, mvgamma.
 The multivariate gamma function for a dimension p is defined as:
 $$\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod_{j=1}^{p}\Gamma [a+(1-j)/2]$$
@@ -68,7 +68,7 @@ $$\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod_{j=1}^{p}\Gamma [a+(1-j)/2]$$
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">CholWishart</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -127,7 +127,7 @@ $$\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod_{j=1}^{p}\Gamma [a+(1-j)/2]$$
     <div class="ref-description">
     
     <p>A special mathematical function related to the gamma function,
-    generalized for multivariate gammas. <code>lmvgamma</code> if the log of the
+    generalized for multivariate gammas. <code>lmvgamma</code> is the log of the
     multivariate gamma, <code>mvgamma</code>.</p>
 <p>The multivariate gamma function for a dimension p is defined as:</p>
 <p>$$\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod_{j=1}^{p}\Gamma [a+(1-j)/2]$$
@@ -177,8 +177,8 @@ In <em>Wikipedia, The Free Encyclopedia</em>,from
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Special'>lgamma</a></span>(<span class='fl'>1</span>:<span class='fl'>12</span>)</div><div class='output co'>#&gt;  [1]  0.0000000  0.0000000  0.6931472  1.7917595  3.1780538  4.7874917
-#&gt;  [7]  6.5792512  8.5251614 10.6046029 12.8018275 15.1044126 17.5023078</div><div class='input'><span class='fu'>lmvgamma</span>(<span class='fl'>1</span>:<span class='fl'>12</span>,<span class='fl'>1</span>)</div><div class='output co'>#&gt;  [1]  0.0000000  0.0000000  0.6931472  1.7917595  3.1780538  4.7874917
-#&gt;  [7]  6.5792512  8.5251614 10.6046029 12.8018275 15.1044126 17.5023078</div><div class='input'><span class='fu'>mvgamma</span>(<span class='fl'>1</span>:<span class='fl'>12</span>,<span class='fl'>1</span>)</div><div class='output co'>#&gt;  [1]        1        1        2        6       24      120      720     5040
+#&gt;  [7]  6.5792512  8.5251614 10.6046029 12.8018275 15.1044126 17.5023078</div><div class='input'><span class='fu'>lmvgamma</span>(<span class='fl'>1</span>:<span class='fl'>12</span>,<span class='fl'>1L</span>)</div><div class='output co'>#&gt;  [1]  0.0000000  0.0000000  0.6931472  1.7917595  3.1780538  4.7874917
+#&gt;  [7]  6.5792512  8.5251614 10.6046029 12.8018275 15.1044126 17.5023078</div><div class='input'><span class='fu'>mvgamma</span>(<span class='fl'>1</span>:<span class='fl'>12</span>,<span class='fl'>1L</span>)</div><div class='output co'>#&gt;  [1]        1        1        2        6       24      120      720     5040
 #&gt;  [9]    40320   362880  3628800 39916800</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Special'>gamma</a></span>(<span class='fl'>1</span>:<span class='fl'>12</span>)</div><div class='output co'>#&gt;  [1]        1        1        2        6       24      120      720     5040
 #&gt;  [9]    40320   362880  3628800 39916800</div></pre>
   </div>
