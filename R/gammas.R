@@ -22,7 +22,7 @@
 #' Multivariate Gamma Function
 #'
 #' @description A special mathematical function related to the gamma function,
-#'     generalized for multivariate gammas. \code{lmvgamma} if the log of the
+#'     generalized for multivariate gammas. \code{lmvgamma} is the log of the
 #'     multivariate gamma, \code{mvgamma}.
 #'
 #'    The multivariate gamma function for a dimension p is defined as:

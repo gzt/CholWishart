@@ -1,3 +1,12 @@
+# CholWishart 1.0.2
+
+* Add `R_RegisterCCallable()` interface and header `inst/install/CholWishart.h` 
+  so that the exported functions can be called in C from other packages.
+
+# CholWishart 1.0.1
+
+* Update documentation to use `pkgdown`.
+
 # CholWishart 1.0.0
 
 * Tweak the documentation

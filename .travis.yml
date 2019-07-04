@@ -3,16 +3,32 @@
 language: R
 r_packages:
   - covr
+  - pkgdown
 warnings_are_errors: true
 sudo: false
 cache: packages
 os:
-- linux
-- osx
+ - linux
+ - osx
+r:
+ - devel
+ - release
+ - oldrel
+ - 3.3
 matrix:
-  include:
+  exclude:
   - r: devel
-  - r: release
-    after_success: Rscript -e 'covr::codecov()'
+    os: osx
   - r: oldrel
+    os: osx
   - r: 3.3
+    os: osx
+before_deploy: Rscript -e 'remotes::install_cran("pkgdown"); covr::codecov();'
+git:
+   depth: 9999999
+deploy:
+  provider: script
+  script: Rscript -e 'pkgdown::deploy_site_github()'
+  skip_cleanup: true
+  on:
+    condition: "$TRAVIS_R_VERSION_STRING = devel"
