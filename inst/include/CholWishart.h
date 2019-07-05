@@ -59,4 +59,15 @@ static R_INLINE SEXP mvdigamma(SEXP x, SEXP p){
   return fne(x, p);
 }
 
+static R_INLINE SEXP  rPseudoWishart(SEXP ns, SEXP nuP, SEXP scal){
+  // Initialize a static function pointer that persists between fn calls
+  static SEXP (*fnf)(SEXP, SEXP, SEXP) = NULL;
+  // Only look it up once
+  if (fnf == NULL) {
+    fnf = (SEXP (*)(SEXP, SEXP, SEXP)) R_GetCCallable("CholWishart", "rPseudoWishart");
+  }
+  // Call the function
+  return fnf(ns, nuP, scal);
+}
+
 #endif // R_CHOLWISHART_H
