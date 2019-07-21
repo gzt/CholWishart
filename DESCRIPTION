@@ -11,7 +11,8 @@ Description: Sampling from the Cholesky factorization of a Wishart random
     from the pseudo Wishart distribution, sampling from the generalized
     inverse Wishart distribution, computing densities for the Wishart 
     and inverse Wishart distributions, and computing the multivariate gamma 
-    and digamma functions.
+    and digamma functions. Provides a header file so the C functions can be
+    called directly from other programs.
 License: GPL (>=3)
 Encoding: UTF-8
 Language: en-us
