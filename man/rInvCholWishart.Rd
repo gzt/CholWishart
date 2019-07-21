@@ -26,7 +26,7 @@ Generate n random matrices, distributed according
 
    Note there are different ways of parameterizing the Inverse
    Wishart distribution, so check which one you need.
-    Here,  If \eqn{X \sim IW_p(\Sigma, \nu)}{X ~ IW_p(Sigma, df)} then
+    Here, if \eqn{X \sim IW_p(\Sigma, \nu)}{X ~ IW_p(Sigma, df)} then
     \eqn{X^{-1} \sim W_p(\Sigma^{-1}, \nu)}{X^{-1} ~ W_p(Sigma^{-1}, df)}.
     Dawid (1981) has a different definition: if
     \eqn{X \sim W_p(\Sigma^{-1}, \nu)}{X ~ W_p(Sigma^{-1}, df)} and
