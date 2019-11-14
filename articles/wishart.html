@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Some Distributions Related to the Wishart • CholWishart</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Some Distributions Related to the Wishart">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -38,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -64,7 +65,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/gzt/CholWishart">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -77,13 +78,14 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Some Distributions Related to the Wishart</h1>
                         <h4 class="author">Geoffrey Thompson</h4>
             
-            <h4 class="date">2019-07-05</h4>
+            <h4 class="date">2019-11-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/gzt/CholWishart/blob/master/vignettes/wishart.Rmd"><code>vignettes/wishart.Rmd</code></a></small>
       <div class="hidden name"><code>wishart.Rmd</code></div>
@@ -94,20 +96,20 @@
     
 <p>The <code>stats</code> implementation of <code>rWishart</code> is in <code>C</code> and is very fast. It is often the case that we do not want a sample from the Wishart distribution, but rather from the inverse of it or from the Cholesky decomposition of a sample from the Wishart distribution. Or even from the inverse of the Cholesky decomposition of a draw from the Wishart distribution. Funnily enough (if you have a weird sense of humor), when you inspect the <a href="https://github.com/SurajGupta/r-source/blob/master/src/library/stats/src/rWishart.c">source code</a> for the <code>rWishart</code> distribution (<span class="citation">R Core Team (2017)</span>), it generates the Cholesky decomposition and then multiplies it out. Meanwhile, drawing from the <code>rWishart</code> and then inverting or doing a Cholesky decomposition or whatever in R is just slow – comparatively.</p>
 <p>This suggests some obvious efficiencies: perhaps, if we would rather have the Cholesky decomposition of the Wishart random matrix, we could tell the function to stop right there.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">'CholWishart'</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">20180220</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">A &lt;-<span class="st"> </span>stats<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/rWishart">rWishart</a></span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">5</span><span class="op">*</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">4</span>))[,,<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">20180220</span>)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">B &lt;-<span class="st"> </span><span class="kw"><a href="../reference/rInvWishart.html">rInvWishart</a></span>(<span class="dv">1</span>,<span class="dv">10</span>,.<span class="dv">2</span><span class="op">*</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">4</span>))[,,<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">20180220</span>)</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">C &lt;-<span class="st"> </span><span class="kw"><a href="../reference/rCholWishart.html">rCholWishart</a></span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">5</span><span class="op">*</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">4</span>))[,,<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">20180220</span>)</a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">D &lt;-<span class="st"> </span><span class="kw"><a href="../reference/rInvCholWishart.html">rInvCholWishart</a></span>(<span class="dv">1</span>,<span class="dv">10</span>,.<span class="dv">2</span><span class="op">*</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">4</span>))[,,<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">'CholWishart'</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">20180220</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">A &lt;-<span class="st"> </span>stats<span class="op">::</span><span class="kw"><a href="https://rdrr.io/r/stats/rWishart.html">rWishart</a></span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">5</span><span class="op">*</span><span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="dv">4</span>))[,,<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">20180220</span>)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">B &lt;-<span class="st"> </span><span class="kw"><a href="../reference/rInvWishart.html">rInvWishart</a></span>(<span class="dv">1</span>,<span class="dv">10</span>,.<span class="dv">2</span><span class="op">*</span><span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="dv">4</span>))[,,<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">20180220</span>)</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">C &lt;-<span class="st"> </span><span class="kw"><a href="../reference/rCholWishart.html">rCholWishart</a></span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">5</span><span class="op">*</span><span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="dv">4</span>))[,,<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">20180220</span>)</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">D &lt;-<span class="st"> </span><span class="kw"><a href="../reference/rInvCholWishart.html">rInvCholWishart</a></span>(<span class="dv">1</span>,<span class="dv">10</span>,.<span class="dv">2</span><span class="op">*</span><span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="dv">4</span>))[,,<span class="dv">1</span>]</a></code></pre></div>
 <div id="how-the-wishart-distribution-works" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-the-wishart-distribution-works" class="anchor"></a>How the Wishart distribution works</h2>
 <p>Suppose <span class="math inline">\(X_i \sim MVN(0, \Sigma)\)</span> are independent <span class="math inline">\(p\)</span>-variate normal random variables, <span class="math inline">\(i = 1, 2, \ldots n\)</span> with <span class="math inline">\(n &gt; p-1\)</span>. Then <span class="math inline">\(S = \sum X_i^T X_i\)</span>, called the “scatter matrix”, is almost surely positive definite if <span class="math inline">\(\Sigma\)</span> is positive definite. The random variable <span class="math inline">\(S\)</span> is said to be distributed as a Wishart random variable: <span class="math inline">\(S \sim W_p(n, \Sigma)\)</span>, see <span class="citation">Gupta and Nagar (1999)</span>. This can be extended to the non-integer case as well.</p>
-<p>How does <code><a href="https://www.rdocumentation.org/packages/stats/topics/rWishart">rWishart(n, df, Sigma)</a></code> work (supposing <code>Sigma</code> is a <span class="math inline">\(p \times p\)</span> matrix)? First, it generates a sample from the Cholesky decomposition of a Wishart distribution with <span class="math inline">\(\Sigma = \mathbf{I}_p\)</span>. How this is done: on the <span class="math inline">\(i^{th}\)</span> element of the main diagonal, draw from <span class="math inline">\(\sqrt{\chi_{p-i+1}^2}\)</span>. On the upper triangle of the matrix, sample from an independent <span class="math inline">\(N(0,1)\)</span> for each entry in the matrix. Then, this can be multiplied by the Cholesky decomposition of the provided <code>Sigma</code> to obtain the Cholesky factor of the desired sample from the Wishart random variable (this construction is due to Bartlett and is also known as the Bartlett Decomposition) (see <span class="citation">Anderson (1984)</span>). The <code>rWishart</code> function multiplies this out. Therefore, if the Cholesky decomposition is desired, one only needs to stop there.</p>
+<p>How does <code><a href="https://rdrr.io/r/stats/rWishart.html">rWishart(n, df, Sigma)</a></code> work (supposing <code>Sigma</code> is a <span class="math inline">\(p \times p\)</span> matrix)? First, it generates a sample from the Cholesky decomposition of a Wishart distribution with <span class="math inline">\(\Sigma = \mathbf{I}_p\)</span>. How this is done: on the <span class="math inline">\(i^{th}\)</span> element of the main diagonal, draw from <span class="math inline">\(\sqrt{\chi_{p-i+1}^2}\)</span>. On the upper triangle of the matrix, sample from an independent <span class="math inline">\(N(0,1)\)</span> for each entry in the matrix. Then, this can be multiplied by the Cholesky decomposition of the provided <code>Sigma</code> to obtain the Cholesky factor of the desired sample from the Wishart random variable (this construction is due to Bartlett and is also known as the Bartlett Decomposition) (see <span class="citation">Anderson (1984)</span>). The <code>rWishart</code> function multiplies this out. Therefore, if the Cholesky decomposition is desired, one only needs to stop there.</p>
 </div>
 <div id="the-inverse-wishart-distribution" class="section level2">
 <h2 class="hasAnchor">
@@ -120,19 +122,19 @@
 <a class="sourceLine" id="cb2-4" data-line-number="4">## [2,] -2.498002e-16  1.000000e+00  1.387779e-17  0.000000e+00</a>
 <a class="sourceLine" id="cb2-5" data-line-number="5">## [3,] -6.938894e-17  1.387779e-17  1.000000e+00 -5.551115e-17</a>
 <a class="sourceLine" id="cb2-6" data-line-number="6">## [4,]  0.000000e+00 -1.110223e-16  0.000000e+00  1.000000e+00</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/crossprod">crossprod</a></span>(C) <span class="op">%*%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/crossprod">crossprod</a></span>(D) <span class="co"># note: we do not expect C = D^-1, we expect this! </span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/r/base/crossprod.html">crossprod</a></span>(C) <span class="op">%*%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/crossprod.html">crossprod</a></span>(D) <span class="co"># note: we do not expect C = D^-1, we expect this! </span></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8">##               [,1]          [,2]          [,3]          [,4]</a>
 <a class="sourceLine" id="cb2-9" data-line-number="9">## [1,]  1.000000e+00  0.000000e+00 -2.775558e-17 -5.551115e-17</a>
 <a class="sourceLine" id="cb2-10" data-line-number="10">## [2,] -4.718448e-16  1.000000e+00 -9.714451e-17  0.000000e+00</a>
 <a class="sourceLine" id="cb2-11" data-line-number="11">## [3,] -1.249001e-16 -1.110223e-16  1.000000e+00 -1.110223e-16</a>
 <a class="sourceLine" id="cb2-12" data-line-number="12">## [4,]  1.110223e-16 -5.551115e-17  0.000000e+00  1.000000e+00</a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/crossprod">crossprod</a></span>(D) <span class="op">%*%</span><span class="st"> </span>A</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="kw"><a href="https://rdrr.io/r/base/crossprod.html">crossprod</a></span>(D) <span class="op">%*%</span><span class="st"> </span>A</a>
 <a class="sourceLine" id="cb2-14" data-line-number="14">##               [,1]          [,2]          [,3]          [,4]</a>
 <a class="sourceLine" id="cb2-15" data-line-number="15">## [1,]  1.000000e+00 -4.718448e-16 -1.249001e-16  1.110223e-16</a>
 <a class="sourceLine" id="cb2-16" data-line-number="16">## [2,]  0.000000e+00  1.000000e+00 -1.110223e-16 -5.551115e-17</a>
 <a class="sourceLine" id="cb2-17" data-line-number="17">## [3,] -2.775558e-17 -9.714451e-17  1.000000e+00  0.000000e+00</a>
 <a class="sourceLine" id="cb2-18" data-line-number="18">## [4,] -5.551115e-17  0.000000e+00 -1.110223e-16  1.000000e+00</a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/crossprod">crossprod</a></span>(C) <span class="op">%*%</span><span class="st"> </span>B</a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="kw"><a href="https://rdrr.io/r/base/crossprod.html">crossprod</a></span>(C) <span class="op">%*%</span><span class="st"> </span>B</a>
 <a class="sourceLine" id="cb2-20" data-line-number="20">##               [,1]          [,2]          [,3]          [,4]</a>
 <a class="sourceLine" id="cb2-21" data-line-number="21">## [1,]  1.000000e+00 -2.775558e-17 -1.387779e-16 -5.551115e-17</a>
 <a class="sourceLine" id="cb2-22" data-line-number="22">## [2,] -2.498002e-16  1.000000e+00  1.387779e-17  0.000000e+00</a>
@@ -144,7 +146,7 @@
 <h2 class="hasAnchor">
 <a href="#the-pseudo-wishart-and-generalized-inverse-wishart" class="anchor"></a>The Pseudo-Wishart and Generalized Inverse Wishart</h2>
 <p>Suppose, instead of the above definition of the Wishart, we have <span class="math inline">\(n \leq p-1\)</span>. Then the scatter matrix defined above will not be positive definite. This is called the pseudo Wishart distribution. If we then take the Moore-Penrose pseudo-inverse of this, we have the generalized inverse Wishart distribution.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw"><a href="../reference/rPseudoWishart.html">rPseudoWishart</a></span>(<span class="dt">n =</span> <span class="dv">1</span>, <span class="dt">df =</span> <span class="dv">3</span>, <span class="dt">Sigma =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">5</span>))[, , <span class="dv">1</span>]</a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw"><a href="../reference/rPseudoWishart.html">rPseudoWishart</a></span>(<span class="dt">n =</span> <span class="dv">1</span>, <span class="dt">df =</span> <span class="dv">3</span>, <span class="dt">Sigma =</span> <span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="dv">5</span>))[, , <span class="dv">1</span>]</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">A</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">##            [,1]       [,2]       [,3]       [,4]       [,5]</a>
 <a class="sourceLine" id="cb3-4" data-line-number="4">## [1,]  1.9553698  0.3134085 -0.8487259 -0.5174803  0.7487007</a>
@@ -152,9 +154,9 @@
 <a class="sourceLine" id="cb3-6" data-line-number="6">## [3,] -0.8487259 -0.6106572  0.5838199 -0.7509533 -0.7863404</a>
 <a class="sourceLine" id="cb3-7" data-line-number="7">## [4,] -0.5174803  1.4471373 -0.7509533  4.8520003  1.6696925</a>
 <a class="sourceLine" id="cb3-8" data-line-number="8">## [5,]  0.7487007  1.5976931 -0.7863404  1.6696925  1.4396817</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/qr">qr</a></span>(A)<span class="op">$</span>rank</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/base/qr.html">qr</a></span>(A)<span class="op">$</span>rank</a>
 <a class="sourceLine" id="cb3-10" data-line-number="10">## [1] 3</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">B &lt;-<span class="st"> </span><span class="kw"><a href="../reference/rGenInvWishart.html">rGenInvWishart</a></span>(<span class="dt">n =</span> <span class="dv">1</span>, <span class="dt">df =</span> <span class="dv">3</span>, <span class="dt">Sigma =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">5</span>))[, , <span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">B &lt;-<span class="st"> </span><span class="kw"><a href="../reference/rGenInvWishart.html">rGenInvWishart</a></span>(<span class="dt">n =</span> <span class="dv">1</span>, <span class="dt">df =</span> <span class="dv">3</span>, <span class="dt">Sigma =</span> <span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="dv">5</span>))[, , <span class="dv">1</span>]</a>
 <a class="sourceLine" id="cb3-12" data-line-number="12">B</a>
 <a class="sourceLine" id="cb3-13" data-line-number="13">##             [,1]         [,2]        [,3]         [,4]        [,5]</a>
 <a class="sourceLine" id="cb3-14" data-line-number="14">## [1,]  0.33422500  0.189387794  0.07086651 -0.052283855 -0.04241885</a>
@@ -162,7 +164,7 @@
 <a class="sourceLine" id="cb3-16" data-line-number="16">## [3,]  0.07086651 -0.024506366  0.10489215 -0.052325490  0.03515182</a>
 <a class="sourceLine" id="cb3-17" data-line-number="17">## [4,] -0.05228386  0.001357582 -0.05232549  0.028056042 -0.02793470</a>
 <a class="sourceLine" id="cb3-18" data-line-number="18">## [5,] -0.04241885 -0.075495830  0.03515182 -0.027934699  0.24217199</a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/qr">qr</a></span>(B)<span class="op">$</span>rank</a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="kw"><a href="https://rdrr.io/r/base/qr.html">qr</a></span>(B)<span class="op">$</span>rank</a>
 <a class="sourceLine" id="cb3-20" data-line-number="20">## [1] 3</a></code></pre></div>
 <p>Note that the rank of both of these matrices is less than the dimension.</p>
 </div>
@@ -171,16 +173,16 @@
 <a href="#density-computation" class="anchor"></a>Density computation</h2>
 <p>This package also has functions for density computations with the Wishart distribution. Densities are only defined for positive-definite input matrices and <span class="math inline">\(\nu\)</span> parameters larger than the dimension <span class="math inline">\(p\)</span>.</p>
 <p>The return value is on the <code>log</code> scale but it can be specified otherwise.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/dWishart.html">dWishart</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">3</span>), <span class="dt">df =</span> <span class="dv">5</span>, <span class="dv">5</span><span class="op">*</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">3</span>))</a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/dWishart.html">dWishart</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="dv">3</span>), <span class="dt">df =</span> <span class="dv">5</span>, <span class="dv">5</span><span class="op">*</span><span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="dv">3</span>))</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">## [1] -19.45038</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw"><a href="../reference/dWishart.html">dInvWishart</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">3</span>), <span class="dt">df =</span> <span class="dv">5</span>, <span class="fl">.2</span><span class="op">*</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw"><a href="../reference/dWishart.html">dInvWishart</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="dv">3</span>), <span class="dt">df =</span> <span class="dv">5</span>, <span class="fl">.2</span><span class="op">*</span><span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="dv">3</span>))</a>
 <a class="sourceLine" id="cb4-5" data-line-number="5">## [1] -19.45038</a></code></pre></div>
 <p>Note that, in general, these will not agree even if their covariance matrix parameters are inverses of each other. One of the reasons this works is that the determinant of <span class="math inline">\(\mathbf{X}\)</span> is <span class="math inline">\(1\)</span>.</p>
 <p>The density functions can take 3-D array input indexed on the third dimension and will output a vector of densities.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">20180311</span>)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">A &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/rWishart">rWishart</a></span>(<span class="dt">n =</span> <span class="dv">3</span>, <span class="dt">df =</span> <span class="dv">3</span>, <span class="dt">Sigma =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">3</span>))</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="../reference/dWishart.html">dWishart</a></span>(A, <span class="dt">df =</span> <span class="dv">3</span>, <span class="dt">Sigma =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">3</span>))</a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">20180311</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">A &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/rWishart.html">rWishart</a></span>(<span class="dt">n =</span> <span class="dv">3</span>, <span class="dt">df =</span> <span class="dv">3</span>, <span class="dt">Sigma =</span> <span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="../reference/dWishart.html">dWishart</a></span>(A, <span class="dt">df =</span> <span class="dv">3</span>, <span class="dt">Sigma =</span> <span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="dv">3</span>))</a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">## [1] -13.070275  -8.879220  -8.555529</a></code></pre></div>
 </div>
 <div id="other-functions" class="section level2">
@@ -190,7 +192,7 @@
 <p>The multivariate gamma also comes in a logarithmic form (<code>lmvgamma</code>).</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/lmvgamma.html">lmvgamma</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dv">1</span>) <span class="co"># note how they agree when p = 1</span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">## [1] 0.0000000 0.0000000 0.6931472 1.7917595</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Special">lgamma</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/Special.html">lgamma</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</a>
 <a class="sourceLine" id="cb6-4" data-line-number="4">## [1] 0.0000000 0.0000000 0.6931472 1.7917595</a></code></pre></div>
 </div>
 <div id="references" class="section level1 unnumbered">
@@ -217,6 +219,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -234,17 +237,20 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Geoffrey Thompson.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
