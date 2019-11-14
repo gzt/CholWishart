@@ -10,7 +10,7 @@
  
 [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.3.2-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/CholWishart)](https://cran.r-project.org/package=CholWishart)
-[![packageversion](https://img.shields.io/badge/Package%20version-1.0.3-orange.svg?style=flat-square)](https://github.com/gzt/CholWishart/releases)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.1.0-orange.svg?style=flat-square)](https://github.com/gzt/CholWishart/releases)
  
 ---
  

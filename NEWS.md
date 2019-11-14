@@ -1,3 +1,12 @@
+# CholWishart 1.1.0
+
+* Latest update to CRAN.
+
+# CholWishart 1.0.3
+
+* Minor updates to documentation
+
+
 # CholWishart 1.0.2
 
 * Add `R_RegisterCCallable()` interface and header `inst/install/CholWishart.h` 
