@@ -1,6 +1,3 @@
----
-output: github_document
----
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![Build Status](https://travis-ci.org/gzt/CholWishart.svg?branch=master)](https://travis-ci.org/gzt/CholWishart)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/gzt/CholWishart?branch=master&svg=true)](https://ci.appveyor.com/project/gzt/CholWishart)
@@ -13,7 +10,7 @@ output: github_document
  
 [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.3.2-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/CholWishart)](https://cran.r-project.org/package=CholWishart)
-[![packageversion](https://img.shields.io/badge/Package%20version-1.0.2-orange.svg?style=flat-square)](https://github.com/gzt/CholWishart/releases)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.0.3-orange.svg?style=flat-square)](https://github.com/gzt/CholWishart/releases)
  
 ---
  

@@ -1,7 +1,7 @@
 Package: CholWishart
 Type: Package
 Title: Cholesky Decomposition of the Wishart Distribution
-Version: 1.0.2
+Version: 1.0.3
 Authors@R: c(person(c("Geoffrey", "Thompson"),email="gzthompson@gmail.com",
     role = c("aut", "cre"), comment = c(ORCID = "0000-0003-2436-8822")),
     person("R Core Team", role = "ctb"))
