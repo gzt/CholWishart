@@ -95,7 +95,10 @@ Install the latest development version at:
 # install.packages('devtools')
 devtools::install_github("gzt/CholWishart")
 ```
+# Calling from other packages
 
+The header `inst/install/CholWishart.h` is available so that the exported functions 
+can be called in C from other packages. 
 
 # Contributing
 
