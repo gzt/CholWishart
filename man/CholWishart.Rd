@@ -3,7 +3,6 @@
 \docType{package}
 \name{CholWishart}
 \alias{CholWishart}
-\alias{CholWishart-package}
 \title{Cholesky Factor of a Wishart or Inverse Wishart}
 \description{
 The most common use for this package is likely fast sampling from the
