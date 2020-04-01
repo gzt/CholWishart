@@ -10,11 +10,13 @@ dWishart(x, df, Sigma, log = TRUE)
 dInvWishart(x, df, Sigma, log = TRUE)
 }
 \arguments{
-\item{x}{positive definite \eqn{p \times p}{p * p} observations for density estimation - either one matrix or a 3-D array.}
+\item{x}{positive definite \eqn{p \times p}{p * p} observations for density
+estimation - either one matrix or a 3-D array.}
 
 \item{df}{numeric parameter, "degrees of freedom".}
 
-\item{Sigma}{positive definite \eqn{p \times p}{p * p} "scale" matrix, the matrix parameter of the distribution.}
+\item{Sigma}{positive definite \eqn{p \times p}{p * p} "scale" matrix,
+the matrix parameter of the distribution.}
 
 \item{log}{logical, whether to return value on the log scale.}
 }
@@ -22,8 +24,8 @@ dInvWishart(x, df, Sigma, log = TRUE)
 Density or log of density
 }
 \description{
-Compute the density of an observation of a random Wishart distributed matrix (\code{dWishart})
-or an observation
+Compute the density of an observation of a random Wishart distributed matrix
+(\code{dWishart}) or an observation
 from the inverse Wishart distribution (\code{dInvWishart}).
 }
 \details{
@@ -34,7 +36,8 @@ Note there are different ways of parameterizing the Inverse
     Dawid (1981) has a different definition: if
     \eqn{X \sim W_p(\Sigma^{-1}, \nu)}{X ~ W_p(Sigma^{-1}, df)} and
     \eqn{\nu > p - 1}{df > p - 1}, then
-    \eqn{X^{-1} = Y \sim IW(\Sigma, \delta)}{X^{-1} = Y ~ IW(Sigma, delta)}, where
+    \eqn{X^{-1} = Y \sim IW(\Sigma, \delta)}{X^{-1} = Y ~ IW(Sigma, delta)},
+    where
     \eqn{\delta = \nu - p + 1}{delta = df - p + 1}.
 }
 \section{Functions}{
@@ -44,17 +47,20 @@ Note there are different ways of parameterizing the Inverse
 
 \examples{
 set.seed(20180222)
-A <- rWishart(1,10,diag(4))[,,1]
+A <- rWishart(1, 10, diag(4))[, , 1]
 A
-dWishart(x = A, df = 10,Sigma = diag(4L), log=TRUE)
-dInvWishart(x = solve(A), df = 10,Sigma = diag(4L), log=TRUE)
+dWishart(x = A, df = 10, Sigma = diag(4L), log = TRUE)
+dInvWishart(x = solve(A), df = 10, Sigma = diag(4L), log = TRUE)
 }
 \references{
-Dawid, A. (1981). Some Matrix-Variate Distribution Theory: Notational Considerations and a
-Bayesian Application. \emph{Biometrika}, 68(1), 265-274. \doi{10.2307/2335827}
+Dawid, A. (1981). Some Matrix-Variate Distribution Theory:
+Notational Considerations and a Bayesian Application.
+\emph{Biometrika}, 68(1), 265-274. \doi{10.2307/2335827}
 
-Gupta, A. K.  and D. K. Nagar (1999). \emph{Matrix variate distributions}. Chapman and Hall.
+Gupta, A. K.  and D. K. Nagar (1999). \emph{Matrix variate distributions}.
+Chapman and Hall.
 
-Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
+Mardia, K. V., J. T. Kent, and J. M. Bibby (1979)
+\emph{Multivariate Analysis},
 London: Academic Press.
 }

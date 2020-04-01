@@ -27,49 +27,58 @@
 #'
 #'    The multivariate gamma function for a dimension p is defined as:
 #'
-#'    \deqn{\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod_{j=1}^{p}\Gamma [a+(1-j)/2]}{Gamma_p(a)=\pi^{p(p-1)/4}* Prod_{j=1}^{p}\Gamma[a+(1-j)/2]}
+#'    \deqn{\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod_{j=1}^{p}
+#'     \Gamma [a+(1-j)/2]}{Gamma_p(a)=\pi^{p(p-1)/4}* Prod_{j=1}^{p}
+#'     \Gamma[a+(1-j)/2]}
 #'    For \eqn{p = 1}, this is the same as the usual gamma function.
 #' @param x non-negative numeric vector, matrix, or array
 #' @param p positive integer, dimension of a square matrix
 #'
-#' @return For \code{lmvgamma} log of multivariate gamma of dimension \code{p} for each entry of \code{x}. For non-log variant,
+#' @return For \code{lmvgamma} log of multivariate gamma of dimension \code{p}
+#'     for each entry of \code{x}. For non-log variant,
 #'     use \code{mvgamma}.
 #'
 #' @seealso \code{\link{gamma}} and \code{\link{lgamma}}
 #' @references
-#' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
+#' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}.
+#' Chapman and Hall.
 #'
 #' Multivariate gamma function.
 #' In \emph{Wikipedia, The Free Encyclopedia},from
-#' \url{https://en.wikipedia.org/w/index.php?title=Multivariate_gamma_function&oldid=808084916}
+#' \url{https://en.wikipedia.org/w/index.php?title=Multivariate_gamma_function}
 #'
 #' @export
 #'
 #' @examples
 #' lgamma(1:12)
-#' lmvgamma(1:12,1L)
-#' mvgamma(1:12,1L)
+#' lmvgamma(1:12, 1L)
+#' mvgamma(1:12, 1L)
 #' gamma(1:12)
 lmvgamma <- function(x, p) {
-  if (!all(is.numeric(x), is.numeric(p)))
+  if (!all(is.numeric(x), is.numeric(p))) {
     stop("non-numeric input")
+  }
 
   # making sure that object
   # returned is same shape as object passed
-  dims <- if (is.vector(x))
+  dims <- if (is.vector(x)) {
     length(x)
-  else
+  } else {
     dim(as.array(x))
+  }
 
-  result <- .Call("C_lmvgamma", as.numeric(x), as.integer(p), PACKAGE = "CholWishart")
+  result <- .Call("C_lmvgamma", as.numeric(x), as.integer(p),
+    PACKAGE = "CholWishart"
+  )
 
   return(array(result, dim = dims))
 }
 
 #' @describeIn lmvgamma Multivariate gamma function.
 #' @export
-mvgamma <- function(x, p)
+mvgamma <- function(x, p) {
   exp(lmvgamma(x, p))
+}
 
 #' Multivariate Digamma Function
 #'
@@ -79,33 +88,40 @@ mvgamma <- function(x, p)
 #'     multivariate gamma function; for \eqn{p = 1} it is the same as the
 #'     univariate digamma function.
 #'
-#'     \deqn{\psi_{p}(a)=\sum _{i=1}^{p}\psi(a+(1-i)/2)}{psi_p(a)=\sum psi(a+(1-i)/2)}
+#'     \deqn{\psi_{p}(a)=\sum _{i=1}^{p}\psi(a+(1-i)/2)
+#'      }{psi_p(a)=\sum psi(a+(1-i)/2)}
 #'     where \eqn{\psi}{psi} is the univariate digamma function (the
 #'     derivative of the log-gamma function).
 #' @param x non-negative numeric vector, matrix, or array
 #' @param p positive integer, dimension of a square matrix
 #' @return vector of values of multivariate digamma function.
 #'
-#' @seealso \code{\link{gamma}}, \code{\link{lgamma}}, \code{\link{digamma}}, and \code{\link{mvgamma}}
+#' @seealso \code{\link{gamma}}, \code{\link{lgamma}},
+#'          \code{\link{digamma}}, and \code{\link{mvgamma}}
 #' @export
 #' @references
-#' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
+#' A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}.
+#' Chapman and Hall.
 #'
 #' Multivariate gamma function.
 #' In \emph{Wikipedia, The Free Encyclopedia},from
-#' \url{https://en.wikipedia.org/w/index.php?title=Multivariate_gamma_function&oldid=808084916}
+#' \url{https://en.wikipedia.org/w/index.php?title=Multivariate_gamma_function}
 #'
 #' @examples
 #' digamma(1:10)
-#' mvdigamma(1:10,1L)
+#' mvdigamma(1:10, 1L)
 mvdigamma <- function(x, p) {
-  if (!all(is.numeric(x), is.numeric(p)))
+  if (!all(is.numeric(x), is.numeric(p))) {
     stop("non-numeric input")
-  dims <- if (is.vector(x))
+  }
+  dims <- if (is.vector(x)) {
     length(x)
-  else
+  } else {
     dim(as.array(x))
+  }
 
-  result <- .Call("C_mvdigamma", as.numeric(x), as.integer(p), PACKAGE = "CholWishart")
+  result <- .Call("C_mvdigamma", as.numeric(x), as.integer(p),
+    PACKAGE = "CholWishart"
+  )
   return(array(result, dim = dims))
 }

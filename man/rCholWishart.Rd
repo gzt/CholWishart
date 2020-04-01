@@ -11,11 +11,12 @@ rCholWishart(n, df, Sigma)
 
 \item{df}{numeric parameter, "degrees of freedom".}
 
-\item{Sigma}{positive definite \eqn{p \times p}{(p * p)} "scale" matrix, the matrix parameter of the
-distribution.}
+\item{Sigma}{positive definite \eqn{p \times p}{(p * p)} "scale" matrix,
+the matrix parameter of the distribution.}
 }
 \value{
-a numeric array, say \code{R}, of dimension \eqn{p \times p \times n}{p * p * n},
+a numeric array, say \code{R}, of dimension
+   \eqn{p \times p \times n}{p * p * n},
    where each \code{R[,,i]} is a Cholesky decomposition of a sample
    from the Wishart distribution \eqn{W_p(Sigma, df)}. Based on a
    modification of the existing code for the \code{rWishart} function.
@@ -30,25 +31,28 @@ Generate n random matrices, distributed according
 \examples{
 # How it is parameterized:
 set.seed(20180211)
-A <- rCholWishart(1L, 10, 3*diag(5L))[,,1]
+A <- rCholWishart(1L, 10, 3 * diag(5L))[, , 1]
 A
 set.seed(20180211)
-B <- rInvCholWishart(1L, 10, 1/3*diag(5L))[,,1]
+B <- rInvCholWishart(1L, 10, 1 / 3 * diag(5L))[, , 1]
 B
 crossprod(A) \%*\% crossprod(B)
 
 set.seed(20180211)
-C <- chol(stats::rWishart(1L, 10, 3*diag(5L))[,,1])
+C <- chol(stats::rWishart(1L, 10, 3 * diag(5L))[, , 1])
 C
 }
 \references{
-Anderson, T. W. (2003). \emph{An Introduction to Multivariate Statistical Analysis} (3rd ed.).
+Anderson, T. W. (2003). \emph{An Introduction to Multivariate Statistical
+Analysis} (3rd ed.).
 Hoboken, N. J.: Wiley Interscience.
 
-Mardia, K. V., J. T. Kent, and J. M. Bibby (1979) \emph{Multivariate Analysis},
+Mardia, K. V., J. T. Kent, and J. M. Bibby (1979)
+\emph{Multivariate Analysis},
 London: Academic Press.
 
-A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
+A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}.
+Chapman and Hall.
 }
 \seealso{
 \code{\link{rWishart}}, \code{\link{rInvCholWishart}}

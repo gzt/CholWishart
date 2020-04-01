@@ -15,7 +15,8 @@ mvgamma(x, p)
 \item{p}{positive integer, dimension of a square matrix}
 }
 \value{
-For \code{lmvgamma} log of multivariate gamma of dimension \code{p} for each entry of \code{x}. For non-log variant,
+For \code{lmvgamma} log of multivariate gamma of dimension \code{p}
+    for each entry of \code{x}. For non-log variant,
     use \code{mvgamma}.
 }
 \description{
@@ -25,7 +26,9 @@ A special mathematical function related to the gamma function,
 
    The multivariate gamma function for a dimension p is defined as:
 
-   \deqn{\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod_{j=1}^{p}\Gamma [a+(1-j)/2]}{Gamma_p(a)=\pi^{p(p-1)/4}* Prod_{j=1}^{p}\Gamma[a+(1-j)/2]}
+   \deqn{\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod_{j=1}^{p}
+    \Gamma [a+(1-j)/2]}{Gamma_p(a)=\pi^{p(p-1)/4}* Prod_{j=1}^{p}
+    \Gamma[a+(1-j)/2]}
    For \eqn{p = 1}, this is the same as the usual gamma function.
 }
 \section{Functions}{
@@ -35,16 +38,17 @@ A special mathematical function related to the gamma function,
 
 \examples{
 lgamma(1:12)
-lmvgamma(1:12,1L)
-mvgamma(1:12,1L)
+lmvgamma(1:12, 1L)
+mvgamma(1:12, 1L)
 gamma(1:12)
 }
 \references{
-A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}. Chapman and Hall.
+A. K. Gupta and D. K. Nagar 1999. \emph{Matrix variate distributions}.
+Chapman and Hall.
 
 Multivariate gamma function.
 In \emph{Wikipedia, The Free Encyclopedia},from
-\url{https://en.wikipedia.org/w/index.php?title=Multivariate_gamma_function&oldid=808084916}
+\url{https://en.wikipedia.org/w/index.php?title=Multivariate_gamma_function}
 }
 \seealso{
 \code{\link{gamma}} and \code{\link{lgamma}}
