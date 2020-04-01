@@ -109,24 +109,24 @@
 <ul>
 <li>The inverse Wishart:</li>
 </ul>
-<!-- --><div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">rInvWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">5</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>))<span class="er">)</span></span></code></pre></div>
+<!-- end list --><div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">rInvWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">5</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>))<span class="er">)</span></span></code></pre></div>
 <ul>
 <li>The Cholesky decomposition of the inverse Wishart:</li>
 </ul>
-<!-- --><div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">rInvCholWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">5</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>))<span class="er">)</span></span></code></pre></div>
+<!-- end list --><div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">rInvCholWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">5</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>))<span class="er">)</span></span></code></pre></div>
 <ul>
 <li>The Cholesky decomposition of the Wishart</li>
 </ul>
-<!-- --><div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">rCholWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">5</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>))<span class="er">)</span></span></code></pre></div>
+<!-- end list --><div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">rCholWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">5</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>))<span class="er">)</span></span></code></pre></div>
 <ul>
 <li>The pseudo Wishart and its pseudo-inverse, the generalized inverse Wishart (<code>df</code> less than the dimension of <code>Sigma</code> minus 1):</li>
 </ul>
-<!-- --><div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">rPseudoWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">3</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">5</span>))<span class="er">)</span></span>
+<!-- end list --><div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">rPseudoWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">3</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">5</span>))<span class="er">)</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="kw">rGenInvWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">3</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">5</span>))<span class="er">)</span></span></code></pre></div>
 <ul>
 <li>The package also offers density functions for the Wishart and inverse Wishart distributions:</li>
 </ul>
-<!-- --><div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">dInvWishart</span>(<span class="dt">x =</span> <span class="kw">diag</span>(<span class="dv">4</span>), <span class="dt">df =</span> <span class="dv">5</span>, <span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>), <span class="dt">log =</span> <span class="ot">TRUE</span>)</span>
+<!-- end list --><div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">dInvWishart</span>(<span class="dt">x =</span> <span class="kw">diag</span>(<span class="dv">4</span>), <span class="dt">df =</span> <span class="dv">5</span>, <span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>), <span class="dt">log =</span> <span class="ot">TRUE</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="kw">dWishart</span>(<span class="dt">x =</span> <span class="kw">diag</span>(<span class="dv">4</span>), <span class="dt">df =</span> <span class="dv">5</span>, <span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>), <span class="dt">log =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <p>In addition to this, the package offers the multivariate gamma function and multivariate digamma function, the multivariate counterparts of the gamma and digamma (derivative of the log of the gamma) functions.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">mvgamma</span>(<span class="dt">x =</span> <span class="dv">5</span>, <span class="dt">p =</span> <span class="dv">3</span>)</span>
