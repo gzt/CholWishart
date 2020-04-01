@@ -13,14 +13,11 @@ r:
  - devel
  - release
  - oldrel
- - 3.3
 matrix:
   exclude:
   - r: devel
     os: osx
   - r: oldrel
-    os: osx
-  - r: 3.3
     os: osx
 before_deploy: Rscript -e 'covr::codecov();'
 git:
