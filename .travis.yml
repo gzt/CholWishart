@@ -3,7 +3,6 @@
 language: R
 r_packages:
   - covr
-  - pkgdown
 warnings_are_errors: true
 sudo: false
 cache: packages
@@ -23,6 +22,6 @@ matrix:
     os: osx
   - r: 3.3
     os: osx
-before_deploy: Rscript -e 'remotes::install_cran("pkgdown"); covr::codecov();'
+before_deploy: Rscript -e 'covr::codecov();'
 git:
    depth: 9999999
