@@ -66,8 +66,8 @@
 #' C <- chol(stats::rWishart(1L, 10, 3 * diag(5L))[, , 1])
 #' C
 rCholWishart <- function(n, df, Sigma) {
-  Sigma <- as.matrix(Sigma)
-  dims <- dim(Sigma)
+  sigma <- as.matrix(Sigma)
+  dims <- dim(sigma)
   if (n < 1 || !(is.numeric(n))) {
     stop("'n' must be 1 or larger.")
   }
@@ -75,7 +75,7 @@ rCholWishart <- function(n, df, Sigma) {
   if (!is.numeric(df) || df < dims[1L]) {
     stop("inconsistent degrees of freedom and dimension")
   }
-  .Call("C_rCholWishart", n, df, Sigma, PACKAGE = "CholWishart")
+  .Call("C_rCholWishart", n, df, sigma, PACKAGE = "CholWishart")
 }
 
 
@@ -136,8 +136,8 @@ rCholWishart <- function(n, df, Sigma) {
 #' C <- chol(stats::rWishart(1L, 10, 3 * diag(5L))[, , 1])
 #' C
 rInvCholWishart <- function(n, df, Sigma) {
-  Sigma <- as.matrix(Sigma)
-  dims <- dim(Sigma)
+  sigma <- as.matrix(Sigma)
+  dims <- dim(sigma)
   if (n < 1 || !(is.numeric(n))) {
     stop("'n' must be 1 or larger.")
   }
@@ -145,7 +145,7 @@ rInvCholWishart <- function(n, df, Sigma) {
   if (!is.numeric(df) || df < dims[1L]) {
     stop("inconsistent degrees of freedom and dimension")
   }
-  .Call("C_rInvCholWishart", n, df, Sigma, PACKAGE = "CholWishart")
+  .Call("C_rInvCholWishart", n, df, sigma, PACKAGE = "CholWishart")
 }
 
 #' Random Inverse Wishart Distributed Matrices
@@ -199,8 +199,8 @@ rInvCholWishart <- function(n, df, Sigma) {
 #'
 #' A %*% B
 rInvWishart <- function(n, df, Sigma) {
-  Sigma <- as.matrix(Sigma)
-  dims <- dim(Sigma)
+  sigma <- as.matrix(Sigma)
+  dims <- dim(sigma)
   if (n < 1 || !(is.numeric(n))) {
     stop("'n' must be 1 or larger.")
   }
@@ -208,7 +208,7 @@ rInvWishart <- function(n, df, Sigma) {
   if (!is.numeric(df) || df < dims[1L]) {
     stop("inconsistent degrees of freedom and dimension")
   }
-  .Call("C_rInvWishart", n, df, Sigma, PACKAGE = "CholWishart")
+  .Call("C_rInvWishart", n, df, sigma, PACKAGE = "CholWishart")
 }
 
 
@@ -296,17 +296,17 @@ rInvWishart <- function(n, df, Sigma) {
 #' A %*% B %*% A
 rGenInvWishart <- function(n, df, Sigma) {
   tol <- 1e-06
-  Sigma <- as.matrix(Sigma)
-  Xresult <- rPseudoWishart(n, df, Sigma)
+  sigma <- as.matrix(Sigma)
+  x_result <- rPseudoWishart(n, df, sigma)
   for (i in 1:n) {
-    tmpX <- Xresult[, , i]
-    svdX <- svd(tmpX)
-    pos <- (svdX$d > tol)
-    Xresult[, , i] <- svdX$v[, pos, drop = FALSE] %*%
-      ((1 / svdX$d[pos]) * t(svdX$u[, pos, drop = FALSE]))
+    tmp_x <- x_result[, , i]
+    svd_x <- svd(tmp_x)
+    pos <- (svd_x$d > tol)
+    x_result[, , i] <- svd_x$v[, pos, drop = FALSE] %*%
+      ((1 / svd_x$d[pos]) * t(svd_x$u[, pos, drop = FALSE]))
   }
 
-  (Xresult)
+  (x_result)
 }
 
 
@@ -359,15 +359,15 @@ rGenInvWishart <- function(n, df, Sigma) {
 #' # A should be singular
 #' eigen(A)$values
 rPseudoWishart <- function(n, df, Sigma) {
-  Sigma <- as.matrix(Sigma)
-  p <- ncol(Sigma)
+  sigma <- as.matrix(Sigma)
+  p <- ncol(sigma)
   if (df > p - 1) {
     warning("df > dimension of Sigma - 1, using rWishart.")
-    return(stats::rWishart(n, df, Sigma))
+    return(stats::rWishart(n, df, sigma))
   }
   if (!(df == round(df))) stop("df needs to be a whole number.")
   if (df < 1) stop("df needs to be greater than 1.")
-  .Call("C_rPseudoWishart", n, df, Sigma, PACKAGE = "CholWishart")
+  .Call("C_rPseudoWishart", n, df, sigma, PACKAGE = "CholWishart")
 }
 
 .onUnload <- function(libpath) {
