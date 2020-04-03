@@ -28,23 +28,23 @@ test_that("Testing helper functions:", {
 
 test_that("Equivalent outputs for different options:", {
   set.seed(20180211)
-  A <- rInvCholWishart(1, 10, .5 * diag(5))[, , 1]
+  a_mat <- rInvCholWishart(1, 10, .5 * diag(5))[, , 1]
   set.seed(20180211)
-  B <- rCholWishart(1, 10, 2 * diag(5))[, , 1]
+  b_mat <- rCholWishart(1, 10, 2 * diag(5))[, , 1]
   set.seed(20180211)
-  C <- chol(rWishart(1, 10, 2 * diag(5))[, , 1])
+  c_mat <- chol(rWishart(1, 10, 2 * diag(5))[, , 1])
 
 
-  expect_equal(sum(abs(A[lower.tri(A)])), 0)
-  expect_equal(sum(abs(B[lower.tri(B)])), 0)
-  expect_equal(crossprod(A) %*% crossprod(B), diag(5))
-  expect_equal(B, C)
+  expect_equal(sum(abs(a_mat[lower.tri(a_mat)])), 0)
+  expect_equal(sum(abs(b_mat[lower.tri(b_mat)])), 0)
+  expect_equal(crossprod(a_mat) %*% crossprod(b_mat), diag(5))
+  expect_equal(b_mat, c_mat)
 
   set.seed(20180221)
-  A <- rInvWishart(1, 10, 5 * diag(5))[, , 1]
+  a_mat <- rInvWishart(1, 10, 5 * diag(5))[, , 1]
   set.seed(20180221)
-  B <- rWishart(1, 10, .2 * diag(5))[, , 1]
-  expect_equal(A %*% B, diag(5))
+  b_mat <- rWishart(1, 10, .2 * diag(5))[, , 1]
+  expect_equal(a_mat %*% b_mat, diag(5))
 
   # this really shouldn't work in general, it only works on diag()
   expect_equal(
@@ -56,19 +56,19 @@ test_that("Equivalent outputs for different options:", {
     dInvWishart(diag(5), 10, .2 * diag(5), log = FALSE)
   )
 
-  A <- array(c(diag(3), diag(3)), dim = c(3, 3, 2))
-  B <- dWishart(A, df = 4, Sigma = diag(3))
-  C <- dInvWishart(A, df = 4, Sigma = diag(3))
-  expect_equal(B[1], B[2])
-  expect_equal(C[1], C[2])
-  expect_equal(B[1], -7.255196, tolerance = 1e-6)
+  a_mat <- array(c(diag(3), diag(3)), dim = c(3, 3, 2))
+  b_mat <- dWishart(a_mat, df = 4, Sigma = diag(3))
+  c_mat <- dInvWishart(a_mat, df = 4, Sigma = diag(3))
+  expect_equal(b_mat[1], b_mat[2])
+  expect_equal(c_mat[1], c_mat[2])
+  expect_equal(b_mat[1], -7.255196, tolerance = 1e-6)
 
   set.seed(20180221)
-  A <- rGenInvWishart(1, 4, 5 * diag(5))[, , 1]
+  a_mat <- rGenInvWishart(1, 4, 5 * diag(5))[, , 1]
   set.seed(20180221)
-  B <- rPseudoWishart(1, 4, 5 * diag(5))[, , 1]
-  expect_equal(A %*% B %*% A, A)
-  expect_equal(B %*% A %*% B, B)
+  b_mat <- rPseudoWishart(1, 4, 5 * diag(5))[, , 1]
+  expect_equal(a_mat %*% b_mat %*% a_mat, a_mat)
+  expect_equal(b_mat %*% a_mat %*% b_mat, b_mat)
 })
 
 test_that("Ranks are correct:", {
