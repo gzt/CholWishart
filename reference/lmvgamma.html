@@ -86,7 +86,7 @@ $$\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod_{j=1}^{p}
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -112,7 +112,7 @@ $$\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod_{j=1}^{p}
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/gzt/CholWishart/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -144,9 +144,9 @@ $$\Gamma_{p}(a)=\pi^{p(p-1)/4}\prod_{j=1}^{p}
    For \(p = 1\), this is the same as the usual gamma function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>lmvgamma</span>(<span class='no'>x</span>, <span class='no'>p</span>)
+    <pre class="usage"><span class='fu'>lmvgamma</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>p</span><span class='op'>)</span>
 
-<span class='fu'>mvgamma</span>(<span class='no'>x</span>, <span class='no'>p</span>)</pre>
+<span class='fu'>mvgamma</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>p</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -184,10 +184,14 @@ In <em>Wikipedia, The Free Encyclopedia</em>,from
     <div class='dont-index'><p><code><a href='https://rdrr.io/r/base/Special.html'>gamma</a></code> and <code><a href='https://rdrr.io/r/base/Special.html'>lgamma</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Special.html'>lgamma</a></span>(<span class='fl'>1</span>:<span class='fl'>12</span>)</div><div class='output co'>#&gt;  [1]  0.0000000  0.0000000  0.6931472  1.7917595  3.1780538  4.7874917
-#&gt;  [7]  6.5792512  8.5251614 10.6046029 12.8018275 15.1044126 17.5023078</div><div class='input'><span class='fu'>lmvgamma</span>(<span class='fl'>1</span>:<span class='fl'>12</span>, <span class='fl'>1L</span>)</div><div class='output co'>#&gt;  [1]  0.0000000  0.0000000  0.6931472  1.7917595  3.1780538  4.7874917
-#&gt;  [7]  6.5792512  8.5251614 10.6046029 12.8018275 15.1044126 17.5023078</div><div class='input'><span class='fu'>mvgamma</span>(<span class='fl'>1</span>:<span class='fl'>12</span>, <span class='fl'>1L</span>)</div><div class='output co'>#&gt;  [1]        1        1        2        6       24      120      720     5040
-#&gt;  [9]    40320   362880  3628800 39916800</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Special.html'>gamma</a></span>(<span class='fl'>1</span>:<span class='fl'>12</span>)</div><div class='output co'>#&gt;  [1]        1        1        2        6       24      120      720     5040
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Special.html'>lgamma</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>12</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1]  0.0000000  0.0000000  0.6931472  1.7917595  3.1780538  4.7874917
+#&gt;  [7]  6.5792512  8.5251614 10.6046029 12.8018275 15.1044126 17.5023078</div><div class='input'><span class='fu'>lmvgamma</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>12</span>, <span class='fl'>1L</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1]  0.0000000  0.0000000  0.6931472  1.7917595  3.1780538  4.7874917
+#&gt;  [7]  6.5792512  8.5251614 10.6046029 12.8018275 15.1044126 17.5023078</div><div class='input'><span class='fu'>mvgamma</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>12</span>, <span class='fl'>1L</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1]        1        1        2        6       24      120      720     5040
+#&gt;  [9]    40320   362880  3628800 39916800</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Special.html'>gamma</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>12</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1]        1        1        2        6       24      120      720     5040
 #&gt;  [9]    40320   362880  3628800 39916800</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -204,7 +208,7 @@ In <em>Wikipedia, The Free Encyclopedia</em>,from
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -103,7 +103,7 @@ where \(\delta = \nu - p + 1\)." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -129,7 +129,7 @@ where \(\delta = \nu - p + 1\)." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/gzt/CholWishart/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -178,7 +178,7 @@ Dawid (1981) has a different definition: if
 where \(\delta = \nu - p + 1\).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rGenInvWishart</span>(<span class='no'>n</span>, <span class='no'>df</span>, <span class='no'>Sigma</span>)</pre>
+    <pre class="usage"><span class='fu'>rGenInvWishart</span><span class='op'>(</span><span class='va'>n</span>, <span class='va'>df</span>, <span class='va'>Sigma</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -234,31 +234,36 @@ Ann. Statist. 22 (1994), no. 1, 395--405. doi: <a href='https://doi.org/10.1214/
     and <code><a href='rPseudoWishart.html'>rPseudoWishart</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>20181228</span>)
-<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='fu'>rGenInvWishart</span>(<span class='fl'>1L</span>, <span class='fl'>4L</span>, <span class='fl'>5.0</span> * <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span>(<span class='fl'>5L</span>))[, , <span class='fl'>1</span>]
-<span class='no'>A</span></div><div class='output co'>#&gt;             [,1]         [,2]         [,3]         [,4]         [,5]
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>20181228</span><span class='op'>)</span>
+<span class='va'>A</span> <span class='op'>&lt;-</span> <span class='fu'>rGenInvWishart</span><span class='op'>(</span><span class='fl'>1L</span>, <span class='fl'>4L</span>, <span class='fl'>5.0</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fl'>5L</span><span class='op'>)</span><span class='op'>)</span><span class='op'>[</span>, , <span class='fl'>1</span><span class='op'>]</span>
+<span class='va'>A</span>
+</div><div class='output co'>#&gt;             [,1]         [,2]         [,3]         [,4]         [,5]
 #&gt; [1,]  0.03316896 -0.084864096  0.003831550  0.031486573  0.060802330
 #&gt; [2,] -0.08486410  0.265497148  0.003410527 -0.059750288 -0.159210057
 #&gt; [3,]  0.00383155  0.003410527  0.025737818 -0.002461811  0.005335016
 #&gt; [4,]  0.03148657 -0.059750288 -0.002461811  0.045360861  0.054727822
 #&gt; [5,]  0.06080233 -0.159210057  0.005335016  0.054727822  0.139802644</div><div class='input'><span class='co'># A should be singular</span>
-<span class='fu'><a href='https://rdrr.io/r/base/eigen.html'>eigen</a></span>(<span class='no'>A</span>)$<span class='no'>values</span></div><div class='output co'>#&gt; [1]  4.227578e-01  4.247200e-02  2.813051e-02  1.620710e-02 -4.758659e-17</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>20181228</span>)
-<span class='no'>B</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='rPseudoWishart.html'>rPseudoWishart</a></span>(<span class='fl'>1L</span>, <span class='fl'>4L</span>, <span class='fl'>5.0</span> * <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span>(<span class='fl'>5L</span>))[, , <span class='fl'>1</span>]
+<span class='fu'><a href='https://rdrr.io/r/base/eigen.html'>eigen</a></span><span class='op'>(</span><span class='va'>A</span><span class='op'>)</span><span class='op'>$</span><span class='va'>values</span>
+</div><div class='output co'>#&gt; [1]  4.227578e-01  4.247200e-02  2.813051e-02  1.620710e-02 -4.758659e-17</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>20181228</span><span class='op'>)</span>
+<span class='va'>B</span> <span class='op'>&lt;-</span> <span class='fu'><a href='rPseudoWishart.html'>rPseudoWishart</a></span><span class='op'>(</span><span class='fl'>1L</span>, <span class='fl'>4L</span>, <span class='fl'>5.0</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fl'>5L</span><span class='op'>)</span><span class='op'>)</span><span class='op'>[</span>, , <span class='fl'>1</span><span class='op'>]</span>
 
 <span class='co'># A should be a Moore-Penrose pseudo-inverse of B</span>
-<span class='no'>B</span></div><div class='output co'>#&gt;            [,1]      [,2]      [,3]       [,4]       [,5]
+<span class='va'>B</span>
+</div><div class='output co'>#&gt;            [,1]      [,2]      [,3]       [,4]       [,5]
 #&gt; [1,]   6.855443 -1.979593  9.123138  12.366797 -10.283094
 #&gt; [2,]  -1.979593 11.310039 -2.313472   1.767831  13.168709
 #&gt; [3,]   9.123138 -2.313472 38.453046   1.981594  -8.875384
 #&gt; [4,]  12.366797  1.767831  1.981594  33.137945 -16.467918
 #&gt; [5,] -10.283094 13.168709 -8.875384 -16.467918  33.403804</div><div class='input'><span class='co'># this should be equal to B</span>
-<span class='no'>B</span> <span class='kw'>%*%</span> <span class='no'>A</span> <span class='kw'>%*%</span> <span class='no'>B</span></div><div class='output co'>#&gt;            [,1]      [,2]      [,3]       [,4]       [,5]
+<span class='va'>B</span> <span class='op'>%*%</span> <span class='va'>A</span> <span class='op'>%*%</span> <span class='va'>B</span>
+</div><div class='output co'>#&gt;            [,1]      [,2]      [,3]       [,4]       [,5]
 #&gt; [1,]   6.855443 -1.979593  9.123138  12.366797 -10.283094
 #&gt; [2,]  -1.979593 11.310039 -2.313472   1.767831  13.168709
 #&gt; [3,]   9.123138 -2.313472 38.453046   1.981594  -8.875384
 #&gt; [4,]  12.366797  1.767831  1.981594  33.137945 -16.467918
 #&gt; [5,] -10.283094 13.168709 -8.875384 -16.467918  33.403804</div><div class='input'><span class='co'># this should be equal to A</span>
-<span class='no'>A</span> <span class='kw'>%*%</span> <span class='no'>B</span> <span class='kw'>%*%</span> <span class='no'>A</span></div><div class='output co'>#&gt;             [,1]         [,2]         [,3]         [,4]         [,5]
+<span class='va'>A</span> <span class='op'>%*%</span> <span class='va'>B</span> <span class='op'>%*%</span> <span class='va'>A</span>
+</div><div class='output co'>#&gt;             [,1]         [,2]         [,3]         [,4]         [,5]
 #&gt; [1,]  0.03316896 -0.084864096  0.003831550  0.031486573  0.060802330
 #&gt; [2,] -0.08486410  0.265497148  0.003410527 -0.059750288 -0.159210057
 #&gt; [3,]  0.00383155  0.003410527  0.025737818 -0.002461811  0.005335016
@@ -279,7 +284,7 @@ Ann. Statist. 22 (1994), no. 1, 395--405. doi: <a href='https://doi.org/10.1214/
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
