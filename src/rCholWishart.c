@@ -36,7 +36,9 @@
 #include <Rinternals.h>
 #include <Rmath.h>
 #include <R_ext/Lapack.h>        /* for Lapack (dpotrf, etc.) and BLAS */
-
+#ifndef FCONE
+# define FCONE
+#endif
 
 
 
@@ -111,7 +113,7 @@ SEXP
 
     Memcpy(scCp, REAL(scal), psqr);
     memset(tmp, 0, psqr * sizeof(double));
-    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info);
+    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
     ansp = REAL(ans);
@@ -169,13 +171,13 @@ SEXP
 
     Memcpy(scCp, REAL(scal), psqr);
     memset(tmp, 0, psqr * sizeof(double));
-    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info);
+    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
-    F77_CALL(dpotri)("U", &(dims[0]), scCp, &(dims[0]), &info);
+    F77_CALL(dpotri)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
-    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info);
+    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
     /* So here is the deal: first two invert Sigma.
@@ -199,7 +201,7 @@ SEXP
         error("Inv Wishart matrix is not positive-definite");
 
 
-      F77_CALL(dpotrf)("U", &(dims[0]), tmp, &(dims[0]), &info);
+      F77_CALL(dpotrf)("U", &(dims[0]), tmp, &(dims[0]), &info FCONE FCONE);
       if (info)
         error("Inv Wishart matrix is not positive-definite");
 
@@ -244,13 +246,13 @@ SEXP
 
     Memcpy(scCp, REAL(scal), psqr);
     memset(tmp, 0, psqr * sizeof(double));
-    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info);
+    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
-    F77_CALL(dpotri)("U", &(dims[0]), scCp, &(dims[0]), &info);
+    F77_CALL(dpotri)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
-    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info);
+    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
     /* So here is the deal: first two invert Sigma.
@@ -439,7 +441,7 @@ SEXP
 
     Memcpy(scCp, REAL(scal), psqr);
     memset(tmp, 0, pn * sizeof(double));
-    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info);
+    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
     ansp = REAL(ans);
@@ -453,7 +455,7 @@ SEXP
       F77_CALL(dtrmm)("R", "U", "N", "N", &nu, dims,
                &one, scCp, dims, tmp, &nu);
       F77_CALL(dgemm)("T", "N", dims, dims, &nu, &one, tmp, &nu, tmp, &nu,
-               &zero, ansj, dims);
+               &zero, ansj, dims FCONE FCONE);
 
     }
 
