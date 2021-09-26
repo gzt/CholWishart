@@ -444,7 +444,7 @@ SEXP
 
     Memcpy(scCp, REAL(scal), psqr);
     memset(tmp, 0, pn * sizeof(double));
-    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
+    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
     ansp = REAL(ans);
