@@ -24,6 +24,7 @@
  *  along with this program; if not, a copy is available at
  *  https://www.R-project.org/Licenses/
  */
+#define USE_FC_LEN_T
 
 #ifdef HAVE_CONFIG_H
 # include <config.h>
