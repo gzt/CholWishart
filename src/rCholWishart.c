@@ -113,7 +113,7 @@ SEXP
 
     Memcpy(scCp, REAL(scal), psqr);
     memset(tmp, 0, psqr * sizeof(double));
-    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
+    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
     ansp = REAL(ans);
@@ -121,8 +121,9 @@ SEXP
     for (int j = 0; j < n; j++) {
       double *ansj = ansp + j * psqr;
       std_rWishart_factor(nu, dims[0], 1, tmp);
-      F77_CALL(dtrmm)("R", "U", "N", "N", dims, dims,
-               &one, scCp, dims, tmp, dims);
+	F77_CALL(dtrmm)("R", "U", "N", "N", dims, dims,
+			&one, scCp, dims, tmp, dims
+			FCONE FCONE FCONE FCONE); // BLAS
 
       /* Here we make the main change by omitting the A * A**T step */
       /* Original code from R stats: rWishart.c Altered Feb 2018. */
@@ -171,13 +172,13 @@ SEXP
 
     Memcpy(scCp, REAL(scal), psqr);
     memset(tmp, 0, psqr * sizeof(double));
-    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
+    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
-    F77_CALL(dpotri)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
+    F77_CALL(dpotri)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
-    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
+    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
     /* So here is the deal: first two invert Sigma.
@@ -189,19 +190,20 @@ SEXP
     for (int j = 0; j < n; j++) {
       double *ansj = ansp + j * psqr;
       std_rWishart_factor(nu, dims[0], 1, tmp);
-      F77_CALL(dtrmm)("R", "U", "N", "N", dims, dims,
-               &one, scCp, dims, tmp, dims);
+      	F77_CALL(dtrmm)("R", "U", "N", "N", dims, dims,
+			&one, scCp, dims, tmp, dims
+			FCONE FCONE FCONE FCONE); // BLAS
 
       /* Here we make the main change by omitting the A * A**T step */
       /* And inverting. Altered Feb 2018. */
       /* Original code from R stats: rWishart.c */
       F77_CALL(dpotri)("U",&(dims[1]), tmp,
-               &(dims[1]), &info);
+               &(dims[1]), &info FCONE);
       if (info)
         error("Inv Wishart matrix is not positive-definite");
 
 
-      F77_CALL(dpotrf)("U", &(dims[0]), tmp, &(dims[0]), &info FCONE FCONE);
+      F77_CALL(dpotrf)("U", &(dims[0]), tmp, &(dims[0]), &info FCONE);
       if (info)
         error("Inv Wishart matrix is not positive-definite");
 
@@ -246,13 +248,13 @@ SEXP
 
     Memcpy(scCp, REAL(scal), psqr);
     memset(tmp, 0, psqr * sizeof(double));
-    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
+    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
-    F77_CALL(dpotri)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
+    F77_CALL(dpotri)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
-    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE FCONE);
+    F77_CALL(dpotrf)("U", &(dims[0]), scCp, &(dims[0]), &info FCONE);
     if (info)
       error("'scal' matrix is not positive-definite");
     /* So here is the deal: first two invert Sigma.
@@ -265,7 +267,8 @@ SEXP
       double *ansj = ansp + j * psqr;
       std_rWishart_factor(nu, dims[0], 1, tmp);
       F77_CALL(dtrmm)("R", "U", "N", "N", dims, dims,
-               &one, scCp, dims, tmp, dims);
+			&one, scCp, dims, tmp, dims
+			FCONE FCONE FCONE FCONE); // BLAS
 
       /* Here we make the main change by inverting and then doing */
       /* the A * A**T step */
@@ -273,7 +276,7 @@ SEXP
       /* Original code from R stats: rWishart.c */
 
       F77_CALL(dpotri)("U",&(dims[1]), tmp,
-               &(dims[1]), &info);
+               &(dims[1]), &info FCONE);
       if (info)
         error("Inv Wishart matrix is not positive-definite");
 
@@ -453,7 +456,8 @@ SEXP
       double *ansj = ansp + j * psqr;
       std_rNorm(nu, dims[0], tmp);
       F77_CALL(dtrmm)("R", "U", "N", "N", &nu, dims,
-               &one, scCp, dims, tmp, &nu);
+               &one, scCp, dims, tmp, &nu
+                     FCONE FCONE FCONE FCONE);
       F77_CALL(dgemm)("T", "N", dims, dims, &nu, &one, tmp, &nu, tmp, &nu,
                &zero, ansj, dims FCONE FCONE);
 
