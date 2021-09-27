@@ -1,15 +1,4 @@
 linters: with_defaults(
-    object_name_linter = NULL, # 47
+   # object_name_linter = NULL, # 47
     dummy_linter = NULL
-  )
-exclusions: list(
-    "man/CholWishart.Rd",
-    "man/dWishart.Rd",
-    "man/lmvgamma.Rd",
-    "man/mvdigamma.Rd",
-    "man/rCholWishart.Rd",
-    "man/rGenInvWishart.Rd",
-    "man/rInvCholWishart.Rd",
-    "man/rInvWishart.Rd",
-    "man/rPseudoWishart.Rd",
   )
