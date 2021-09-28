@@ -14,10 +14,13 @@
 
 This is a local configuration issue.
 
+Some checks provide a NOTE about a JSTOR link but it is the 
+canonical one generated from the DOI and the link works.
+
 
 ## Reverse dependencies
 
-Functions used in reverse dependencies did not change.
+I have confirmed that the changes do not impact the reverse dependencies.
 
 ## Other notes
 

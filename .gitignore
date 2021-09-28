@@ -10,3 +10,4 @@ CholWishart.Rproj
 *.so
 *.o
 CRAN-RELEASE
+/revdep/*
