@@ -93,7 +93,7 @@
 <hr>
 <p><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.2-6666ff.svg" alt="minimal R version"></a> <a href="https://cran.r-project.org/package=CholWishart"><img src="http://www.r-pkg.org/badges/version/CholWishart" alt="CRAN_Status_Badge"></a> <a href="https://github.com/gzt/CholWishart/releases"><img src="https://img.shields.io/badge/Package%20version-1.1.1-orange.svg?style=flat-square" alt="packageversion"></a> <!-- badges: end --></p>
 <hr>
-<p><a href="https://github.com/gzt/CholWishart/"><img src="https://img.shields.io/badge/last%20change-2021--09--26-yellowgreen.svg" alt="Last-changedate"></a></p>
+<p><a href="https://github.com/gzt/CholWishart/"><img src="https://img.shields.io/badge/last%20change-2021--09--27-yellowgreen.svg" alt="Last-changedate"></a></p>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <div id="cholwishart" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
@@ -109,24 +109,24 @@
 <ul>
 <li>The inverse Wishart:</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">rInvWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">5</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>))<span class="er">)</span></span></code></pre></div>
+<!-- --><div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">rInvWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">5</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>))<span class="er">)</span></span></code></pre></div>
 <ul>
 <li>The Cholesky decomposition of the inverse Wishart:</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">rInvCholWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">5</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>))<span class="er">)</span></span></code></pre></div>
+<!-- --><div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">rInvCholWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">5</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>))<span class="er">)</span></span></code></pre></div>
 <ul>
 <li>The Cholesky decomposition of the Wishart</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">rCholWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">5</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>))<span class="er">)</span></span></code></pre></div>
+<!-- --><div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">rCholWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">5</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>))<span class="er">)</span></span></code></pre></div>
 <ul>
 <li>The pseudo Wishart and its pseudo-inverse, the generalized inverse Wishart (<code>df</code> less than the dimension of <code>Sigma</code> minus 1):</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">rPseudoWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">3</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">5</span>))<span class="er">)</span></span>
+<!-- --><div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">rPseudoWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">3</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">5</span>))<span class="er">)</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="kw">rGenInvWishart</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">df =</span> <span class="dv">3</span>,<span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">5</span>))<span class="er">)</span></span></code></pre></div>
 <ul>
 <li>The package also offers density functions for the Wishart and inverse Wishart distributions:</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">dInvWishart</span>(<span class="dt">x =</span> <span class="kw">diag</span>(<span class="dv">4</span>), <span class="dt">df =</span> <span class="dv">5</span>, <span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>), <span class="dt">log =</span> <span class="ot">TRUE</span>)</span>
+<!-- --><div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">dInvWishart</span>(<span class="dt">x =</span> <span class="kw">diag</span>(<span class="dv">4</span>), <span class="dt">df =</span> <span class="dv">5</span>, <span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>), <span class="dt">log =</span> <span class="ot">TRUE</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="kw">dWishart</span>(<span class="dt">x =</span> <span class="kw">diag</span>(<span class="dv">4</span>), <span class="dt">df =</span> <span class="dv">5</span>, <span class="dt">Sigma =</span> <span class="kw">diag</span>(<span class="dv">4</span>), <span class="dt">log =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <p>In addition to this, the package offers the multivariate gamma function and multivariate digamma function, the multivariate counterparts of the gamma and digamma (derivative of the log of the gamma) functions.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">mvgamma</span>(<span class="dt">x =</span> <span class="dv">5</span>, <span class="dt">p =</span> <span class="dv">3</span>)</span>
@@ -191,8 +191,8 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
-<li><a href="https://travis-ci.org/gzt/CholWishart"><img src="https://travis-ci.org/gzt/CholWishart.svg?branch=master" alt="Build Status"></a></li>
+<li><a href="http://www.repostatus.org/"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
+<li><a href="https://travis-ci.com/gzt/CholWishart"><img src="https://travis-ci.org/gzt/CholWishart.svg?branch=master" alt="Build Status"></a></li>
 <li><a href="https://ci.appveyor.com/project/gzt/CholWishart"><img src="https://ci.appveyor.com/api/projects/status/github/gzt/CholWishart?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
 <li><a href="https://codecov.io/gh/gzt/CholWishart"><img src="https://codecov.io/gh/gzt/CholWishart/branch/master/graph/badge.svg" alt="codecov"></a></li>
 <li><a href="https://github.com/gzt/CholWishart/actions"><img src="https://github.com/gzt/CholWishart/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
