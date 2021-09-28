@@ -5,3 +5,5 @@ library.noindex
 data.sqlite
 *.html
 *.md
+README.md
+problems.md
