@@ -3,14 +3,14 @@
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
-developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/)
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/gzt/CholWishart?branch=master&svg=true)](https://ci.appveyor.com/project/gzt/CholWishart)
 [![codecov](https://codecov.io/gh/gzt/CholWishart/branch/master/graph/badge.svg)](https://codecov.io/gh/gzt/CholWishart)
 [![R build
 status](https://github.com/gzt/CholWishart/workflows/R-CMD-check/badge.svg)](https://github.com/gzt/CholWishart/actions)
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![](https://cranlogs.r-pkg.org/badges/CholWishart)](https://cran.r-project.org/package=CholWishart)
 
 -----
@@ -23,7 +23,7 @@ version](https://img.shields.io/badge/R%3E%3D-3.6.2-6666ff.svg)](https://cran.r-
 
 -----
 
-[![Last-changedate](https://img.shields.io/badge/last%20change-2021--09--28-yellowgreen.svg)](https://github.com/gzt/CholWishart/)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2021--10--04-yellowgreen.svg)](https://github.com/gzt/CholWishart/)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
