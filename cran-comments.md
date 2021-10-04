@@ -1,3 +1,6 @@
+This is a resubmission. I believe I have fixed all the links apart from one mentioned below
+(which is an issue with the reference provided by DOI itself).
+
 ## Test environments
 * local Fedora install, R 4.0.5
 * ubuntu Ubuntu 20.04.3), R devel, release, old (on github)
