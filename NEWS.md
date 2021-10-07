@@ -1,3 +1,7 @@
+# CholWishart 1.1.2
+
+* Minor updates to documentation to fix URLs for CRAN submission.
+
 # CholWishart 1.1.1
 
 * Updates to conform with the following recommendation: 
