@@ -18,12 +18,12 @@ status](https://github.com/gzt/CholWishart/workflows/R-CMD-check/badge.svg)](htt
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.6.2-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/CholWishart)](https://cran.r-project.org/package=CholWishart)
-[![packageversion](https://img.shields.io/badge/Package%20version-1.1.1-orange.svg?style=flat-square)](https://github.com/gzt/CholWishart/releases)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.1.2-orange.svg?style=flat-square)](https://github.com/gzt/CholWishart/releases)
 <!-- badges: end -->
 
 -----
 
-[![Last-changedate](https://img.shields.io/badge/last%20change-2021--10--04-yellowgreen.svg)](https://github.com/gzt/CholWishart/)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2021--11--15-yellowgreen.svg)](https://github.com/gzt/CholWishart/)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
