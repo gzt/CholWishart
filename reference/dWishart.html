@@ -196,16 +196,19 @@ Chapman and Hall.</p>
 London: Academic Press.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>20180222</span><span class='op'>)</span>
-<span class='va'>A</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/rWishart.html'>rWishart</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>10</span>, <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span><span class='op'>[</span>, , <span class='fl'>1</span><span class='op'>]</span>
-<span class='va'>A</span>
-</div><div class='output co'>#&gt;             [,1]        [,2]        [,3]        [,4]
-#&gt; [1,]  8.70459209 -0.21410794 -0.05424324  8.81416710
-#&gt; [2,] -0.21410794 10.66557858  5.22611563 -0.09148444
-#&gt; [3,] -0.05424324  5.22611563 12.65126374  1.50127740
-#&gt; [4,]  8.81416710 -0.09148444  1.50127740 16.84890844</div><div class='input'><span class='fu'>dWishart</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>A</span>, df <span class='op'>=</span> <span class='fl'>10</span>, Sigma <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fl'>4L</span><span class='op'>)</span>, log <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] -28.14864</div><div class='input'><span class='fu'>dInvWishart</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/solve.html'>solve</a></span><span class='op'>(</span><span class='va'>A</span><span class='op'>)</span>, df <span class='op'>=</span> <span class='fl'>10</span>, Sigma <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fl'>4L</span><span class='op'>)</span>, log <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 16.26773</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>20180222</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>A</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/rWishart.html'>rWishart</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>10</span>, <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span><span class='op'>[</span>, , <span class='fl'>1</span><span class='op'>]</span></span>
+<span class='r-in'><span class='va'>A</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>             [,1]        [,2]        [,3]        [,4]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,]  8.70459209 -0.21410794 -0.05424324  8.81416710</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,] -0.21410794 10.66557858  5.22611563 -0.09148444</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,] -0.05424324  5.22611563 12.65126374  1.50127740</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,]  8.81416710 -0.09148444  1.50127740 16.84890844</span>
+<span class='r-in'><span class='fu'>dWishart</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>A</span>, df <span class='op'>=</span> <span class='fl'>10</span>, Sigma <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fl'>4L</span><span class='op'>)</span>, log <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] -28.14864</span>
+<span class='r-in'><span class='fu'>dInvWishart</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/solve.html'>solve</a></span><span class='op'>(</span><span class='va'>A</span><span class='op'>)</span>, df <span class='op'>=</span> <span class='fl'>10</span>, Sigma <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fl'>4L</span><span class='op'>)</span>, log <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 16.26773</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

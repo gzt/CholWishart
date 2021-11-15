@@ -85,7 +85,7 @@
       <h1 data-toc-skip>Some Distributions Related to the Wishart</h1>
                         <h4 class="author">Geoffrey Thompson</h4>
             
-            <h4 class="date">2021-10-07</h4>
+            <h4 class="date">2021-11-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/gzt/CholWishart/blob/master/vignettes/wishart.Rmd"><code>vignettes/wishart.Rmd</code></a></small>
       <div class="hidden name"><code>wishart.Rmd</code></div>
@@ -110,7 +110,7 @@
 <h2 class="hasAnchor">
 <a href="#how-the-wishart-distribution-works" class="anchor"></a>How the Wishart distribution works</h2>
 <p>Suppose <span class="math inline">\(X_i \sim MVN(0, \Sigma)\)</span> are independent <span class="math inline">\(p\)</span>-variate normal random variables, <span class="math inline">\(i = 1, 2, \ldots n\)</span> with <span class="math inline">\(n &gt; p-1\)</span>. Then <span class="math inline">\(S = \sum X_i^T X_i\)</span>, called the “scatter matrix”, is almost surely positive definite if <span class="math inline">\(\Sigma\)</span> is positive definite. The random variable <span class="math inline">\(S\)</span> is said to be distributed as a Wishart random variable: <span class="math inline">\(S \sim W_p(n, \Sigma)\)</span>, see <span class="citation">Gupta and Nagar (1999)</span>. This can be extended to the non-integer case as well.</p>
-<p>How does <code><a href="https://rdrr.io/r/stats/rWishart.html">rWishart(n, df, Sigma)</a></code> work (supposing <code>Sigma</code> is a <span class="math inline">\(p \times p\)</span> matrix)? First, it generates a sample from the Cholesky decomposition of a Wishart distribution with <span class="math inline">\(\Sigma = \mathbf{I}_p\)</span>. How this is done: on the <span class="math inline">\(i^{th}\)</span> element of the main diagonal, draw from <span class="math inline">\(\sqrt{\chi_{p-i+1}^2}\)</span>. On the upper triangle of the matrix, sample from an independent <span class="math inline">\(N(0,1)\)</span> for each entry in the matrix. Then, this can be multiplied by the Cholesky decomposition of the provided <code>Sigma</code> to obtain the Cholesky factor of the desired sample from the Wishart random variable (this construction is due to Bartlett and is also known as the Bartlett Decomposition) (see <span class="citation">Anderson (1984)</span>). The <code>rWishart</code> function multiplies this out. Therefore, if the Cholesky decomposition is desired, one only needs to stop there.</p>
+<p>How does <code>rWishart(n, df, Sigma)</code> work (supposing <code>Sigma</code> is a <span class="math inline">\(p \times p\)</span> matrix)? First, it generates a sample from the Cholesky decomposition of a Wishart distribution with <span class="math inline">\(\Sigma = \mathbf{I}_p\)</span>. How this is done: on the <span class="math inline">\(i^{th}\)</span> element of the main diagonal, draw from <span class="math inline">\(\sqrt{\chi_{p-i+1}^2}\)</span>. On the upper triangle of the matrix, sample from an independent <span class="math inline">\(N(0,1)\)</span> for each entry in the matrix. Then, this can be multiplied by the Cholesky decomposition of the provided <code>Sigma</code> to obtain the Cholesky factor of the desired sample from the Wishart random variable (this construction is due to Bartlett and is also known as the Bartlett Decomposition) (see <span class="citation">Anderson (1984)</span>). The <code>rWishart</code> function multiplies this out. Therefore, if the Cholesky decomposition is desired, one only needs to stop there.</p>
 </div>
 <div id="the-inverse-wishart-distribution" class="section level2">
 <h2 class="hasAnchor">
@@ -118,25 +118,25 @@
 <p>If <span class="math inline">\(X \sim \textrm{W}_p(\nu,\Sigma)\)</span>, then we define the Inverse Wishart as <span class="math inline">\(X^{-1} = Y \sim \textrm{IW}_p(\nu , \Sigma^{-1})\)</span>. There are other parameterizations of the distribution, mostly coming down to different ways of writing the <span class="math inline">\(\nu\)</span> parameter - be aware of this when using any package drawing from the Inverse Wishart distribution (see <span class="citation">Dawid (1981)</span> for an alternative; this presentation follows <span class="citation">Gupta and Nagar (1999)</span>). This comes up directly in Bayesian statistics. We are also interested in the Cholesky decomposition of this, as it is required in the generation of the matrix variate <span class="math inline">\(t\)</span>-distribution. In this package it is done by taking the covariance matrix, inverting it, computing the Cholesky decomposition of the inverted covariance matrix, drawing the Cholesky factor of a Wishart matrix using that, and then inverting based on that (as finding <span class="math inline">\(\Psi^{-1}\)</span> given the Cholesky factorization of <span class="math inline">\(\Psi\)</span> is relatively fast). This can then be converted into the Cholesky factor of the Inverse Wishart if that is what is desired. This would be slow to do in R, but in C it is not so bad.</p>
 <p>Here is what happens with the results of the above:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">A</span> <span class="op">%*%</span> <span class="va">B</span> 
+<code class="sourceCode R"><span class="va">A</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">B</span> 
 <span class="co">##               [,1]          [,2]          [,3]          [,4]</span>
 <span class="co">## [1,]  1.000000e+00 -2.775558e-17 -1.387779e-16 -5.551115e-17</span>
 <span class="co">## [2,] -2.498002e-16  1.000000e+00  1.387779e-17  0.000000e+00</span>
 <span class="co">## [3,] -6.938894e-17  1.387779e-17  1.000000e+00 -5.551115e-17</span>
 <span class="co">## [4,]  0.000000e+00 -1.110223e-16  0.000000e+00  1.000000e+00</span>
-<span class="fu"><a href="https://rdrr.io/r/base/crossprod.html">crossprod</a></span><span class="op">(</span><span class="va">C</span><span class="op">)</span> <span class="op">%*%</span> <span class="fu"><a href="https://rdrr.io/r/base/crossprod.html">crossprod</a></span><span class="op">(</span><span class="va">D</span><span class="op">)</span> <span class="co"># note: we do not expect C = D^-1, we expect this! </span>
+<span class="fu"><a href="https://rdrr.io/r/base/crossprod.html">crossprod</a></span><span class="op">(</span><span class="va">C</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/crossprod.html">crossprod</a></span><span class="op">(</span><span class="va">D</span><span class="op">)</span> <span class="co"># note: we do not expect C = D^-1, we expect this! </span>
 <span class="co">##               [,1]          [,2]          [,3]          [,4]</span>
 <span class="co">## [1,]  1.000000e+00  0.000000e+00 -2.775558e-17 -5.551115e-17</span>
 <span class="co">## [2,] -4.718448e-16  1.000000e+00 -9.714451e-17  0.000000e+00</span>
 <span class="co">## [3,] -1.249001e-16 -1.110223e-16  1.000000e+00 -1.110223e-16</span>
 <span class="co">## [4,]  1.110223e-16 -5.551115e-17  0.000000e+00  1.000000e+00</span>
-<span class="fu"><a href="https://rdrr.io/r/base/crossprod.html">crossprod</a></span><span class="op">(</span><span class="va">D</span><span class="op">)</span> <span class="op">%*%</span> <span class="va">A</span>
+<span class="fu"><a href="https://rdrr.io/r/base/crossprod.html">crossprod</a></span><span class="op">(</span><span class="va">D</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">A</span>
 <span class="co">##               [,1]          [,2]          [,3]          [,4]</span>
 <span class="co">## [1,]  1.000000e+00 -4.718448e-16 -1.249001e-16  1.110223e-16</span>
 <span class="co">## [2,]  0.000000e+00  1.000000e+00 -1.110223e-16 -5.551115e-17</span>
 <span class="co">## [3,] -2.775558e-17 -9.714451e-17  1.000000e+00  0.000000e+00</span>
 <span class="co">## [4,] -5.551115e-17  0.000000e+00 -1.110223e-16  1.000000e+00</span>
-<span class="fu"><a href="https://rdrr.io/r/base/crossprod.html">crossprod</a></span><span class="op">(</span><span class="va">C</span><span class="op">)</span> <span class="op">%*%</span> <span class="va">B</span>
+<span class="fu"><a href="https://rdrr.io/r/base/crossprod.html">crossprod</a></span><span class="op">(</span><span class="va">C</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">B</span>
 <span class="co">##               [,1]          [,2]          [,3]          [,4]</span>
 <span class="co">## [1,]  1.000000e+00 -2.775558e-17 -1.387779e-16 -5.551115e-17</span>
 <span class="co">## [2,] -2.498002e-16  1.000000e+00  1.387779e-17  0.000000e+00</span>
