@@ -11,3 +11,5 @@ CholWishart.Rproj
 *.o
 CRAN-RELEASE
 /revdep/*
+revdep/*
+revdep/README.md
