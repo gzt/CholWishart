@@ -1,5 +1,4 @@
-This is a resubmission. I believe I have fixed all the links apart from one mentioned below
-(which is an issue with the reference provided by DOI itself).
+This is a minor update fixing the person("john doe") issue.
 
 ## Test environments
 * local Fedora install, R 4.0.5

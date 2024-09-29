@@ -313,7 +313,7 @@ double c_lmvgamma (double x, int p) {
     error("p must be greater than or equal to 1.");
   if (x <= 0)
     error("x must be greater than 0.");
-  ans =(p * (p - 1)/4.0) * log(PI);
+  ans =(p * (p - 1)/4.0) * log(M_PI);
   for (i = 0; i < p; i++){
     ans = ans + (lgamma(x  - (i/2.0) ));
   }
