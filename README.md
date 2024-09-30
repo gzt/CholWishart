@@ -4,7 +4,7 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
-[![codecov](https://codecov.io/gh/gzt/CholWishart/branch/master/graph/badge.svg)](https://codecov.io/gh/gzt/CholWishart)
+[![codecov](https://app.codecov.io/gh/gzt/CholWishart/branch/master/graph/badge.svg)](https://app.codecov.io/gh/gzt/CholWishart)
 [![R build
 status](https://github.com/gzt/CholWishart/workflows/R-CMD-check/badge.svg)](https://github.com/gzt/CholWishart/actions)
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
@@ -21,7 +21,7 @@ version](https://img.shields.io/badge/R%3E%3D-3.6.2-6666ff.svg)](https://cran.r-
 
 ------------------------------------------------------------------------
 
-[![Last-changedate](https://img.shields.io/badge/last%20change-2024--09--29-yellowgreen.svg)](https://github.com/gzt/CholWishart/)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2024--09--30-yellowgreen.svg)](https://github.com/gzt/CholWishart/)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
