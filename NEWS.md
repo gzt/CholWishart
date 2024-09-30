@@ -1,3 +1,8 @@
+# CholWishart 1.1.4
+
+* Update names
+* Change PI to M_PI
+
 # CholWishart 1.1.2
 
 * Minor updates to documentation to fix URLs for CRAN submission.
