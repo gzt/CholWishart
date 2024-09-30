@@ -5,7 +5,7 @@ This is a minor update fixing the person("john doe") issue.
 * ubuntu (latest), R release, old-rel1 (on github)
 * Microsoft Windows latest, R release (on github)
 * Mac OS (latest), R release (on github)
-* win-builder.r-project.org, R release
+* win-builder.r-project.org, R devel
 
 ## R CMD check results
 

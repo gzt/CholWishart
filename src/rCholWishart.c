@@ -105,11 +105,11 @@ SEXP
     if (!isMatrix(scal) || !isReal(scal) || dims[0] != dims[1])
       error("'scal' must be a square, real matrix");
     if (n <= 0) n = 1;
-    // allocate early to avoid memory leaks in Callocs below.
+    // allocate early to avoid memory leaks in R_Callocs below.
     PROTECT(ans = alloc3DArray(REALSXP, dims[0], dims[0], n));
     psqr = dims[0] * dims[0];
-    tmp = Calloc(psqr, double);
-    scCp = Calloc(psqr, double);
+    tmp = R_Calloc(psqr, double);
+    scCp = R_Calloc(psqr, double);
 
     Memcpy(scCp, REAL(scal), psqr);
     memset(tmp, 0, psqr * sizeof(double));
@@ -136,7 +136,7 @@ SEXP
     }
 
     PutRNGstate();
-    Free(scCp); Free(tmp);
+    R_Free(scCp); R_Free(tmp);
     UNPROTECT(1);
     return ans;
   }
@@ -164,11 +164,11 @@ SEXP
       error("'scal' must be a square, real matrix");
 
     if (n <= 0) n = 1;
-    // allocate early to avoid memory leaks in Callocs below.
+    // allocate early to avoid memory leaks in R_Callocs below.
     PROTECT(ans = alloc3DArray(REALSXP, dims[0], dims[0], n));
     psqr = dims[0] * dims[0];
-    tmp = Calloc(psqr, double);
-    scCp = Calloc(psqr, double);
+    tmp = R_Calloc(psqr, double);
+    scCp = R_Calloc(psqr, double);
 
     Memcpy(scCp, REAL(scal), psqr);
     memset(tmp, 0, psqr * sizeof(double));
@@ -213,7 +213,7 @@ SEXP
     }
 
     PutRNGstate();
-    Free(scCp); Free(tmp);
+    R_Free(scCp); R_Free(tmp);
     UNPROTECT(1);
     return ans;
   }
@@ -240,11 +240,11 @@ SEXP
       error("'scal' must be a square, real matrix");
 
     if (n <= 0) n = 1;
-    // allocate early to avoid memory leaks in Callocs below.
+    // allocate early to avoid memory leaks in R_Callocs below.
     PROTECT(ans = alloc3DArray(REALSXP, dims[0], dims[0], n));
     psqr = dims[0] * dims[0];
-    tmp = Calloc(psqr, double);
-    scCp = Calloc(psqr, double);
+    tmp = R_Calloc(psqr, double);
+    scCp = R_Calloc(psqr, double);
 
     Memcpy(scCp, REAL(scal), psqr);
     memset(tmp, 0, psqr * sizeof(double));
@@ -290,7 +290,7 @@ SEXP
     }
 
     PutRNGstate();
-    Free(scCp); Free(tmp);
+    R_Free(scCp); R_Free(tmp);
     UNPROTECT(1);
     return ans;
   }
@@ -435,12 +435,12 @@ SEXP
     if (!isMatrix(scal) || !isReal(scal) || dims[0] != dims[1])
       error("'scal' must be a square, real matrix");
     if (n <= 0) n = 1;
-    // allocate early to avoid memory leaks in Callocs below.
+    // allocate early to avoid memory leaks in R_Callocs below.
     PROTECT(ans = alloc3DArray(REALSXP, dims[0], dims[0], n));
     psqr = dims[0] * dims[0];
     pn = dims[0] * nu;
-    tmp = Calloc(pn, double);
-    scCp = Calloc(psqr, double);
+    tmp = R_Calloc(pn, double);
+    scCp = R_Calloc(psqr, double);
 
     Memcpy(scCp, REAL(scal), psqr);
     memset(tmp, 0, pn * sizeof(double));
@@ -464,7 +464,7 @@ SEXP
     }
 
     PutRNGstate();
-    Free(scCp); Free(tmp);
+    R_Free(scCp); R_Free(tmp);
     UNPROTECT(1);
     return ans;
   }
