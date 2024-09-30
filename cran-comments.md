@@ -1,11 +1,12 @@
 This is a minor update fixing the person("john doe") issue.
+I also update Calloc to R_Calloc and Free to R_Free.
 
 ## Test environments
 * local Fedora install, R 4.4.1
 * ubuntu (latest), R release, old-rel1 (on github)
 * Microsoft Windows latest, R release (on github)
 * Mac OS (latest), R release (on github)
-* win-builder.r-project.org, R devel
+* win-builder.r-project.org, R gdevel
 
 ## R CMD check results
 
@@ -24,4 +25,5 @@ I have confirmed that the changes do not impact the reverse dependencies.
 
 ## Other notes
 
-This is a minor update which fixes the person field.
+This is a minor update which fixes the person field and some
+memory allocation functions that do not impact functionality.
