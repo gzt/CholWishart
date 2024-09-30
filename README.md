@@ -4,8 +4,6 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/gzt/CholWishart?branch=master&svg=true)](https://ci.appveyor.com/project/gzt/CholWishart)
 [![codecov](https://codecov.io/gh/gzt/CholWishart/branch/master/graph/badge.svg)](https://codecov.io/gh/gzt/CholWishart)
 [![R build
 status](https://github.com/gzt/CholWishart/workflows/R-CMD-check/badge.svg)](https://github.com/gzt/CholWishart/actions)
@@ -13,17 +11,17 @@ status](https://github.com/gzt/CholWishart/workflows/R-CMD-check/badge.svg)](htt
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![](https://cranlogs.r-pkg.org/badges/CholWishart)](https://cran.r-project.org/package=CholWishart)
 
------
+------------------------------------------------------------------------
 
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.6.2-6666ff.svg)](https://cran.r-project.org/)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/CholWishart)](https://cran.r-project.org/package=CholWishart)
-[![packageversion](https://img.shields.io/badge/Package%20version-1.1.2-orange.svg?style=flat-square)](https://github.com/gzt/CholWishart/releases)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/CholWishart)](https://cran.r-project.org/package=CholWishart)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.1.4-orange.svg?style=flat-square)](https://github.com/gzt/CholWishart/releases)
 <!-- badges: end -->
 
------
+------------------------------------------------------------------------
 
-[![Last-changedate](https://img.shields.io/badge/last%20change-2021--11--15-yellowgreen.svg)](https://github.com/gzt/CholWishart/)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2024--09--29-yellowgreen.svg)](https://github.com/gzt/CholWishart/)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -56,36 +54,36 @@ Wishart distribution.
 
 The package offers the following distributions:
 
-  - The inverse Wishart:
+- The inverse Wishart:
 
-<!-- end list -->
+<!-- -->
 
     rInvWishart(n = 1,df = 5,Sigma = diag(4)))
 
-  - The Cholesky decomposition of the inverse Wishart:
+- The Cholesky decomposition of the inverse Wishart:
 
-<!-- end list -->
+<!-- -->
 
     rInvCholWishart(n = 1,df = 5,Sigma = diag(4)))
 
-  - The Cholesky decomposition of the Wishart
+- The Cholesky decomposition of the Wishart
 
-<!-- end list -->
+<!-- -->
 
     rCholWishart(n = 1,df = 5,Sigma = diag(4)))
 
-  - The pseudo Wishart and its pseudo-inverse, the generalized inverse
-    Wishart (`df` less than the dimension of `Sigma` minus 1):
+- The pseudo Wishart and its pseudo-inverse, the generalized inverse
+  Wishart (`df` less than the dimension of `Sigma` minus 1):
 
-<!-- end list -->
+<!-- -->
 
     rPseudoWishart(n = 1,df = 3,Sigma = diag(5)))
     rGenInvWishart(n = 1,df = 3,Sigma = diag(5)))
 
-  - The package also offers density functions for the Wishart and
-    inverse Wishart distributions:
+- The package also offers density functions for the Wishart and inverse
+  Wishart distributions:
 
-<!-- end list -->
+<!-- -->
 
     dInvWishart(x = diag(4), df = 5, Sigma = diag(4), log = TRUE)
     dWishart(x = diag(4), df = 5, Sigma = diag(4), log = TRUE)
