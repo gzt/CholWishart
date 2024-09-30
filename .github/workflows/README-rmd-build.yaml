@@ -4,7 +4,7 @@ on:
   push:
     paths: ['**.Rmd']
 
-name: render-rmarkdown.yaml
+name: old-render-rmarkdown.yaml
 
 permissions: read-all
 
