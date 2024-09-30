@@ -21,7 +21,7 @@ Many of these functions are written in C to maximize efficiency.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/gzt/CholWishart https://gzt.github.io/CholWishart/}
+  \item \url{https://gzt.github.io/CholWishart/}
   \item Report bugs at \url{https://github.com/gzt/CholWishart/issues}
 }
 

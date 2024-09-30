@@ -3,10 +3,10 @@ I also update Calloc to R_Calloc and Free to R_Free.
 
 ## Test environments
 * local Fedora install, R 4.4.1
-* ubuntu (latest), R release, old-rel1 (on github)
+* ubuntu (latest), R devel, release, old-rel1 (on github)
 * Microsoft Windows latest, R release (on github)
 * Mac OS (latest), R release (on github)
-* win-builder.r-project.org, R gdevel
+* win-builder.r-project.org, R devel
 
 ## R CMD check results
 
