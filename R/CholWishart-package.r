@@ -12,6 +12,7 @@
 #' such as the multivariate gamma and digamma functions.
 #' Many of these functions are written in C to maximize efficiency.
 #'
-#' @name CholWishart
-#' @docType package
+#' @keywords internal 
+"_PACKAGE"
+
 NULL

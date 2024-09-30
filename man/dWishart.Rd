@@ -42,9 +42,9 @@ Note there are different ways of parameterizing the Inverse
 }
 \section{Functions}{
 \itemize{
-\item \code{dInvWishart}: density for the inverse Wishart distribution.
-}}
+\item \code{dInvWishart()}: density for the inverse Wishart distribution.
 
+}}
 \examples{
 set.seed(20180222)
 A <- rWishart(1, 10, diag(4))[, , 1]

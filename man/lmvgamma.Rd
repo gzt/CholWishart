@@ -33,9 +33,9 @@ A special mathematical function related to the gamma function,
 }
 \section{Functions}{
 \itemize{
-\item \code{mvgamma}: Multivariate gamma function.
-}}
+\item \code{mvgamma()}: Multivariate gamma function.
 
+}}
 \examples{
 lgamma(1:12)
 lmvgamma(1:12, 1L)
